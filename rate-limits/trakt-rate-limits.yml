@@ -1,0 +1,81 @@
+apiCommonsRateLimits: '0.1'
+provider:
+  id: trakt
+  name: Trakt
+  apiUrl: https://api.trakt.tv
+
+scope:
+  - perClientId
+  - perAccessToken
+
+policies:
+  - id: standard-read
+    appliesTo:
+      methods: [GET]
+    quota:
+      requests: 1000
+      window: 5m
+    notes:
+      - "Trakt does not publish a single hard per-second limit; the platform uses adaptive throttling per client_id + per access_token."
+      - "Bursts above ~5 req/sec sustained will commonly be slowed."
+  - id: write-operations
+    appliesTo:
+      methods: [POST, PUT, DELETE]
+      paths:
+        - /sync/*
+        - /checkin
+        - /scrobble/*
+        - /users/*/lists*
+        - /comments*
+        - /notes*
+    quota:
+      requests: 1
+      window: 1s
+    notes:
+      - "Trakt asks apps to never burst writes; sync/history additions should be batched."
+      - "Duplicate scrobbles within the dedupe window return 409 with expires_at."
+  - id: oauth-device-polling
+    appliesTo:
+      paths: [/oauth/device/token]
+    polling:
+      respectIntervalFromResponse: true
+      onTooFast: 429
+    notes:
+      - "Always poll at the interval returned by /oauth/device/code. Polling faster triggers HTTP 429 (Slow Down)."
+  - id: list-cap
+    appliesTo:
+      paths: [/sync/watchlist, /sync/favorites, /users/*/lists*]
+    onExceeded: 420
+    notes:
+      - "List/favorite/watchlist limits are per-user and tier-based (see plans/)."
+      - "Exceeded limits return HTTP 420 with an actionable error body."
+
+responseSignals:
+  headers:
+    - X-Pagination-Page
+    - X-Pagination-Limit
+    - X-Pagination-Page-Count
+    - X-Pagination-Item-Count
+  statusCodes:
+    "200": OK
+    "201": Created (write succeeded)
+    "204": No Content (delete/no-op succeeded)
+    "400": Bad Request (also OAuth device pending)
+    "401": Unauthorized (token expired)
+    "403": Forbidden (insufficient scope or banned)
+    "404": Not Found
+    "405": Method Not Allowed
+    "409": Conflict (already exists or duplicate scrobble)
+    "410": Gone (device code expired)
+    "412": Precondition Failed
+    "418": I'm a teapot (user denied device code)
+    "420": Enhance Your Calm (personal limit reached)
+    "422": Unprocessable Entity (e.g. progress < 1%)
+    "429": Too Many Requests
+    "500": Server Error
+    "503": Maintenance / Overloaded
+
+guidance:
+  - "Always honor Retry-After and the polling interval returned by /oauth/device/code."
+  - "Use /sync/last_activities to detect what actually changed before re-fetching collections — this is the single most effective way to stay under limits."
+  - "Send extended=full only when you actually use the extra fields."

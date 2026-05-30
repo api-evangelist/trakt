@@ -1,0 +1,1765 @@
+openapi: 3.0.3
+info:
+  title: Trakt API
+  description: |
+    The Trakt API is a RESTful API for integrating TV show and movie tracking
+    features into applications. It exposes Trakt's media database, user
+    watch history, lists, watchlists, ratings, comments, scrobbling, and
+    recommendations. Authentication is OAuth 2.0 (Authorization Code and
+    Device flows).
+
+    This OpenAPI is a representative sampling of the full Trakt API v2
+    surface, covering authentication, movies, shows, episodes, seasons,
+    people, search, users, sync, scrobble, checkin, lists, calendars,
+    recommendations, comments, notes, and reference data. The canonical
+    contract is the ts-rest router published at github.com/trakt/trakt-api.
+  version: '2.0'
+  contact:
+    name: Trakt API Support
+    url: https://forums.trakt.tv
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+  - url: https://api.trakt.tv
+    description: Production
+  - url: https://api-staging.trakt.tv
+    description: Staging
+tags:
+  - name: OAuth
+    description: Authorization Code and Device OAuth flows.
+  - name: Movies
+    description: Movie metadata, trending, watched, anticipated, popular, ratings, related, people.
+  - name: Shows
+    description: Show metadata, trending, watched, anticipated, popular, progress, seasons, episodes.
+  - name: Seasons
+    description: Season-level metadata and episodes.
+  - name: Episodes
+    description: Episode metadata, ratings, comments, watching.
+  - name: People
+    description: Person metadata, filmography, lists.
+  - name: Search
+    description: Text and ID lookup across movies, shows, episodes, people, lists.
+  - name: Users
+    description: Profiles, settings, follows, friends, social activity, comments, watching.
+  - name: Sync
+    description: History, watchlist, ratings, favorites, collection, playback progress.
+  - name: Scrobble
+    description: Start, pause, and stop scrobbles for movies and episodes.
+  - name: Checkin
+    description: Lightweight social "now watching" check-ins.
+  - name: Lists
+    description: Trending, popular, and personal lists.
+  - name: Calendars
+    description: Upcoming and recently aired schedules for shows, episodes, and movies.
+  - name: Recommendations
+    description: Personalized recommendations for movies and shows.
+  - name: Comments
+    description: Comment threads, replies, likes, reactions.
+  - name: Notes
+    description: Personal notes attached to media items.
+  - name: Certifications
+    description: Movie and show certification reference data.
+  - name: Countries
+    description: Country reference data.
+  - name: Languages
+    description: Language reference data.
+  - name: Genres
+    description: Genre reference data.
+  - name: Networks
+    description: Television network reference data.
+  - name: Studios
+    description: Studio reference data.
+security:
+  - bearerAuth: []
+paths:
+  /oauth/device/code:
+    post:
+      tags: [OAuth]
+      operationId: generateDeviceCode
+      summary: Generate New Device Codes
+      description: Generate new codes to start the device authentication process. The device_code and interval are used to poll for the access_token. The user_code and verification_url should be presented to the user.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceCodeRequest'
+      responses:
+        '200':
+          description: Device code issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeviceCodeResponse'
+  /oauth/device/token:
+    post:
+      tags: [OAuth]
+      operationId: pollDeviceToken
+      summary: Poll For The Access Token
+      description: Poll using the device_code at the returned interval until the user authorizes the app. Returns access_token on success. Status codes 400/404/409/410/418/429 indicate pending, expired, denied, or polling-too-fast states.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeviceTokenRequest'
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Pending — keep polling.
+  /oauth/token:
+    post:
+      tags: [OAuth]
+      operationId: exchangeToken
+      summary: Exchange A Token
+      description: Exchange an OAuth authorization code or refresh token for an access token.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/TokenRequest'
+                - $ref: '#/components/schemas/TokenRefreshRequest'
+      responses:
+        '200':
+          description: Token issued.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request.
+  /oauth/revoke:
+    post:
+      tags: [OAuth]
+      operationId: revokeToken
+      summary: Revoke An Access Token
+      description: Revoke an access_token when the user signs out of the app.
+      security: []
+      responses:
+        '200':
+          description: Token revoked.
+  /movies/trending:
+    get:
+      tags: [Movies]
+      operationId: getTrendingMovies
+      summary: Get Trending Movies
+      description: Returns the most watched movies over the last 24 hours. Movies with the most watchers are returned first.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Trending movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MovieTrending' }
+  /movies/popular:
+    get:
+      tags: [Movies]
+      operationId: getPopularMovies
+      summary: Get Popular Movies
+      description: Returns the most popular movies, calculated using rating percentage and number of ratings.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Popular movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Movie' }
+  /movies/watched/{period}:
+    get:
+      tags: [Movies]
+      operationId: getMostWatchedMovies
+      summary: Get The Most Watched Movies
+      description: Returns the most watched (unique users) movies in the specified time period, defaulting to weekly.
+      parameters:
+        - $ref: '#/components/parameters/Period'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Most watched movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MovieWatched' }
+  /movies/anticipated:
+    get:
+      tags: [Movies]
+      operationId: getAnticipatedMovies
+      summary: Get The Most Anticipated Movies
+      description: Returns the most anticipated movies based on the number of lists a movie appears on.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Anticipated movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MovieAnticipated' }
+  /movies/boxoffice:
+    get:
+      tags: [Movies]
+      operationId: getBoxOfficeMovies
+      summary: Get The Weekend Box Office
+      description: Returns the top 10 grossing movies in the U.S. box office last weekend.
+      responses:
+        '200':
+          description: Box office movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/MovieBoxOffice' }
+  /movies/{id}:
+    get:
+      tags: [Movies]
+      operationId: getMovie
+      summary: Get A Movie
+      description: Returns a single movie's details.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Movie details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Movie' }
+  /movies/{id}/ratings:
+    get:
+      tags: [Movies]
+      operationId: getMovieRatings
+      summary: Get Movie Ratings
+      description: Returns rating (between 0 and 10) and distribution for a movie.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Movie ratings.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Ratings' }
+  /movies/{id}/stats:
+    get:
+      tags: [Movies]
+      operationId: getMovieStats
+      summary: Get Movie Stats
+      description: Returns lots of movie stats including watchers, plays, collectors, comments, lists, votes, and recommended counts.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Movie stats.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/MovieStats' }
+  /movies/{id}/related:
+    get:
+      tags: [Movies]
+      operationId: getRelatedMovies
+      summary: Get Related Movies
+      description: Returns related and similar movies.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Related movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Movie' }
+  /movies/{id}/people:
+    get:
+      tags: [Movies]
+      operationId: getMoviePeople
+      summary: Get All People For A Movie
+      description: Returns all cast and crew for a movie, broken up by department.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: People associated with the movie.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/People' }
+  /movies/{id}/watching:
+    get:
+      tags: [Movies]
+      operationId: getMovieWatching
+      summary: Get Users Watching Right Now
+      description: Returns all users watching this movie right now.
+      parameters:
+        - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Users watching right now.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/UserProfile' }
+  /shows/trending:
+    get:
+      tags: [Shows]
+      operationId: getTrendingShows
+      summary: Get Trending Shows
+      description: Returns the most watched shows over the last 24 hours.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Trending shows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/ShowTrending' }
+  /shows/popular:
+    get:
+      tags: [Shows]
+      operationId: getPopularShows
+      summary: Get Popular Shows
+      description: Returns the most popular shows.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Popular shows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Show' }
+  /shows/watched/{period}:
+    get:
+      tags: [Shows]
+      operationId: getMostWatchedShows
+      summary: Get The Most Watched Shows
+      description: Returns the most watched shows in the specified time period.
+      parameters:
+        - $ref: '#/components/parameters/Period'
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Most watched shows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/ShowWatched' }
+  /shows/anticipated:
+    get:
+      tags: [Shows]
+      operationId: getAnticipatedShows
+      summary: Get The Most Anticipated Shows
+      description: Returns the most anticipated shows based on the number of lists a show appears on.
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Anticipated shows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Show' }
+  /shows/{id}:
+    get:
+      tags: [Shows]
+      operationId: getShow
+      summary: Get A Single Show
+      description: Returns a single show's details.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Show details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Show' }
+  /shows/{id}/seasons:
+    get:
+      tags: [Shows]
+      operationId: getShowSeasons
+      summary: Get All Seasons For A Show
+      description: Returns all seasons for a show including the number of episodes in each season.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+      responses:
+        '200':
+          description: Show seasons.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Season' }
+  /shows/{id}/seasons/{season}:
+    get:
+      tags: [Seasons]
+      operationId: getSeasonEpisodes
+      summary: Get All Episodes For A Single Season
+      description: Returns all episodes for a specific season of a show.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+        - $ref: '#/components/parameters/Season'
+      responses:
+        '200':
+          description: Season episodes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Episode' }
+  /shows/{id}/seasons/{season}/episodes/{episode}:
+    get:
+      tags: [Episodes]
+      operationId: getEpisode
+      summary: Get A Single Episode For A Show
+      description: Returns a single episode's details.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+        - $ref: '#/components/parameters/Season'
+        - $ref: '#/components/parameters/EpisodeNumber'
+      responses:
+        '200':
+          description: Episode details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Episode' }
+  /shows/{id}/progress/watched:
+    get:
+      tags: [Shows]
+      operationId: getShowWatchedProgress
+      summary: Get Show Watched Progress
+      description: Returns watched progress for a show including details on all aired seasons and episodes.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+      responses:
+        '200':
+          description: Watched progress.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ShowProgress' }
+  /shows/{id}/people:
+    get:
+      tags: [Shows]
+      operationId: getShowPeople
+      summary: Get All People For A Show
+      description: Returns all cast and crew for a show.
+      parameters:
+        - $ref: '#/components/parameters/ShowId'
+      responses:
+        '200':
+          description: Show people.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/People' }
+  /people/{id}:
+    get:
+      tags: [People]
+      operationId: getPerson
+      summary: Get A Single Person
+      description: Returns a single person's details.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Person details.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Person' }
+  /people/{id}/movies:
+    get:
+      tags: [People]
+      operationId: getPersonMovies
+      summary: Get Movies For A Person
+      description: Returns all movies where this person is in the cast or crew.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Person filmography for movies.
+  /people/{id}/shows:
+    get:
+      tags: [People]
+      operationId: getPersonShows
+      summary: Get Shows For A Person
+      description: Returns all shows where this person is in the cast or crew.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Person filmography for shows.
+  /search/{type}:
+    get:
+      tags: [Search]
+      operationId: searchText
+      summary: Get Text Query Results
+      description: Search all text fields that a media object contains. Accepts movie, show, episode, person, list (one or more, comma separated).
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [movie, show, episode, person, list]
+        - name: query
+          in: query
+          required: true
+          schema: { type: string }
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Search results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/SearchResult' }
+  /search/{id_type}/{id}:
+    get:
+      tags: [Search]
+      operationId: searchById
+      summary: Get ID Lookup Results
+      description: Lookup items by their Trakt, IMDB, TMDB, or TVDB ID.
+      parameters:
+        - name: id_type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [trakt, imdb, tmdb, tvdb]
+        - name: id
+          in: path
+          required: true
+          schema: { type: string }
+      responses:
+        '200':
+          description: Lookup results.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/SearchResult' }
+  /users/settings:
+    get:
+      tags: [Users]
+      operationId: getUserSettings
+      summary: Retrieve Settings
+      description: Get the user's settings (account, profile, sharing, limits, permissions, browsing).
+      responses:
+        '200':
+          description: User settings.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UserSettings' }
+  /users/{id}:
+    get:
+      tags: [Users]
+      operationId: getUserProfile
+      summary: Get User Profile
+      description: Get a user's profile information.
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+        - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: User profile.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UserProfile' }
+  /users/{id}/stats:
+    get:
+      tags: [Users]
+      operationId: getUserStats
+      summary: Get Stats
+      description: Returns stats about the movies, shows, and episodes a user has watched, collected, and rated.
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: User stats.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/UserStats' }
+  /users/{id}/watching:
+    get:
+      tags: [Users]
+      operationId: getUserWatching
+      summary: Get Watching
+      description: Returns a movie or episode if the user is currently watching something.
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: User watching.
+        '204':
+          description: User is not watching anything.
+  /users/{id}/followers:
+    get:
+      tags: [Users]
+      operationId: getUserFollowers
+      summary: Get Followers
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: Followers list.
+  /users/{id}/following:
+    get:
+      tags: [Users]
+      operationId: getUserFollowing
+      summary: Get Following
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: Following list.
+  /users/{id}/friends:
+    get:
+      tags: [Users]
+      operationId: getUserFriends
+      summary: Get Friends
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: Friends list.
+  /users/{id}/follow:
+    post:
+      tags: [Users]
+      operationId: followUser
+      summary: Follow This User
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '201':
+          description: Follow created.
+    delete:
+      tags: [Users]
+      operationId: unfollowUser
+      summary: Unfollow This User
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '204':
+          description: Unfollowed.
+  /sync/last_activities:
+    get:
+      tags: [Sync]
+      operationId: getLastActivities
+      summary: Get Last Activity
+      description: Returns timestamps for the last activity of each Sync resource, so apps can determine what to refresh.
+      responses:
+        '200':
+          description: Last activities.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/LastActivities' }
+  /sync/playback:
+    get:
+      tags: [Sync]
+      operationId: getPlaybackProgress
+      summary: Get Playback Progress
+      description: Returns paused and unfinished playback progress for the authenticated user.
+      responses:
+        '200':
+          description: Playback progress.
+  /sync/playback/{id}:
+    delete:
+      tags: [Sync]
+      operationId: removePlaybackItem
+      summary: Remove A Playback Item
+      description: Remove a playback item from a user's playback progress list.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '204':
+          description: Removed.
+  /sync/collection/movies:
+    get:
+      tags: [Sync]
+      operationId: getCollectionMovies
+      summary: Get Movie Collection
+      description: Returns movies in the authenticated user collection.
+      responses:
+        '200':
+          description: Movie collection.
+  /sync/collection/shows:
+    get:
+      tags: [Sync]
+      operationId: getCollectionShows
+      summary: Get Show Collection
+      description: Returns shows in the authenticated user collection, including collected seasons and episodes.
+      responses:
+        '200':
+          description: Show collection.
+  /sync/collection:
+    post:
+      tags: [Sync]
+      operationId: addToCollection
+      summary: Add Items To Collection
+      description: Add items to a user's collection. Accepts movies, shows, seasons, episodes.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '201':
+          description: Added.
+  /sync/collection/remove:
+    post:
+      tags: [Sync]
+      operationId: removeFromCollection
+      summary: Remove Items From Collection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: Removed.
+  /sync/watched/movies:
+    get:
+      tags: [Sync]
+      operationId: getWatchedMovies
+      summary: Get Watched Movies
+      description: Returns all movies a user has watched, sorted by most plays.
+      responses:
+        '200':
+          description: Watched movies.
+  /sync/watched/shows:
+    get:
+      tags: [Sync]
+      operationId: getWatchedShows
+      summary: Get Watched Shows
+      description: Returns all shows a user has watched, sorted by most plays.
+      responses:
+        '200':
+          description: Watched shows.
+  /sync/history:
+    get:
+      tags: [Sync]
+      operationId: getWatchedHistory
+      summary: Get Watched History
+      description: Returns movies and episodes that a user has watched, sorted by most recent.
+      parameters:
+        - name: type
+          in: query
+          schema:
+            type: string
+            enum: [movies, shows, seasons, episodes]
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: History entries.
+    post:
+      tags: [Sync]
+      operationId: addToHistory
+      summary: Add Items To Watched History
+      description: Add items to a user's watch history.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: History add result.
+  /sync/history/remove:
+    post:
+      tags: [Sync]
+      operationId: removeFromHistory
+      summary: Remove Items From History
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: Removed.
+  /sync/ratings:
+    post:
+      tags: [Sync]
+      operationId: addRatings
+      summary: Add New Ratings
+      description: Rate one or more items.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '201':
+          description: Ratings added.
+  /sync/ratings/remove:
+    post:
+      tags: [Sync]
+      operationId: removeRatings
+      summary: Remove Ratings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: Ratings removed.
+  /sync/watchlist:
+    get:
+      tags: [Sync]
+      operationId: getWatchlist
+      summary: Get Watchlist
+      description: Returns all items in a user's watchlist.
+      responses:
+        '200':
+          description: Watchlist items.
+    post:
+      tags: [Sync]
+      operationId: addToWatchlist
+      summary: Add Items To Watchlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '201':
+          description: Watchlist add result.
+  /sync/watchlist/remove:
+    post:
+      tags: [Sync]
+      operationId: removeFromWatchlist
+      summary: Remove Items From Watchlist
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: Removed.
+  /sync/favorites:
+    get:
+      tags: [Sync]
+      operationId: getFavorites
+      summary: Get Favorites
+      responses:
+        '200':
+          description: Favorites items.
+    post:
+      tags: [Sync]
+      operationId: addToFavorites
+      summary: Add Items To Favorites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '201':
+          description: Favorites add result.
+  /sync/favorites/remove:
+    post:
+      tags: [Sync]
+      operationId: removeFromFavorites
+      summary: Remove Items From Favorites
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/BulkMediaRequest' }
+      responses:
+        '200':
+          description: Removed.
+  /scrobble/start:
+    post:
+      tags: [Scrobble]
+      operationId: scrobbleStart
+      summary: Start Watching In A Media Center
+      description: Use when the video initially starts playing or is unpaused.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ScrobbleRequest' }
+      responses:
+        '201':
+          description: Scrobble started.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ScrobbleResponse' }
+  /scrobble/pause:
+    post:
+      tags: [Scrobble]
+      operationId: scrobblePause
+      summary: Pause Watching In A Media Center
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ScrobbleRequest' }
+      responses:
+        '201':
+          description: Scrobble paused.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ScrobbleResponse' }
+  /scrobble/stop:
+    post:
+      tags: [Scrobble]
+      operationId: scrobbleStop
+      summary: Stop Or Finish Watching In A Media Center
+      description: If progress is above 80% the item is marked scrobble; if 1–79% it is treated as pause.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ScrobbleRequest' }
+      responses:
+        '201':
+          description: Scrobble stopped.
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/ScrobbleResponse' }
+  /checkin:
+    post:
+      tags: [Checkin]
+      operationId: createCheckin
+      summary: Check Into An Item
+      description: Check into a movie or episode. Sets the watching status; auto-expires after the runtime elapses.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/CheckinRequest' }
+      responses:
+        '201':
+          description: Checkin created.
+        '409':
+          description: Already checked in (conflict).
+    delete:
+      tags: [Checkin]
+      operationId: deleteCheckin
+      summary: Delete Any Active Checkins
+      responses:
+        '204':
+          description: Active checkin cancelled.
+  /calendars/all/shows/{start_date}/{days}:
+    get:
+      tags: [Calendars]
+      operationId: getAllShowsCalendar
+      summary: Get Shows
+      description: Returns all shows airing during the time period specified.
+      parameters:
+        - name: start_date
+          in: path
+          required: true
+          schema: { type: string, format: date }
+        - name: days
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Calendar entries.
+  /calendars/all/movies/{start_date}/{days}:
+    get:
+      tags: [Calendars]
+      operationId: getAllMoviesCalendar
+      summary: Get Movies
+      description: Returns all movies released during the time period specified.
+      parameters:
+        - name: start_date
+          in: path
+          required: true
+          schema: { type: string, format: date }
+        - name: days
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Calendar entries.
+  /calendars/my/shows/{start_date}/{days}:
+    get:
+      tags: [Calendars]
+      operationId: getMyShowsCalendar
+      summary: Get My Shows
+      description: Returns all shows airing during the time period specified for the authenticated user.
+      parameters:
+        - name: start_date
+          in: path
+          required: true
+          schema: { type: string, format: date }
+        - name: days
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Personalized calendar entries.
+  /recommendations/movies:
+    get:
+      tags: [Recommendations]
+      operationId: getMovieRecommendations
+      summary: Get Movie Recommendations
+      description: Personalized movie recommendations for a user.
+      responses:
+        '200':
+          description: Recommended movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Movie' }
+    delete:
+      tags: [Recommendations]
+      operationId: hideMovieRecommendation
+      summary: Hide A Movie Recommendation
+      responses:
+        '204':
+          description: Hidden.
+  /recommendations/shows:
+    get:
+      tags: [Recommendations]
+      operationId: getShowRecommendations
+      summary: Get Show Recommendations
+      responses:
+        '200':
+          description: Recommended shows.
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Show' }
+  /lists/trending:
+    get:
+      tags: [Lists]
+      operationId: getTrendingLists
+      summary: Get Trending Lists
+      responses:
+        '200':
+          description: Trending lists.
+  /lists/popular:
+    get:
+      tags: [Lists]
+      operationId: getPopularLists
+      summary: Get Popular Lists
+      responses:
+        '200':
+          description: Popular lists.
+  /users/{id}/lists:
+    get:
+      tags: [Users]
+      operationId: getUserLists
+      summary: Get A User's Custom Lists
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '200':
+          description: User lists.
+    post:
+      tags: [Users]
+      operationId: createUserList
+      summary: Create A Custom List
+      parameters:
+        - $ref: '#/components/parameters/UserSlug'
+      responses:
+        '201':
+          description: List created.
+  /comments/{id}:
+    get:
+      tags: [Comments]
+      operationId: getComment
+      summary: Get A Comment Or Reply
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Comment.
+    put:
+      tags: [Comments]
+      operationId: updateComment
+      summary: Update A Comment Or Reply
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Comment updated.
+    delete:
+      tags: [Comments]
+      operationId: deleteComment
+      summary: Delete A Comment Or Reply
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '204':
+          description: Deleted.
+  /comments/{id}/like:
+    post:
+      tags: [Comments]
+      operationId: likeComment
+      summary: Like A Comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '204':
+          description: Liked.
+    delete:
+      tags: [Comments]
+      operationId: removeCommentLike
+      summary: Remove Like On A Comment
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '204':
+          description: Like removed.
+  /notes:
+    post:
+      tags: [Notes]
+      operationId: createNote
+      summary: Add A Note
+      description: Add a personal note attached to a movie, show, season, episode, person, or history item. VIP feature.
+      responses:
+        '201':
+          description: Note created.
+  /notes/{id}:
+    get:
+      tags: [Notes]
+      operationId: getNote
+      summary: Get A Note
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Note.
+    put:
+      tags: [Notes]
+      operationId: updateNote
+      summary: Update A Note
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Note updated.
+    delete:
+      tags: [Notes]
+      operationId: deleteNote
+      summary: Delete A Note
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '204':
+          description: Note deleted.
+  /certifications/{type}:
+    get:
+      tags: [Certifications]
+      operationId: getCertifications
+      summary: Get Certifications
+      description: Reference list of certifications for movies or shows.
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [movies, shows]
+      responses:
+        '200':
+          description: Certifications.
+  /countries/{type}:
+    get:
+      tags: [Countries]
+      operationId: getCountries
+      summary: Get Countries
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [movies, shows]
+      responses:
+        '200':
+          description: Countries.
+  /languages/{type}:
+    get:
+      tags: [Languages]
+      operationId: getLanguages
+      summary: Get Languages
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [movies, shows]
+      responses:
+        '200':
+          description: Languages.
+  /genres/{type}:
+    get:
+      tags: [Genres]
+      operationId: getGenres
+      summary: Get Genres
+      parameters:
+        - name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [movies, shows]
+      responses:
+        '200':
+          description: Genres.
+  /networks:
+    get:
+      tags: [Networks]
+      operationId: getNetworks
+      summary: Get Networks
+      description: Reference list of television networks.
+      responses:
+        '200':
+          description: Networks.
+  /studios:
+    get:
+      tags: [Studios]
+      operationId: getStudios
+      summary: Get Studios
+      description: Reference list of production studios.
+      responses:
+        '200':
+          description: Studios.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization header and required headers trakt-api-version (2) and trakt-api-key (client_id).
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema: { type: integer, minimum: 1, default: 1 }
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema: { type: integer, minimum: 1, default: 10 }
+      description: Items per page.
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum: [full, metadata, noseasons, images, episodes, guest_stars, vip]
+      description: Request extra fields in the response.
+    Period:
+      name: period
+      in: path
+      required: true
+      schema:
+        type: string
+        enum: [daily, weekly, monthly, yearly, all]
+    MovieId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: Trakt ID, Trakt slug, or IMDB ID.
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+    Season:
+      name: season
+      in: path
+      required: true
+      schema: { type: integer }
+    EpisodeNumber:
+      name: episode
+      in: path
+      required: true
+      schema: { type: integer }
+    UserSlug:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+      description: User slug or 'me' for the authenticated user.
+  schemas:
+    DeviceCodeRequest:
+      type: object
+      required: [client_id]
+      properties:
+        client_id: { type: string }
+    DeviceCodeResponse:
+      type: object
+      properties:
+        device_code: { type: string }
+        user_code: { type: string }
+        verification_url: { type: string, format: uri }
+        expires_in: { type: integer }
+        interval: { type: integer }
+    DeviceTokenRequest:
+      type: object
+      required: [code, client_id, client_secret]
+      properties:
+        code: { type: string }
+        client_id: { type: string }
+        client_secret: { type: string }
+    TokenRequest:
+      type: object
+      required: [code, client_id, client_secret, redirect_uri, grant_type]
+      properties:
+        code: { type: string }
+        client_id: { type: string }
+        client_secret: { type: string }
+        redirect_uri: { type: string, format: uri }
+        grant_type: { type: string, enum: [authorization_code] }
+    TokenRefreshRequest:
+      type: object
+      required: [refresh_token, client_id, client_secret, redirect_uri, grant_type]
+      properties:
+        refresh_token: { type: string }
+        client_id: { type: string }
+        client_secret: { type: string }
+        redirect_uri: { type: string, format: uri }
+        grant_type: { type: string, enum: [refresh_token] }
+    TokenResponse:
+      type: object
+      properties:
+        access_token: { type: string }
+        token_type: { type: string }
+        expires_in: { type: integer }
+        refresh_token: { type: string }
+        scope: { type: string }
+        created_at: { type: integer }
+    Ids:
+      type: object
+      properties:
+        trakt: { type: integer }
+        slug: { type: string }
+        imdb: { type: string }
+        tmdb: { type: integer }
+        tvdb: { type: integer }
+    Movie:
+      type: object
+      properties:
+        title: { type: string }
+        year: { type: integer }
+        ids: { $ref: '#/components/schemas/Ids' }
+        tagline: { type: string }
+        overview: { type: string }
+        released: { type: string, format: date }
+        runtime: { type: integer }
+        country: { type: string }
+        trailer: { type: string, format: uri, nullable: true }
+        homepage: { type: string, format: uri, nullable: true }
+        rating: { type: number }
+        votes: { type: integer }
+        comment_count: { type: integer }
+        updated_at: { type: string, format: date-time }
+        language: { type: string }
+        languages:
+          type: array
+          items: { type: string }
+        available_translations:
+          type: array
+          items: { type: string }
+        genres:
+          type: array
+          items: { type: string }
+        certification: { type: string }
+        status: { type: string, enum: [released, in production, post production, planned, rumored, canceled] }
+    MovieTrending:
+      type: object
+      properties:
+        watchers: { type: integer }
+        movie: { $ref: '#/components/schemas/Movie' }
+    MovieWatched:
+      type: object
+      properties:
+        watcher_count: { type: integer }
+        play_count: { type: integer }
+        collected_count: { type: integer }
+        movie: { $ref: '#/components/schemas/Movie' }
+    MovieAnticipated:
+      type: object
+      properties:
+        list_count: { type: integer }
+        movie: { $ref: '#/components/schemas/Movie' }
+    MovieBoxOffice:
+      type: object
+      properties:
+        revenue: { type: integer }
+        movie: { $ref: '#/components/schemas/Movie' }
+    MovieStats:
+      type: object
+      properties:
+        watchers: { type: integer }
+        plays: { type: integer }
+        collectors: { type: integer }
+        collected_episodes: { type: integer, nullable: true }
+        comments: { type: integer }
+        lists: { type: integer }
+        votes: { type: integer }
+        recommended: { type: integer }
+    Show:
+      type: object
+      properties:
+        title: { type: string }
+        year: { type: integer }
+        ids: { $ref: '#/components/schemas/Ids' }
+        overview: { type: string }
+        first_aired: { type: string, format: date-time }
+        runtime: { type: integer }
+        certification: { type: string }
+        network: { type: string }
+        country: { type: string }
+        trailer: { type: string, format: uri, nullable: true }
+        homepage: { type: string, format: uri, nullable: true }
+        status: { type: string, enum: [returning series, continuing, in production, planned, upcoming, pilot, canceled, ended] }
+        rating: { type: number }
+        votes: { type: integer }
+        comment_count: { type: integer }
+        updated_at: { type: string, format: date-time }
+        language: { type: string }
+        genres:
+          type: array
+          items: { type: string }
+        aired_episodes: { type: integer }
+    ShowTrending:
+      type: object
+      properties:
+        watchers: { type: integer }
+        show: { $ref: '#/components/schemas/Show' }
+    ShowWatched:
+      type: object
+      properties:
+        watcher_count: { type: integer }
+        play_count: { type: integer }
+        collected_count: { type: integer }
+        show: { $ref: '#/components/schemas/Show' }
+    Season:
+      type: object
+      properties:
+        number: { type: integer }
+        ids: { $ref: '#/components/schemas/Ids' }
+        episode_count: { type: integer }
+        aired_episodes: { type: integer }
+        title: { type: string }
+        overview: { type: string }
+        first_aired: { type: string, format: date-time, nullable: true }
+        network: { type: string, nullable: true }
+    Episode:
+      type: object
+      properties:
+        season: { type: integer }
+        number: { type: integer }
+        title: { type: string }
+        ids: { $ref: '#/components/schemas/Ids' }
+        number_abs: { type: integer, nullable: true }
+        overview: { type: string }
+        first_aired: { type: string, format: date-time, nullable: true }
+        runtime: { type: integer }
+        episode_type: { type: string, enum: [standard, series_premiere, season_premiere, mid_season_finale, mid_season_premiere, season_finale, series_finale] }
+    Ratings:
+      type: object
+      properties:
+        rating: { type: number }
+        votes: { type: integer }
+        distribution:
+          type: object
+          additionalProperties: { type: integer }
+    Person:
+      type: object
+      properties:
+        name: { type: string }
+        ids: { $ref: '#/components/schemas/Ids' }
+        biography: { type: string }
+        birthday: { type: string, format: date, nullable: true }
+        death: { type: string, format: date, nullable: true }
+        birthplace: { type: string, nullable: true }
+        homepage: { type: string, format: uri, nullable: true }
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items: { type: string }
+              person: { $ref: '#/components/schemas/Person' }
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items: { type: string }
+                person: { $ref: '#/components/schemas/Person' }
+    SearchResult:
+      type: object
+      properties:
+        type: { type: string, enum: [movie, show, episode, person, list] }
+        score: { type: number }
+        movie: { $ref: '#/components/schemas/Movie' }
+        show: { $ref: '#/components/schemas/Show' }
+        episode: { $ref: '#/components/schemas/Episode' }
+        person: { $ref: '#/components/schemas/Person' }
+    UserProfile:
+      type: object
+      properties:
+        username: { type: string }
+        private: { type: boolean }
+        deleted: { type: boolean }
+        name: { type: string }
+        vip: { type: boolean }
+        vip_ep: { type: boolean }
+        ids:
+          type: object
+          properties:
+            slug: { type: string }
+            uuid: { type: string }
+    UserSettings:
+      type: object
+      properties:
+        user: { $ref: '#/components/schemas/UserProfile' }
+        account:
+          type: object
+          properties:
+            timezone: { type: string }
+            date_format: { type: string }
+            time_24hr: { type: boolean }
+            cover_image: { type: string, format: uri, nullable: true }
+            token: { type: string }
+        sharing_text:
+          type: object
+        limits:
+          type: object
+        permissions:
+          type: object
+    UserStats:
+      type: object
+      properties:
+        movies:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        episodes:
+          type: object
+        network:
+          type: object
+        ratings:
+          type: object
+    ShowProgress:
+      type: object
+      properties:
+        aired: { type: integer }
+        completed: { type: integer }
+        last_watched_at: { type: string, format: date-time, nullable: true }
+        reset_at: { type: string, format: date-time, nullable: true }
+        seasons:
+          type: array
+          items:
+            type: object
+            properties:
+              number: { type: integer }
+              aired: { type: integer }
+              completed: { type: integer }
+              episodes:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    number: { type: integer }
+                    completed: { type: boolean }
+                    last_watched_at: { type: string, format: date-time, nullable: true }
+        hidden_seasons:
+          type: array
+          items: { $ref: '#/components/schemas/Season' }
+        next_episode: { $ref: '#/components/schemas/Episode' }
+        last_episode: { $ref: '#/components/schemas/Episode' }
+    LastActivities:
+      type: object
+      properties:
+        all: { type: string, format: date-time }
+        movies:
+          type: object
+        episodes:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        comments:
+          type: object
+        lists:
+          type: object
+        watchlist:
+          type: object
+        favorites:
+          type: object
+        recommendations:
+          type: object
+    BulkMediaRequest:
+      type: object
+      properties:
+        movies:
+          type: array
+          items:
+            type: object
+            properties:
+              ids: { $ref: '#/components/schemas/Ids' }
+              watched_at: { type: string, format: date-time }
+              rating: { type: integer, minimum: 1, maximum: 10 }
+        shows:
+          type: array
+          items:
+            type: object
+            properties:
+              ids: { $ref: '#/components/schemas/Ids' }
+        seasons:
+          type: array
+          items: { type: object }
+        episodes:
+          type: array
+          items:
+            type: object
+            properties:
+              ids: { $ref: '#/components/schemas/Ids' }
+              watched_at: { type: string, format: date-time }
+        ids:
+          type: array
+          items: { type: integer }
+    ScrobbleRequest:
+      type: object
+      required: [progress]
+      properties:
+        progress: { type: number, minimum: 0, maximum: 100 }
+        movie: { $ref: '#/components/schemas/Movie' }
+        episode: { $ref: '#/components/schemas/Episode' }
+        app_version: { type: string }
+        app_date: { type: string, format: date }
+    ScrobbleResponse:
+      type: object
+      properties:
+        id: { type: integer }
+        action: { type: string, enum: [start, pause, scrobble] }
+        progress: { type: number }
+        sharing:
+          type: object
+          properties:
+            twitter: { type: boolean }
+            mastodon: { type: boolean }
+            tumblr: { type: boolean }
+        movie: { $ref: '#/components/schemas/Movie' }
+        episode: { $ref: '#/components/schemas/Episode' }
+        show: { $ref: '#/components/schemas/Show' }
+    CheckinRequest:
+      type: object
+      properties:
+        movie: { $ref: '#/components/schemas/Movie' }
+        episode: { $ref: '#/components/schemas/Episode' }
+        sharing:
+          type: object
+          properties:
+            twitter: { type: boolean }
+            mastodon: { type: boolean }
+            tumblr: { type: boolean }
+        message: { type: string }
+        venue_id: { type: string }
+        venue_name: { type: string }
+        app_version: { type: string }
+        app_date: { type: string, format: date }

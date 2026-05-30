@@ -1,0 +1,114 @@
+name: Trakt Vocabulary
+description: Controlled vocabulary covering the Trakt API v2 domain — media entities, user actions, sync resources, scrobble lifecycle, and reference data.
+version: '0.1'
+provider: trakt
+
+operationalDimensions:
+  domains:
+    - id: identity
+      label: Identity & Authentication
+      terms: [OAuth2, AuthorizationCode, DeviceCode, RefreshToken, ClientID, ClientSecret, AccessToken, VIP]
+    - id: discovery
+      label: Discovery
+      terms: [Trending, Popular, Anticipated, Hot, BoxOffice, Recommendations, Search, IDLookup]
+    - id: media
+      label: Media Metadata
+      terms: [Movie, Show, Season, Episode, Person, Studio, Network, Country, Language, Genre, Certification, Translation, Video]
+    - id: user-state
+      label: User State (Sync)
+      terms: [History, Watchlist, Collection, Favorites, Ratings, Playback, Progress, LastActivities, Hidden, UpNext]
+    - id: playback
+      label: Playback (Scrobble)
+      terms: [Start, Pause, Stop, Scrobble, Checkin, WatchAction]
+    - id: social
+      label: Social
+      terms: [Follow, Unfollow, Friend, Comment, Reply, Like, React, Block, Activity, Reaction, Sentiment]
+    - id: lists
+      label: Lists
+      terms: [PersonalList, DynamicList, OfficialList, Watchlist, Favorites, Likes, ListItem]
+    - id: calendars
+      label: Calendars
+      terms: [AllShowsCalendar, AllMoviesCalendar, MyShowsCalendar, NewShowsCalendar, SeasonPremieresCalendar, FinalesCalendar]
+    - id: notes
+      label: Notes (VIP)
+      terms: [Note, AttachedTo, NotePrivacy]
+
+capabilityDimensions:
+  workflows:
+    - id: personal-media-tracking
+      capability: capabilities/personal-media-tracking.yaml
+    - id: media-center-scrobbling
+      capability: capabilities/media-center-scrobbling.yaml
+    - id: list-curation
+      capability: capabilities/list-curation.yaml
+    - id: discovery-and-recommendations
+      capability: capabilities/discovery-and-recommendations.yaml
+    - id: social-engagement
+      capability: capabilities/social-engagement.yaml
+
+enums:
+  extended:
+    - full
+    - metadata
+    - noseasons
+    - images
+    - episodes
+    - guest_stars
+    - vip
+  period:
+    - daily
+    - weekly
+    - monthly
+    - yearly
+    - all
+  searchType:
+    - movie
+    - show
+    - episode
+    - person
+    - list
+  idType:
+    - trakt
+    - imdb
+    - tmdb
+    - tvdb
+  movieStatus:
+    - released
+    - in production
+    - post production
+    - planned
+    - rumored
+    - canceled
+  showStatus:
+    - returning series
+    - continuing
+    - in production
+    - planned
+    - upcoming
+    - pilot
+    - canceled
+    - ended
+  scrobbleAction:
+    - start
+    - pause
+    - scrobble
+  episodeType:
+    - standard
+    - series_premiere
+    - season_premiere
+    - mid_season_finale
+    - mid_season_premiere
+    - season_finale
+    - series_finale
+
+headers:
+  required:
+    - name: Content-Type
+      value: application/json
+    - name: trakt-api-version
+      value: '2'
+    - name: trakt-api-key
+      value: '{client_id}'
+  optional:
+    - name: Authorization
+      value: 'Bearer {access_token}'

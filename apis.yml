@@ -1,32 +1,265 @@
 aid: trakt
 name: Trakt
-description: "Movie and TV Data"
-url: https://trakt.docs.apiary.io/
+description: >-
+  Trakt is the personal media database for movies and TV. Its API v2 (api.trakt.tv) exposes
+  ~150 endpoints across movies, shows, seasons, episodes, people, search, lists, calendars,
+  recommendations, comments, notes, scrobble, checkin, and full per-user sync (history,
+  watchlist, ratings, collection, favorites, playback progress). Authentication is OAuth 2.0
+  via Authorization Code or Device flows. The platform powers the Trakt website, official
+  Android/iOS apps, and a large third-party ecosystem of media-center plugins and trackers.
+url: https://trakt.tv
+humanURL: https://trakt.docs.apiary.io/
+baseURL: https://api.trakt.tv
 specificationVersion: '0.20'
 created: '2026-05-28'
-modified: '2026-05-28'
+modified: '2026-05-30'
 x-source: public-apis/public-apis
-x-category: "Video"
-x-tier: 3
-x-tier-reason: bulk-registered-from-public-apis
+x-category: Video
+x-type: company
+x-tier: 2
+x-tier-reason: full-pipeline-enrichment
 tags:
   - Video
+  - Movies
+  - Television
+  - Media Tracking
+  - Scrobble
+  - Recommendations
+  - Social
+  - OAuth2
   - Public APIs
+
 apis:
-  - name: Trakt
-    description: "Movie and TV Data"
+  - name: Trakt API v2
+    description: >-
+      RESTful JSON API for the full Trakt platform. Supports OAuth 2.0
+      Authorization Code and Device flows, Title-Case operation summaries,
+      and standard pagination (page/limit). All requests require headers
+      trakt-api-version=2 and trakt-api-key={client_id}.
     humanURL: https://trakt.docs.apiary.io/
-    baseURL: https://trakt.docs.apiary.io/
+    baseURL: https://api.trakt.tv
     tags:
       - Video
+      - Movies
+      - Television
+      - Sync
+      - Scrobble
     properties:
       - type: Documentation
         url: https://trakt.docs.apiary.io/
+      - type: OpenAPI
+        url: openapi/trakt-openapi.yml
+      - type: JSONSchema
+        url: json-schema/trakt-movie-schema.json
+      - type: JSONSchema
+        url: json-schema/trakt-show-schema.json
+      - type: JSONSchema
+        url: json-schema/trakt-episode-schema.json
+      - type: JSONSchema
+        url: json-schema/trakt-user-schema.json
+      - type: JSONSchema
+        url: json-schema/trakt-scrobble-schema.json
+      - type: JSONStructure
+        url: json-structure/trakt-movie-structure.json
+      - type: JSONStructure
+        url: json-structure/trakt-show-structure.json
+      - type: JSONStructure
+        url: json-structure/trakt-history-structure.json
+      - type: Example
+        url: examples/trakt-getTrendingMovies-example.json
+      - type: Example
+        url: examples/trakt-getMovie-example.json
+      - type: Example
+        url: examples/trakt-generateDeviceCode-example.json
+      - type: Example
+        url: examples/trakt-pollDeviceToken-example.json
+      - type: Example
+        url: examples/trakt-scrobbleStart-example.json
+      - type: Example
+        url: examples/trakt-addToHistory-example.json
+      - type: Example
+        url: examples/trakt-searchText-example.json
+      - type: Example
+        url: examples/trakt-getShowWatchedProgress-example.json
+      - type: Authentication
+        url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+      - type: APIReference
+        url: https://trakt.docs.apiary.io/
+
 common:
   - type: Website
+    url: https://trakt.tv
+  - type: DeveloperPortal
+    url: https://trakt.tv/oauth/applications
+  - type: Documentation
     url: https://trakt.docs.apiary.io/
-  - type: PublicAPIsListing
-    url: https://github.com/public-apis/public-apis
+  - type: SignUp
+    url: https://trakt.tv/auth/join
+  - type: Pricing
+    url: https://trakt.tv/vip
+  - type: Plans
+    url: plans/trakt-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/trakt-rate-limits.yml
+  - type: TermsOfService
+    url: https://trakt.tv/terms
+  - type: PrivacyPolicy
+    url: https://trakt.tv/privacy
+  - type: Support
+    url: https://forums.trakt.tv
+  - type: FAQ
+    url: https://forums.trakt.tv/c/questions-help/8
+  - type: Blog
+    url: https://blog.trakt.tv
+  - type: StatusPage
+    url: https://status.trakt.tv
+  - type: ChangeLog
+    url: https://forums.trakt.tv/c/announcements/3
+  - type: GitHubOrganization
+    url: https://github.com/trakt
+  - type: GitHubRepository
+    url: https://github.com/trakt/trakt-api
+  - type: SpectralRules
+    url: rules/trakt-rules.yml
+  - type: NaftikoCapability
+    url: capabilities/shared/trakt-shared.yaml
+  - type: NaftikoCapability
+    url: capabilities/personal-media-tracking.yaml
+  - type: NaftikoCapability
+    url: capabilities/media-center-scrobbling.yaml
+  - type: NaftikoCapability
+    url: capabilities/list-curation.yaml
+  - type: NaftikoCapability
+    url: capabilities/discovery-and-recommendations.yaml
+  - type: NaftikoCapability
+    url: capabilities/social-engagement.yaml
+  - type: JSON-LD
+    url: json-ld/trakt-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/trakt-vocabulary.yml
+  - type: Resources
+    url: finops/trakt-finops.yml
+  - type: SDK
+    name: trakt-api (TypeScript / Deno)
+    url: https://github.com/trakt/trakt-api
+  - type: SDK
+    name: PyTrakt (Python)
+    url: https://github.com/moogar0880/PyTrakt
+  - type: SDK
+    name: nodeless-trakt (JavaScript)
+    url: https://github.com/trakt/nodeless-trakt
+  - type: SDK
+    name: oauth2-trakt (PHP)
+    url: https://github.com/Bogstag/oauth2-trakt
+  - type: SDK
+    name: Auth.js Trakt provider
+    url: https://authjs.dev/reference/core/providers/trakt
+  - type: Tools
+    name: trakt-android (Official Android client)
+    url: https://github.com/trakt/trakt-android
+  - type: Tools
+    name: trakt-apple (Official iOS / tvOS client)
+    url: https://github.com/trakt/trakt-apple
+  - type: Tools
+    name: trakt-rippple (Open source iOS/iPadOS/macOS client)
+    url: https://github.com/trakt/trakt-rippple
+  - type: Tools
+    name: Plex-Trakt-Scrobbler
+    url: https://github.com/trakt/Plex-Trakt-Scrobbler
+  - type: Tools
+    name: Showly (Kotlin movie/TV manager)
+    url: https://github.com/trakt/showly
+  - type: Tools
+    name: trakt-web
+    url: https://github.com/trakt/trakt-web
+  - type: Tools
+    name: discord-presence (Rich presence for Trakt)
+    url: https://github.com/trakt/discord-presence
+  - type: Tools
+    name: kud/mcp-trakt — community MCP server (36 tools)
+    url: https://github.com/kud/mcp-trakt
+  - type: Tools
+    name: kofort9/trakt-mcp-go — community MCP server (Go)
+    url: https://github.com/kofort9/trakt-mcp-go
+  - type: Tools
+    name: fab-codes/trakt-mcp-server — community MCP server
+    url: https://github.com/fab-codes/trakt-mcp-server
+  - type: Tools
+    name: phhusson/trakt-mcp-server — community MCP server
+    url: https://github.com/phhusson/trakt-mcp-server
+  - type: Tools
+    name: popcornemil/trakt-mcp — community MCP server
+    url: https://github.com/popcornemil/trakt-mcp
+  - type: Tools
+    name: pipeworx-io/mcp-trakt — community MCP server
+    url: https://github.com/pipeworx-io/mcp-trakt
+  - type: Features
+    data:
+      - name: Comprehensive media catalog
+        description: Movies, shows, seasons, episodes, people, studios, networks, certifications — all keyed by trakt/imdb/tmdb/tvdb ids.
+      - name: Per-user sync
+        description: history, watchlist, collection, favorites, ratings, and playback progress with /sync/last_activities delta detection.
+      - name: Scrobble lifecycle
+        description: Start/pause/stop API with 80% completion semantics, dedupe, and resume-from-pause via /sync/playback.
+      - name: Personalized recommendations
+        description: /recommendations/movies and /recommendations/shows return tailored suggestions per-user with hide/dismiss support.
+      - name: Calendars
+        description: Public (all) and personal (my) calendars for shows, new shows, season premieres, finales, and movie releases.
+      - name: Discovery surfaces
+        description: trending, popular, anticipated, hot, box office, streaming for both movies and shows.
+      - name: Social graph
+        description: Follow/unfollow, friends, social activity feeds, comments, replies, likes, reactions, sentiments.
+      - name: Lists
+        description: Trending and popular lists plus full CRUD for personal lists with sorting and item-level notes.
+      - name: Notes (VIP)
+        description: Attach private notes to movies, shows, seasons, episodes, people, or history items.
+      - name: Checkin
+        description: Lightweight social "now watching" status that auto-expires after the runtime.
+      - name: OAuth 2.0
+        description: Authorization Code flow for web/server apps and Device Code flow for TV/console/CLI apps.
+  - type: UseCases
+    data:
+      - name: Media center scrobbling
+        description: Plex, Kodi, Jellyfin, and custom media centers report playback to /scrobble so a user's watch history stays accurate across devices.
+      - name: Personal media tracker
+        description: Mobile and web apps showing what a user has watched, what's next, and what's anticipated.
+      - name: Recommendation engines
+        description: Apps that combine Trakt history with their own ranking to suggest the next thing to watch.
+      - name: Watchlist management
+        description: Cross-device watchlist with VIP-only note attachments per item.
+      - name: Calendar integrations
+        description: Subscribe to per-user calendars and surface upcoming episodes in third-party calendars or notifications.
+      - name: Social discovery
+        description: Browse trending lists, follow other users, and comment on shows.
+      - name: AI agents / MCP
+        description: Multiple community MCP servers expose Trakt to LLM agents for "what should I watch next" workflows.
+  - type: Integrations
+    data:
+      - name: TMDB
+        description: Trakt cross-references TMDB IDs and recommends TMDB as the upstream metadata source for media reports.
+      - name: IMDB
+        description: All movies and many shows include their IMDB ID for downstream lookup.
+      - name: TVDB
+        description: Shows and episodes include TVDB IDs for legacy media-center compatibility.
+      - name: JustWatch
+        description: /movies/{id}/watchnow/justwatch_links/{country} returns deep links into JustWatch for streaming availability.
+      - name: Plex
+        description: Official Plex-Trakt-Scrobbler bridges Plex playback events to /scrobble.
+      - name: Twitter / Mastodon / Tumblr
+        description: Scrobble + checkin requests accept a sharing object that crossposts the activity.
+      - name: Discord
+        description: Official trakt/discord-presence project surfaces Trakt activity as Discord rich presence.
+  - type: Solutions
+    data:
+      - name: Free
+        description: Personal use with the 2026 limits — 250 watchlist items, 5 personal lists, 100k history items, 10k ratings, 100 notes.
+      - name: Trakt VIP
+        description: $30 first year, $60 renewal — 5000 watchlist items, 100 personal lists, watchlist notes, year-in-review reports, no ads.
+      - name: Trakt VIP EP
+        description: $1500 lifetime support tier.
+      - name: Commercial use
+        description: Approval-required for apps that monetize Trakt data or generate significant traffic — contact support via the Trakt forums.
+
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

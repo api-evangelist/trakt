@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trakt/main/json-schema/trakt-movie-schema.json",
+  "title": "Trakt Movie",
+  "type": "object",
+  "required": ["title", "year", "ids"],
+  "properties": {
+    "title": { "type": "string", "description": "Movie title." },
+    "year": { "type": "integer", "description": "Release year." },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "trakt": { "type": "integer" },
+        "slug": { "type": "string" },
+        "imdb": { "type": "string", "pattern": "^tt\\d+$" },
+        "tmdb": { "type": "integer" }
+      },
+      "required": ["trakt"]
+    },
+    "tagline": { "type": "string" },
+    "overview": { "type": "string" },
+    "released": { "type": "string", "format": "date" },
+    "runtime": { "type": "integer", "minimum": 0 },
+    "country": { "type": "string" },
+    "trailer": { "type": ["string", "null"], "format": "uri" },
+    "homepage": { "type": ["string", "null"], "format": "uri" },
+    "rating": { "type": "number", "minimum": 0, "maximum": 10 },
+    "votes": { "type": "integer", "minimum": 0 },
+    "comment_count": { "type": "integer", "minimum": 0 },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "language": { "type": "string" },
+    "languages": { "type": "array", "items": { "type": "string" } },
+    "available_translations": { "type": "array", "items": { "type": "string" } },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "certification": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["released", "in production", "post production", "planned", "rumored", "canceled"]
+    }
+  }
+}

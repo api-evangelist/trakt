@@ -1,0 +1,53 @@
+{
+  "title": "Trakt Movie Structure",
+  "description": "Logical field map for a Trakt movie object, grouping properties by purpose and noting which extended modes return them.",
+  "entity": "Movie",
+  "groups": [
+    {
+      "group": "identity",
+      "fields": [
+        { "name": "ids.trakt", "type": "integer", "always": true },
+        { "name": "ids.slug", "type": "string", "always": true },
+        { "name": "ids.imdb", "type": "string", "extended": ["full"] },
+        { "name": "ids.tmdb", "type": "integer", "extended": ["full"] },
+        { "name": "title", "type": "string", "always": true },
+        { "name": "year", "type": "integer", "always": true }
+      ]
+    },
+    {
+      "group": "narrative",
+      "fields": [
+        { "name": "tagline", "type": "string", "extended": ["full"] },
+        { "name": "overview", "type": "string", "extended": ["full"] },
+        { "name": "released", "type": "date", "extended": ["full"] },
+        { "name": "runtime", "type": "integer", "extended": ["full"] },
+        { "name": "country", "type": "string", "extended": ["full"] },
+        { "name": "language", "type": "string", "extended": ["full"] },
+        { "name": "genres", "type": "array<string>", "extended": ["full"] },
+        { "name": "certification", "type": "string", "extended": ["full"] },
+        { "name": "status", "type": "enum", "extended": ["full"] }
+      ]
+    },
+    {
+      "group": "engagement",
+      "fields": [
+        { "name": "rating", "type": "number", "extended": ["full"] },
+        { "name": "votes", "type": "integer", "extended": ["full"] },
+        { "name": "comment_count", "type": "integer", "extended": ["full"] }
+      ]
+    },
+    {
+      "group": "external-links",
+      "fields": [
+        { "name": "trailer", "type": "uri" },
+        { "name": "homepage", "type": "uri" }
+      ]
+    },
+    {
+      "group": "media-assets",
+      "fields": [
+        { "name": "images", "extended": ["images"] }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+apiVersion: naftiko.dev/v1
+kind: SharedCapability
+metadata:
+  name: trakt-shared
+  provider: trakt
+  description: Shared capability primitives for the Trakt API v2 — OAuth, media lookup, sync, scrobble, and reference data — reused across workflow capabilities.
+spec:
+  baseURL: https://api.trakt.tv
+  auth:
+    type: oauth2
+    flows:
+      - authorization_code
+      - device_code
+      - refresh_token
+    requiredHeaders:
+      - name: trakt-api-version
+        value: "2"
+      - name: trakt-api-key
+        value: "${TRAKT_CLIENT_ID}"
+      - name: Authorization
+        value: "Bearer ${TRAKT_ACCESS_TOKEN}"
+  primitives:
+    # Discovery and metadata
+    - id: search-text
+      operationId: searchText
+      method: GET
+      path: /search/{type}
+      summary: Free-text search across movies, shows, episodes, people, and lists.
+    - id: search-id
+      operationId: searchById
+      method: GET
+      path: /search/{id_type}/{id}
+      summary: Resolve a Trakt/IMDB/TMDB/TVDB id to one or more Trakt entities.
+    - id: get-movie
+      operationId: getMovie
+      method: GET
+      path: /movies/{id}
+      summary: Fetch full metadata for a single movie.
+    - id: get-show
+      operationId: getShow
+      method: GET
+      path: /shows/{id}
+      summary: Fetch full metadata for a single show.
+    - id: get-show-seasons
+      operationId: getShowSeasons
+      method: GET
+      path: /shows/{id}/seasons
+      summary: Fetch all seasons for a show.
+    - id: get-season-episodes
+      operationId: getSeasonEpisodes
+      method: GET
+      path: /shows/{id}/seasons/{season}
+      summary: Fetch all episodes in a single season.
+    - id: get-episode
+      operationId: getEpisode
+      method: GET
+      path: /shows/{id}/seasons/{season}/episodes/{episode}
+      summary: Fetch a single episode.
+    # Discovery surfaces (no auth)
+    - id: trending-movies
+      operationId: getTrendingMovies
+      method: GET
+      path: /movies/trending
+    - id: trending-shows
+      operationId: getTrendingShows
+      method: GET
+      path: /shows/trending
+    - id: popular-movies
+      operationId: getPopularMovies
+      method: GET
+      path: /movies/popular
+    - id: popular-shows
+      operationId: getPopularShows
+      method: GET
+      path: /shows/popular
+    - id: anticipated-movies
+      operationId: getAnticipatedMovies
+      method: GET
+      path: /movies/anticipated
+    - id: anticipated-shows
+      operationId: getAnticipatedShows
+      method: GET
+      path: /shows/anticipated
+    # Authenticated user
+    - id: user-settings
+      operationId: getUserSettings
+      method: GET
+      path: /users/settings
+    - id: user-watching
+      operationId: getUserWatching
+      method: GET
+      path: /users/{id}/watching
+    - id: user-stats
+      operationId: getUserStats
+      method: GET
+      path: /users/{id}/stats
+    # Sync
+    - id: last-activities
+      operationId: getLastActivities
+      method: GET
+      path: /sync/last_activities
+    - id: history-list
+      operationId: getWatchedHistory
+      method: GET
+      path: /sync/history
+    - id: history-add
+      operationId: addToHistory
+      method: POST
+      path: /sync/history
+    - id: history-remove
+      operationId: removeFromHistory
+      method: POST
+      path: /sync/history/remove
+    - id: watchlist-list
+      operationId: getWatchlist
+      method: GET
+      path: /sync/watchlist
+    - id: watchlist-add
+      operationId: addToWatchlist
+      method: POST
+      path: /sync/watchlist
+    - id: watchlist-remove
+      operationId: removeFromWatchlist
+      method: POST
+      path: /sync/watchlist/remove
+    - id: ratings-add
+      operationId: addRatings
+      method: POST
+      path: /sync/ratings
+    - id: ratings-remove
+      operationId: removeRatings
+      method: POST
+      path: /sync/ratings/remove
+    - id: collection-add
+      operationId: addToCollection
+      method: POST
+      path: /sync/collection
+    - id: collection-remove
+      operationId: removeFromCollection
+      method: POST
+      path: /sync/collection/remove
+    # Scrobble
+    - id: scrobble-start
+      operationId: scrobbleStart
+      method: POST
+      path: /scrobble/start
+    - id: scrobble-pause
+      operationId: scrobblePause
+      method: POST
+      path: /scrobble/pause
+    - id: scrobble-stop
+      operationId: scrobbleStop
+      method: POST
+      path: /scrobble/stop
+    # Checkin
+    - id: checkin
+      operationId: createCheckin
+      method: POST
+      path: /checkin
+    # Calendars + Recommendations
+    - id: calendar-my-shows
+      operationId: getMyShowsCalendar
+      method: GET
+      path: /calendars/my/shows/{start_date}/{days}
+    - id: recommendations-movies
+      operationId: getMovieRecommendations
+      method: GET
+      path: /recommendations/movies
+    - id: recommendations-shows
+      operationId: getShowRecommendations
+      method: GET
+      path: /recommendations/shows

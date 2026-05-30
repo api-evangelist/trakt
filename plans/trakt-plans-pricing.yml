@@ -1,0 +1,83 @@
+apiCommonsPlans: '0.1'
+provider:
+  id: trakt
+  name: Trakt
+  url: https://trakt.tv
+  apiUrl: https://api.trakt.tv
+
+billingModel: tiered-subscription
+
+plans:
+  - id: free
+    name: Free
+    currency: USD
+    price: 0
+    period: forever
+    apiAccess: true
+    description: Anyone with a Trakt account and OAuth app can call the API. The plan governs personal account limits, not API call volume per se.
+    limits:
+      watchlist_items: 250
+      personal_lists: 5
+      personal_list_items: 250
+      dynamic_lists: 5
+      watched_history_items: 100000
+      ratings: 10000
+      physical_library_items: 100
+      digital_library_items: 1000
+      notes_total: 100
+    features:
+      - "Read public metadata for movies, shows, episodes, people."
+      - "Personal sync: history, watchlist, ratings, collection, favorites."
+      - "Scrobble and checkin (with rate-protected dedupe)."
+      - "Personalized recommendations and calendars."
+      - "OAuth Authorization Code and Device flows."
+    notes:
+      - "Limits updated for 2026 — see https://forums.trakt.tv/t/updating-trakt-limits-for-2026/101592"
+      - "Exceeding limits returns HTTP 420 with an upgrade hint."
+  - id: vip
+    name: Trakt VIP
+    currency: USD
+    price: 30
+    period: year
+    renewalPrice: 60
+    renewalPeriod: year
+    apiAccess: true
+    description: VIP membership unlocks higher personal limits, removes ads on trakt.tv, and gates a few API features (e.g. watchlist notes, larger lists).
+    limits:
+      watchlist_items: 5000
+      personal_lists: 100
+      personal_list_items: 5000
+      dynamic_lists: 100
+      watched_history_items: 100000
+      ratings: 20000
+      physical_library_items: 10000
+      digital_library_items: 100000
+      notes_total: 2000
+    features:
+      - "All Free features."
+      - "Higher personal limits across watchlist, lists, library, ratings, notes."
+      - "VIP-only fields when ?extended=vip is used."
+      - "Watchlist note attachments (500 chars per item)."
+      - "Year-in-Review and Month-in-Review reports."
+      - "Hidden seasons + advanced calendar filters."
+    purchaseUrl: https://trakt.tv/vip
+  - id: vip-ep
+    name: VIP EP (Executive Producer)
+    currency: USD
+    price: 1500
+    period: lifetime
+    apiAccess: true
+    description: Lifetime support tier, marketed as "Executive Producer." All VIP perks, plus permanent name credit.
+    purchaseUrl: https://trakt.tv/vip
+
+commercialUse:
+  policy: approval-required
+  description: |
+    Trakt allows free API access for personal and small-scale apps. Commercial use that monetizes Trakt's data or that drives significant traffic requires written approval. Contact support via the Trakt forums or developer help channel.
+  contact:
+    forum: https://forums.trakt.tv
+    support: https://trakt.tv/help
+
+fairUsePolicy:
+  url: https://forums.trakt.tv/t/updating-trakt-limits-for-2026/101592
+  summary: "Trakt is rolling out a Fair Use Policy alongside the 2026 limits update. Limits target personal use; sustained high-throughput automation may trigger throttling or require commercial approval."

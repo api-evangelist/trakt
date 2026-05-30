@@ -1,0 +1,29 @@
+{
+  "operationId": "getMovie",
+  "request": {
+    "method": "GET",
+    "url": "https://api.trakt.tv/movies/tron-ares-2025?extended=full",
+    "headers": {
+      "trakt-api-version": "2",
+      "trakt-api-key": "YOUR_CLIENT_ID"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "title": "Tron: Ares",
+      "year": 2025,
+      "ids": { "trakt": 449221, "slug": "tron-ares-2025", "imdb": "tt10394814", "tmdb": 1100782 },
+      "overview": "A highly sophisticated program is sent from the digital realm into the real world.",
+      "released": "2025-10-10",
+      "runtime": 119,
+      "country": "us",
+      "rating": 7.4,
+      "votes": 8421,
+      "language": "en",
+      "genres": ["science fiction", "action"],
+      "certification": "PG-13",
+      "status": "released"
+    }
+  }
+}

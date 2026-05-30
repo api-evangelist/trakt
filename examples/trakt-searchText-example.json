@@ -1,0 +1,34 @@
+{
+  "operationId": "searchText",
+  "request": {
+    "method": "GET",
+    "url": "https://api.trakt.tv/search/movie,show?query=severance&limit=5",
+    "headers": {
+      "trakt-api-version": "2",
+      "trakt-api-key": "YOUR_CLIENT_ID"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "type": "show",
+        "score": 1024.512,
+        "show": {
+          "title": "Severance",
+          "year": 2022,
+          "ids": { "trakt": 187012, "slug": "severance", "imdb": "tt11280740", "tmdb": 95396 }
+        }
+      },
+      {
+        "type": "movie",
+        "score": 18.231,
+        "movie": {
+          "title": "Severance",
+          "year": 2006,
+          "ids": { "trakt": 7541, "slug": "severance-2006", "imdb": "tt0479647" }
+        }
+      }
+    ]
+  }
+}

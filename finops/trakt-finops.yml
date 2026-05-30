@@ -1,0 +1,85 @@
+focusVersion: '1.0'
+provider:
+  id: trakt
+  name: Trakt
+  billingSurface: https://trakt.tv/vip
+
+# Trakt's billable surface is the VIP membership, not per-call API metering.
+# This file maps Trakt's commercial surface to the FinOps/FOCUS column model so it can
+# be aggregated alongside other provider FinOps artifacts in the API Evangelist network.
+
+billingAccount:
+  id: trakt-account
+  name: Trakt User Account
+  type: User
+  currency: USD
+
+services:
+  - id: trakt-vip
+    name: Trakt VIP Membership
+    category: SaaS-Subscription
+    skus:
+      - id: vip-year-1
+        name: VIP — First Year
+        unit: subscription
+        listPrice: 30.00
+        period: P1Y
+      - id: vip-year-n
+        name: VIP — Renewal
+        unit: subscription
+        listPrice: 60.00
+        period: P1Y
+      - id: vip-ep
+        name: VIP EP (Executive Producer)
+        unit: subscription
+        listPrice: 1500.00
+        period: lifetime
+    chargePeriod:
+      - annual
+      - lifetime
+  - id: trakt-api
+    name: Trakt API
+    category: API-Access
+    chargeable: false
+    notes:
+      - "API calls are not directly metered. Cost-to-Trakt is amortized through VIP membership."
+      - "Commercial-scale apps must contact Trakt for an approval/agreement; pricing is bespoke."
+
+allocations:
+  - id: hobby-personal-app
+    description: Single-user personal media center app.
+    expectedCost: 0
+  - id: prosumer-vip
+    description: Single-user app where the user upgrades to VIP for higher limits.
+    expectedCost: 30
+    currency: USD
+    period: yearly
+  - id: commercial-saas
+    description: Multi-tenant SaaS rebroadcasting Trakt data.
+    expectedCost: contact-trakt
+    notes:
+      - "Bespoke arrangement; commercial approval required."
+
+focusColumns:
+  - column: BillingAccountId
+    value: trakt-user-uuid
+  - column: BillingAccountName
+    value: Trakt User
+  - column: ServiceName
+    value: Trakt VIP / Trakt API
+  - column: ServiceCategory
+    value: AI/Data Services
+  - column: SubAccountId
+    value: not-applicable
+  - column: ChargePeriodStart
+    value: subscription-start-date
+  - column: ChargePeriodEnd
+    value: subscription-end-date
+  - column: BilledCost
+    value: 0|30|60|1500
+  - column: BillingCurrency
+    value: USD
+  - column: PricingUnit
+    value: subscription
+  - column: ConsumedUnit
+    value: account-year

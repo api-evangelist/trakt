@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trakt/main/json-schema/trakt-user-schema.json",
+  "title": "Trakt User Profile",
+  "type": "object",
+  "properties": {
+    "username": { "type": "string" },
+    "private": { "type": "boolean" },
+    "deleted": { "type": "boolean" },
+    "name": { "type": "string" },
+    "vip": { "type": "boolean" },
+    "vip_ep": { "type": "boolean" },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "slug": { "type": "string" },
+        "uuid": { "type": "string", "format": "uuid" }
+      }
+    },
+    "joined_at": { "type": "string", "format": "date-time" },
+    "location": { "type": ["string", "null"] },
+    "about": { "type": ["string", "null"] },
+    "gender": { "type": ["string", "null"] },
+    "age": { "type": ["integer", "null"] },
+    "vip_years": { "type": "integer", "minimum": 0 }
+  }
+}

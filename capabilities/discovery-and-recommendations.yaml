@@ -1,0 +1,31 @@
+apiVersion: naftiko.dev/v1
+kind: Capability
+metadata:
+  name: discovery-and-recommendations
+  provider: trakt
+  description: Build a personalized media discovery surface combining global trending/popular/anticipated lists, calendar awareness for upcoming releases, and per-user recommendations.
+spec:
+  shared:
+    - trakt-shared
+  workflow:
+    - step: global-discovery
+      operations:
+        - getTrendingMovies
+        - getTrendingShows
+        - getPopularMovies
+        - getPopularShows
+        - getAnticipatedMovies
+        - getAnticipatedShows
+        - getBoxOfficeMovies
+    - step: schedule
+      operations:
+        - getAllShowsCalendar
+        - getAllMoviesCalendar
+        - getMyShowsCalendar
+    - step: personal
+      operations:
+        - getMovieRecommendations
+        - getShowRecommendations
+  successCriteria:
+    - "Discovery surface mixes social trending with personalized recommendations."
+    - "Calendar tile shows the next week of episodes the user is tracking."

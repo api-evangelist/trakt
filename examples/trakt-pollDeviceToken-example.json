@@ -1,0 +1,24 @@
+{
+  "operationId": "pollDeviceToken",
+  "request": {
+    "method": "POST",
+    "url": "https://api.trakt.tv/oauth/device/token",
+    "headers": { "Content-Type": "application/json" },
+    "body": {
+      "code": "d76e2c1f9bc4e7a3b2c5e8f1d0a4b6c9e2f3a1b5c7d9e0f2a4b6c8d0e2f4a6b8",
+      "client_id": "YOUR_CLIENT_ID",
+      "client_secret": "YOUR_CLIENT_SECRET"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.example.access_token",
+      "token_type": "bearer",
+      "expires_in": 7776000,
+      "refresh_token": "refresh_token_example_value",
+      "scope": "public",
+      "created_at": 1748371200
+    }
+  }
+}

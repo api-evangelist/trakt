@@ -1,0 +1,80 @@
+extends:
+  - spectral:oas
+formats:
+  - oas3
+rules:
+  # Trakt requires snake_case for path segments and JSON properties.
+  trakt-path-snake-case:
+    description: Trakt paths use snake_case (or single lowercase words) for non-parameter segments.
+    severity: warn
+    given: $.paths
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^(/|[a-z][a-z0-9_/{}.\-]*)$'
+
+  # Trakt operations consistently use Title Case summaries.
+  trakt-summary-title-case:
+    description: Every operation summary should use Title Case (e.g. "Get A Movie").
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z]'
+
+  # Every operation must declare operationId so SDKs and Naftiko capabilities resolve cleanly.
+  trakt-operationid-required:
+    description: All operations must declare an operationId.
+    severity: error
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  # Trakt's authentication is OAuth 2.0 + trakt-api-key + trakt-api-version headers.
+  trakt-bearer-security-defined:
+    description: A bearerAuth security scheme should be defined for protected operations.
+    severity: warn
+    given: $.components.securitySchemes
+    then:
+      function: truthy
+
+  # Description for each operation is required to publish useful Naftiko capabilities.
+  trakt-operation-description:
+    description: All operations should include a description that explains required scopes (OAuth, VIP) and side effects.
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: description
+      function: truthy
+
+  # Standardize on the production server URL.
+  trakt-server-url:
+    description: The production base URL must be api.trakt.tv.
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://api(-staging)?\.trakt\.tv$'
+
+  # Pagination parameters must be named page and limit.
+  trakt-pagination-naming:
+    description: Pagination query parameters should be named "page" and "limit" (case-sensitive).
+    severity: warn
+    given: $.paths.*[get].parameters[?(@.in == 'query')].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(page|limit|extended|query|years?|genres?|languages?|countries?|runtimes?|ratings?|certifications?|networks?|studios?|status|type|id_type|fields|include_replies|comment_type|hide_completed|hide_not_completed|only_rewatching|intent|sort|sort_by|sort_how|include_stats|lifetime_stats|available_on|start_at|end_at|links)$'
+
+  # Tags must be Title Case and present.
+  trakt-operation-tags:
+    description: Every operation should declare at least one tag in Title Case.
+    severity: warn
+    given: $.paths.*[get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy

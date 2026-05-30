@@ -1,0 +1,42 @@
+{
+  "title": "Trakt Show Structure",
+  "entity": "Show",
+  "groups": [
+    {
+      "group": "identity",
+      "fields": [
+        { "name": "ids.trakt", "type": "integer" },
+        { "name": "ids.slug", "type": "string" },
+        { "name": "ids.tvdb", "type": "integer", "extended": ["full"] },
+        { "name": "ids.imdb", "type": "string", "extended": ["full"] },
+        { "name": "ids.tmdb", "type": "integer", "extended": ["full"] },
+        { "name": "title", "type": "string" },
+        { "name": "year", "type": "integer" }
+      ]
+    },
+    {
+      "group": "airing",
+      "fields": [
+        { "name": "first_aired", "type": "datetime", "extended": ["full"] },
+        { "name": "airs", "type": "object", "extended": ["full"] },
+        { "name": "runtime", "type": "integer", "extended": ["full"] },
+        { "name": "network", "type": "string", "extended": ["full"] },
+        { "name": "aired_episodes", "type": "integer", "extended": ["full"] },
+        { "name": "status", "type": "enum", "extended": ["full"] }
+      ]
+    },
+    {
+      "group": "engagement",
+      "fields": [
+        { "name": "rating", "type": "number", "extended": ["full"] },
+        { "name": "votes", "type": "integer", "extended": ["full"] }
+      ]
+    },
+    {
+      "group": "structure",
+      "fields": [
+        { "name": "seasons", "type": "array<Season>", "extended": ["episodes"] }
+      ]
+    }
+  ]
+}

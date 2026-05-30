@@ -1,0 +1,41 @@
+{
+  "operationId": "getShowWatchedProgress",
+  "request": {
+    "method": "GET",
+    "url": "https://api.trakt.tv/shows/severance/progress/watched",
+    "headers": {
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+      "trakt-api-version": "2",
+      "trakt-api-key": "YOUR_CLIENT_ID"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "aired": 19,
+      "completed": 14,
+      "last_watched_at": "2026-05-21T03:14:00Z",
+      "reset_at": null,
+      "seasons": [
+        {
+          "number": 1,
+          "aired": 9,
+          "completed": 9,
+          "episodes": [
+            { "number": 1, "completed": true, "last_watched_at": "2023-02-12T01:00:00Z" }
+          ]
+        },
+        {
+          "number": 2,
+          "aired": 10,
+          "completed": 5,
+          "episodes": [
+            { "number": 6, "completed": false, "last_watched_at": null }
+          ]
+        }
+      ],
+      "next_episode": { "season": 2, "number": 6, "title": "Attila", "ids": { "trakt": 7654321 } },
+      "last_episode": { "season": 2, "number": 5, "title": "Trojan's Horse", "ids": { "trakt": 7654320 } }
+    }
+  }
+}

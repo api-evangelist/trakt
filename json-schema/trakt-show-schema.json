@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trakt/main/json-schema/trakt-show-schema.json",
+  "title": "Trakt Show",
+  "type": "object",
+  "required": ["title", "year", "ids"],
+  "properties": {
+    "title": { "type": "string" },
+    "year": { "type": "integer" },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "trakt": { "type": "integer" },
+        "slug": { "type": "string" },
+        "imdb": { "type": "string", "pattern": "^tt\\d+$" },
+        "tmdb": { "type": "integer" },
+        "tvdb": { "type": "integer" }
+      },
+      "required": ["trakt"]
+    },
+    "overview": { "type": "string" },
+    "first_aired": { "type": "string", "format": "date-time" },
+    "runtime": { "type": "integer" },
+    "certification": { "type": "string" },
+    "network": { "type": "string" },
+    "country": { "type": "string" },
+    "trailer": { "type": ["string", "null"], "format": "uri" },
+    "homepage": { "type": ["string", "null"], "format": "uri" },
+    "status": {
+      "type": "string",
+      "enum": ["returning series", "continuing", "in production", "planned", "upcoming", "pilot", "canceled", "ended"]
+    },
+    "rating": { "type": "number", "minimum": 0, "maximum": 10 },
+    "votes": { "type": "integer" },
+    "comment_count": { "type": "integer" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "language": { "type": "string" },
+    "genres": { "type": "array", "items": { "type": "string" } },
+    "aired_episodes": { "type": "integer", "minimum": 0 }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "operationId": "generateDeviceCode",
+  "request": {
+    "method": "POST",
+    "url": "https://api.trakt.tv/oauth/device/code",
+    "headers": { "Content-Type": "application/json" },
+    "body": { "client_id": "YOUR_CLIENT_ID" }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "device_code": "d76e2c1f9bc4e7a3b2c5e8f1d0a4b6c9e2f3a1b5c7d9e0f2a4b6c8d0e2f4a6b8",
+      "user_code": "5055CC52",
+      "verification_url": "https://trakt.tv/activate",
+      "expires_in": 600,
+      "interval": 5
+    }
+  }
+}

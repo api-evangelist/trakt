@@ -1,0 +1,31 @@
+apiVersion: naftiko.dev/v1
+kind: Capability
+metadata:
+  name: social-engagement
+  provider: trakt
+  description: Follow other users, share check-ins, comment on movies/shows/episodes, like and react to comments, and surface friend activity feeds.
+spec:
+  shared:
+    - trakt-shared
+  workflow:
+    - step: follow-graph
+      operations:
+        - getUserFollowers
+        - getUserFollowing
+        - getUserFriends
+        - followUser
+        - unfollowUser
+    - step: comment
+      operations:
+        - getComment
+        - updateComment
+        - deleteComment
+        - likeComment
+        - removeCommentLike
+    - step: checkin
+      operations:
+        - createCheckin
+        - deleteCheckin
+  notes:
+    - "Comments require OAuth and follow Trakt's 5-emoji minimum / spoiler/markdown formatting rules."
+    - "Checkins enforce a single active checkin per user; second attempt returns 409."

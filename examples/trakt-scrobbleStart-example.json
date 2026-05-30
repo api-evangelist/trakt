@@ -1,0 +1,35 @@
+{
+  "operationId": "scrobbleStart",
+  "request": {
+    "method": "POST",
+    "url": "https://api.trakt.tv/scrobble/start",
+    "headers": {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer YOUR_ACCESS_TOKEN",
+      "trakt-api-version": "2",
+      "trakt-api-key": "YOUR_CLIENT_ID"
+    },
+    "body": {
+      "progress": 1.2,
+      "movie": {
+        "ids": { "trakt": 449221, "slug": "tron-ares-2025", "imdb": "tt10394814", "tmdb": 1100782 }
+      },
+      "app_version": "1.0.0",
+      "app_date": "2026-05-28"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": 99812451223,
+      "action": "start",
+      "progress": 1.2,
+      "sharing": { "twitter": false, "mastodon": true, "tumblr": false },
+      "movie": {
+        "title": "Tron: Ares",
+        "year": 2025,
+        "ids": { "trakt": 449221, "slug": "tron-ares-2025" }
+      }
+    }
+  }
+}

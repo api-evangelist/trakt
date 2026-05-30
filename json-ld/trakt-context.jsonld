@@ -1,0 +1,48 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "trakt": "https://api.trakt.tv/vocab#",
+    "id": "@id",
+    "type": "@type",
+
+    "Movie": "schema:Movie",
+    "Show": "schema:TVSeries",
+    "Season": "schema:TVSeason",
+    "Episode": "schema:TVEpisode",
+    "Person": "schema:Person",
+    "User": "schema:Person",
+    "List": "schema:ItemList",
+    "Comment": "schema:Comment",
+    "WatchAction": "schema:WatchAction",
+
+    "title": "schema:name",
+    "name": "schema:name",
+    "overview": "schema:description",
+    "tagline": "schema:slogan",
+    "released": "schema:datePublished",
+    "first_aired": "schema:datePublished",
+    "runtime": {
+      "@id": "schema:duration",
+      "@type": "schema:Duration"
+    },
+    "country": "schema:countryOfOrigin",
+    "language": "schema:inLanguage",
+    "languages": "schema:inLanguage",
+    "genres": "schema:genre",
+    "rating": "schema:aggregateRating",
+    "votes": "schema:ratingCount",
+    "homepage": "schema:url",
+    "trailer": "schema:trailer",
+    "network": "schema:productionCompany",
+    "certification": "schema:contentRating",
+    "season": "schema:seasonNumber",
+    "number": "schema:episodeNumber",
+    "ids": "schema:identifier",
+    "username": "schema:alternateName",
+    "vip": "trakt:vipStatus",
+    "watched_at": "schema:startTime",
+    "progress": "trakt:progress",
+    "action": "trakt:scrobbleAction"
+  }
+}

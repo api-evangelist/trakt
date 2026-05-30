@@ -1,0 +1,42 @@
+{
+  "operationId": "getTrendingMovies",
+  "request": {
+    "method": "GET",
+    "url": "https://api.trakt.tv/movies/trending?page=1&limit=10&extended=full",
+    "headers": {
+      "Content-Type": "application/json",
+      "trakt-api-version": "2",
+      "trakt-api-key": "YOUR_CLIENT_ID"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "X-Pagination-Page": "1",
+      "X-Pagination-Limit": "10",
+      "X-Pagination-Page-Count": "1042",
+      "X-Pagination-Item-Count": "10412"
+    },
+    "body": [
+      {
+        "watchers": 134,
+        "movie": {
+          "title": "Dune: Part Three",
+          "year": 2026,
+          "ids": { "trakt": 612345, "slug": "dune-part-three-2026", "imdb": "tt29283456", "tmdb": 802100 },
+          "tagline": "The future is foretold.",
+          "overview": "The third chapter of Denis Villeneuve's Dune saga.",
+          "released": "2026-12-18",
+          "runtime": 165,
+          "country": "us",
+          "rating": 8.7,
+          "votes": 12480,
+          "language": "en",
+          "genres": ["science fiction", "adventure"],
+          "certification": "PG-13",
+          "status": "in production"
+        }
+      }
+    ]
+  }
+}

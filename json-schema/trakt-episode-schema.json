@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trakt/main/json-schema/trakt-episode-schema.json",
+  "title": "Trakt Episode",
+  "type": "object",
+  "required": ["season", "number", "ids"],
+  "properties": {
+    "season": { "type": "integer", "minimum": 0 },
+    "number": { "type": "integer", "minimum": 0 },
+    "title": { "type": ["string", "null"] },
+    "ids": {
+      "type": "object",
+      "properties": {
+        "trakt": { "type": "integer" },
+        "tvdb": { "type": ["integer", "null"] },
+        "imdb": { "type": ["string", "null"], "pattern": "^tt\\d+$" },
+        "tmdb": { "type": ["integer", "null"] }
+      },
+      "required": ["trakt"]
+    },
+    "number_abs": { "type": ["integer", "null"] },
+    "overview": { "type": ["string", "null"] },
+    "first_aired": { "type": ["string", "null"], "format": "date-time" },
+    "runtime": { "type": ["integer", "null"] },
+    "episode_type": {
+      "type": "string",
+      "enum": ["standard", "series_premiere", "season_premiere", "mid_season_finale", "mid_season_premiere", "season_finale", "series_finale"]
+    }
+  }
+}

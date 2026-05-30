@@ -1,0 +1,39 @@
+apiVersion: naftiko.dev/v1
+kind: Capability
+metadata:
+  name: list-curation
+  provider: trakt
+  description: Curate, share, and synchronize personal Trakt lists (watchlist, favorites, custom lists) including reading trending and popular lists for discovery.
+spec:
+  shared:
+    - trakt-shared
+  workflow:
+    - step: discover
+      operations:
+        - getTrendingLists
+        - getPopularLists
+    - step: load-mine
+      operations:
+        - getUserLists
+        - getWatchlist
+        - getFavorites
+    - step: curate
+      operations:
+        - addToWatchlist
+        - removeFromWatchlist
+        - addToFavorites
+        - removeFromFavorites
+        - createUserList
+  limits:
+    free:
+      watchlist_items: 250
+      favorite_items: 50
+      personal_lists: 5
+      list_items: 250
+    vip:
+      watchlist_items: 5000
+      favorite_items: 50
+      personal_lists: 100
+      list_items: 5000
+  successCriteria:
+    - "On a 420 response, capability surfaces an actionable upgrade-to-VIP message."

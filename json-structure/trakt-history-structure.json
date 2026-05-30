@@ -1,0 +1,14 @@
+{
+  "title": "Trakt Watched History Structure",
+  "description": "Shape of a single entry returned by GET /sync/history and accepted by POST /sync/history.",
+  "entity": "HistoryItem",
+  "fields": [
+    { "name": "id", "type": "integer", "description": "Stable 64-bit history id." },
+    { "name": "watched_at", "type": "datetime", "description": "When the user watched the item (UTC). Accepts the literal strings 'released' or 'unknown' on write." },
+    { "name": "action", "type": "enum", "values": ["scrobble", "checkin", "watch"] },
+    { "name": "type", "type": "enum", "values": ["movie", "episode"] },
+    { "name": "movie", "type": "Movie", "conditional": "type=movie" },
+    { "name": "show", "type": "Show", "conditional": "type=episode" },
+    { "name": "episode", "type": "Episode", "conditional": "type=episode" }
+  ]
+}

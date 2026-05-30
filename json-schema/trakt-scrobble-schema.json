@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/trakt/main/json-schema/trakt-scrobble-schema.json",
+  "title": "Trakt Scrobble Event",
+  "type": "object",
+  "required": ["progress"],
+  "properties": {
+    "id": { "type": "integer" },
+    "action": { "type": "string", "enum": ["start", "pause", "scrobble"] },
+    "progress": { "type": "number", "minimum": 0, "maximum": 100 },
+    "movie": { "$ref": "trakt-movie-schema.json" },
+    "episode": { "$ref": "trakt-episode-schema.json" },
+    "show": { "$ref": "trakt-show-schema.json" },
+    "sharing": {
+      "type": "object",
+      "properties": {
+        "twitter": { "type": "boolean" },
+        "mastodon": { "type": "boolean" },
+        "tumblr": { "type": "boolean" }
+      }
+    },
+    "app_version": { "type": "string" },
+    "app_date": { "type": "string", "format": "date" }
+  }
+}

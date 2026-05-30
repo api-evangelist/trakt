@@ -1,0 +1,32 @@
+apiVersion: naftiko.dev/v1
+kind: Capability
+metadata:
+  name: personal-media-tracking
+  provider: trakt
+  description: Authenticate a user via OAuth, synchronize the local watch state with Trakt history and progress, and report a single source of truth for what the user has watched, is watching, and should watch next.
+spec:
+  shared:
+    - trakt-shared
+  workflow:
+    - step: authenticate-device
+      uses: oauth2-device-flow
+      operations:
+        - generateDeviceCode
+        - pollDeviceToken
+    - step: bootstrap-state
+      operations:
+        - getUserSettings
+        - getLastActivities
+        - getWatchedHistory
+        - getWatchlist
+        - getCollectionMovies
+        - getCollectionShows
+    - step: report
+      output:
+        - currently_watching: getUserWatching
+        - next_episode: getShowWatchedProgress
+        - up_next_queue: getPlaybackProgress
+  successCriteria:
+    - "User OAuth tokens persisted with refresh capability."
+    - "Local store reconciled against /sync/last_activities deltas."
+    - "Authenticated user can see what they're watching now and the next episode for in-progress shows."
