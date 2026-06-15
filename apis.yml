@@ -1,11 +1,10 @@
 aid: trakt
 name: Trakt
 description: >-
-  Trakt is the personal media database for movies and TV. Its API v2 (api.trakt.tv) exposes
-  ~150 endpoints across movies, shows, seasons, episodes, people, search, lists, calendars,
-  recommendations, comments, notes, scrobble, checkin, and full per-user sync (history,
-  watchlist, ratings, collection, favorites, playback progress). Authentication is OAuth 2.0
-  via Authorization Code or Device flows. The platform powers the Trakt website, official
+  Trakt is the personal media database for movies and TV. Its API v2 (api.trakt.tv) exposes ~150 endpoints across
+  movies, shows, seasons, episodes, people, search, lists, calendars, recommendations, comments, notes, scrobble,
+  checkin, and full per-user sync (history, watchlist, ratings, collection, favorites, playback progress).
+  Authentication is OAuth 2.0 via Authorization Code or Device flows. The platform powers the Trakt website, official
   Android/iOS apps, and a large third-party ecosystem of media-center plugins and trackers.
 url: https://trakt.tv
 humanURL: https://trakt.docs.apiary.io/
@@ -28,14 +27,12 @@ tags:
   - Social
   - OAuth2
   - Public APIs
-
 apis:
   - name: Trakt API v2
     description: >-
-      RESTful JSON API for the full Trakt platform. Supports OAuth 2.0
-      Authorization Code and Device flows, Title-Case operation summaries,
-      and standard pagination (page/limit). All requests require headers
-      trakt-api-version=2 and trakt-api-key={client_id}.
+      RESTful JSON API for the full Trakt platform. Supports OAuth 2.0 Authorization Code and Device flows, Title-Case
+      operation summaries, and standard pagination (page/limit). All requests require headers trakt-api-version=2 and
+      trakt-api-key={client_id}.
     humanURL: https://trakt.docs.apiary.io/
     baseURL: https://api.trakt.tv
     tags:
@@ -85,7 +82,6 @@ apis:
         url: https://trakt.docs.apiary.io/#reference/authentication-oauth
       - type: APIReference
         url: https://trakt.docs.apiary.io/
-
 common:
   - type: Website
     url: https://trakt.tv
@@ -121,18 +117,6 @@ common:
     url: https://github.com/trakt/trakt-api
   - type: SpectralRules
     url: rules/trakt-rules.yml
-  - type: NaftikoCapability
-    url: capabilities/shared/trakt-shared.yaml
-  - type: NaftikoCapability
-    url: capabilities/personal-media-tracking.yaml
-  - type: NaftikoCapability
-    url: capabilities/media-center-scrobbling.yaml
-  - type: NaftikoCapability
-    url: capabilities/list-curation.yaml
-  - type: NaftikoCapability
-    url: capabilities/discovery-and-recommendations.yaml
-  - type: NaftikoCapability
-    url: capabilities/social-engagement.yaml
   - type: JSON-LD
     url: json-ld/trakt-context.jsonld
   - type: Vocabulary
@@ -196,13 +180,19 @@ common:
   - type: Features
     data:
       - name: Comprehensive media catalog
-        description: Movies, shows, seasons, episodes, people, studios, networks, certifications — all keyed by trakt/imdb/tmdb/tvdb ids.
+        description: >-
+          Movies, shows, seasons, episodes, people, studios, networks, certifications — all keyed by
+          trakt/imdb/tmdb/tvdb ids.
       - name: Per-user sync
-        description: history, watchlist, collection, favorites, ratings, and playback progress with /sync/last_activities delta detection.
+        description: >-
+          history, watchlist, collection, favorites, ratings, and playback progress with /sync/last_activities delta
+          detection.
       - name: Scrobble lifecycle
         description: Start/pause/stop API with 80% completion semantics, dedupe, and resume-from-pause via /sync/playback.
       - name: Personalized recommendations
-        description: /recommendations/movies and /recommendations/shows return tailored suggestions per-user with hide/dismiss support.
+        description: >-
+          /recommendations/movies and /recommendations/shows return tailored suggestions per-user with hide/dismiss
+          support.
       - name: Calendars
         description: Public (all) and personal (my) calendars for shows, new shows, season premieres, finales, and movie releases.
       - name: Discovery surfaces
@@ -220,7 +210,9 @@ common:
   - type: UseCases
     data:
       - name: Media center scrobbling
-        description: Plex, Kodi, Jellyfin, and custom media centers report playback to /scrobble so a user's watch history stays accurate across devices.
+        description: >-
+          Plex, Kodi, Jellyfin, and custom media centers report playback to /scrobble so a user's watch history stays
+          accurate across devices.
       - name: Personal media tracker
         description: Mobile and web apps showing what a user has watched, what's next, and what's anticipated.
       - name: Recommendation engines
@@ -252,14 +244,19 @@ common:
   - type: Solutions
     data:
       - name: Free
-        description: Personal use with the 2026 limits — 250 watchlist items, 5 personal lists, 100k history items, 10k ratings, 100 notes.
+        description: >-
+          Personal use with the 2026 limits — 250 watchlist items, 5 personal lists, 100k history items, 10k ratings,
+          100 notes.
       - name: Trakt VIP
-        description: $30 first year, $60 renewal — 5000 watchlist items, 100 personal lists, watchlist notes, year-in-review reports, no ads.
+        description: >-
+          $30 first year, $60 renewal — 5000 watchlist items, 100 personal lists, watchlist notes, year-in-review
+          reports, no ads.
       - name: Trakt VIP EP
         description: $1500 lifetime support tier.
       - name: Commercial use
-        description: Approval-required for apps that monetize Trakt data or generate significant traffic — contact support via the Trakt forums.
-
+        description: >-
+          Approval-required for apps that monetize Trakt data or generate significant traffic — contact support via the
+          Trakt forums.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

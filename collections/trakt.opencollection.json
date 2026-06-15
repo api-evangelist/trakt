@@ -1,0 +1,1827 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate New Device Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/device/code",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate new codes to start the device authentication process. The device_code and interval are used to poll for the access_token. The user_code and verification_url should be presented to the user."
+        },
+        {
+          "info": {
+            "name": "Poll For The Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/device/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Poll using the device_code at the returned interval until the user authorizes the app. Returns access_token on success. Status codes 400/404/409/410/418/429 indicate pending, expired, denied, or polling-too-fast states."
+        },
+        {
+          "info": {
+            "name": "Exchange A Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange an OAuth authorization code or refresh token for an access token."
+        },
+        {
+          "info": {
+            "name": "Revoke An Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/revoke"
+          },
+          "docs": "Revoke an access_token when the user signs out of the app."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Movies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trending Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/trending",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most watched movies over the last 24 hours. Movies with the most watchers are returned first."
+        },
+        {
+          "info": {
+            "name": "Get Popular Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/popular",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most popular movies, calculated using rating percentage and number of ratings."
+        },
+        {
+          "info": {
+            "name": "Get The Most Watched Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/watched/:period",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most watched (unique users) movies in the specified time period, defaulting to weekly."
+        },
+        {
+          "info": {
+            "name": "Get The Most Anticipated Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/anticipated",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most anticipated movies based on the number of lists a movie appears on."
+        },
+        {
+          "info": {
+            "name": "Get The Weekend Box Office",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/boxoffice"
+          },
+          "docs": "Returns the top 10 grossing movies in the U.S. box office last weekend."
+        },
+        {
+          "info": {
+            "name": "Get A Movie",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns a single movie's details."
+        },
+        {
+          "info": {
+            "name": "Get Movie Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id/ratings",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              }
+            ]
+          },
+          "docs": "Returns rating (between 0 and 10) and distribution for a movie."
+        },
+        {
+          "info": {
+            "name": "Get Movie Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              }
+            ]
+          },
+          "docs": "Returns lots of movie stats including watchers, plays, collectors, comments, lists, votes, and recommended counts."
+        },
+        {
+          "info": {
+            "name": "Get Related Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id/related",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns related and similar movies."
+        },
+        {
+          "info": {
+            "name": "Get All People For A Movie",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id/people",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all cast and crew for a movie, broken up by department."
+        },
+        {
+          "info": {
+            "name": "Get Users Watching Right Now",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/movies/:id/watching",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, or IMDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all users watching this movie right now."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Shows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trending Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/trending",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most watched shows over the last 24 hours."
+        },
+        {
+          "info": {
+            "name": "Get Popular Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/popular",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most popular shows."
+        },
+        {
+          "info": {
+            "name": "Get The Most Watched Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/watched/:period",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns the most watched shows in the specified time period."
+        },
+        {
+          "info": {
+            "name": "Get The Most Anticipated Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/anticipated",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns the most anticipated shows based on the number of lists a show appears on."
+        },
+        {
+          "info": {
+            "name": "Get A Single Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns a single show's details."
+        },
+        {
+          "info": {
+            "name": "Get All Seasons For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all seasons for a show including the number of episodes in each season."
+        },
+        {
+          "info": {
+            "name": "Get Show Watched Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/progress/watched",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns watched progress for a show including details on all aired seasons and episodes."
+        },
+        {
+          "info": {
+            "name": "Get All People For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/people",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all cast and crew for a show."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Seasons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Episodes For A Single Season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons/:season",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all episodes for a specific season of a show."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get A Single Episode For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons/:season/episodes/:episode",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "episode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single episode's details."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get A Single Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns a single person's details."
+        },
+        {
+          "info": {
+            "name": "Get Movies For A Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id/movies",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all movies where this person is in the cast or crew."
+        },
+        {
+          "info": {
+            "name": "Get Shows For A Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id/shows",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows where this person is in the cast or crew."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Text Query Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/search/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Search all text fields that a media object contains. Accepts movie, show, episode, person, list (one or more, comma separated)."
+        },
+        {
+          "info": {
+            "name": "Get ID Lookup Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/search/:id_type/:id",
+            "params": [
+              {
+                "name": "id_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lookup items by their Trakt, IMDB, TMDB, or TVDB ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/settings"
+          },
+          "docs": "Get the user's settings (account, profile, sharing, limits, permissions, browsing)."
+        },
+        {
+          "info": {
+            "name": "Get User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Get a user's profile information."
+        },
+        {
+          "info": {
+            "name": "Get Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Returns stats about the movies, shows, and episodes a user has watched, collected, and rated."
+        },
+        {
+          "info": {
+            "name": "Get Watching",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/watching",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Returns a movie or episode if the user is currently watching something."
+        },
+        {
+          "info": {
+            "name": "Get Followers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/followers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Followers"
+        },
+        {
+          "info": {
+            "name": "Get Following",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/following",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Following"
+        },
+        {
+          "info": {
+            "name": "Get Friends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/friends",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Friends"
+        },
+        {
+          "info": {
+            "name": "Follow This User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Follow This User"
+        },
+        {
+          "info": {
+            "name": "Unfollow This User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Unfollow This User"
+        },
+        {
+          "info": {
+            "name": "Get A User's Custom Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/lists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get A User's Custom Lists"
+        },
+        {
+          "info": {
+            "name": "Create A Custom List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/users/:id/lists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Create A Custom List"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Sync",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Last Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/last_activities"
+          },
+          "docs": "Returns timestamps for the last activity of each Sync resource, so apps can determine what to refresh."
+        },
+        {
+          "info": {
+            "name": "Get Playback Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/playback"
+          },
+          "docs": "Returns paused and unfinished playback progress for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Remove A Playback Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/sync/playback/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a playback item from a user's playback progress list."
+        },
+        {
+          "info": {
+            "name": "Get Movie Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/collection/movies"
+          },
+          "docs": "Returns movies in the authenticated user collection."
+        },
+        {
+          "info": {
+            "name": "Get Show Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/collection/shows"
+          },
+          "docs": "Returns shows in the authenticated user collection, including collected seasons and episodes."
+        },
+        {
+          "info": {
+            "name": "Add Items To Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/collection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add items to a user's collection. Accepts movies, shows, seasons, episodes."
+        },
+        {
+          "info": {
+            "name": "Remove Items From Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/collection/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Collection"
+        },
+        {
+          "info": {
+            "name": "Get Watched Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watched/movies"
+          },
+          "docs": "Returns all movies a user has watched, sorted by most plays."
+        },
+        {
+          "info": {
+            "name": "Get Watched Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watched/shows"
+          },
+          "docs": "Returns all shows a user has watched, sorted by most plays."
+        },
+        {
+          "info": {
+            "name": "Get Watched History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/history",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns movies and episodes that a user has watched, sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Add Items To Watched History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add items to a user's watch history."
+        },
+        {
+          "info": {
+            "name": "Remove Items From History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/history/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From History"
+        },
+        {
+          "info": {
+            "name": "Add New Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/ratings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate one or more items."
+        },
+        {
+          "info": {
+            "name": "Remove Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/ratings/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Ratings"
+        },
+        {
+          "info": {
+            "name": "Get Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watchlist"
+          },
+          "docs": "Returns all items in a user's watchlist."
+        },
+        {
+          "info": {
+            "name": "Add Items To Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/watchlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Items To Watchlist"
+        },
+        {
+          "info": {
+            "name": "Remove Items From Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/watchlist/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Watchlist"
+        },
+        {
+          "info": {
+            "name": "Get Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/favorites"
+          },
+          "docs": "Get Favorites"
+        },
+        {
+          "info": {
+            "name": "Add Items To Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/favorites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Items To Favorites"
+        },
+        {
+          "info": {
+            "name": "Remove Items From Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/favorites/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Favorites"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scrobble",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use when the video initially starts playing or is unpaused."
+        },
+        {
+          "info": {
+            "name": "Pause Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/pause",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause Watching In A Media Center"
+        },
+        {
+          "info": {
+            "name": "Stop Or Finish Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If progress is above 80% the item is marked scrobble; if 1–79% it is treated as pause."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Checkin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Into An Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/checkin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check into a movie or episode. Sets the watching status; auto-expires after the runtime elapses."
+        },
+        {
+          "info": {
+            "name": "Delete Any Active Checkins",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/checkin"
+          },
+          "docs": "Delete Any Active Checkins"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Calendars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/all/shows/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows airing during the time period specified."
+        },
+        {
+          "info": {
+            "name": "Get Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/all/movies/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all movies released during the time period specified."
+        },
+        {
+          "info": {
+            "name": "Get My Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/my/shows/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows airing during the time period specified for the authenticated user."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Movie Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/recommendations/movies"
+          },
+          "docs": "Personalized movie recommendations for a user."
+        },
+        {
+          "info": {
+            "name": "Hide A Movie Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/recommendations/movies"
+          },
+          "docs": "Hide A Movie Recommendation"
+        },
+        {
+          "info": {
+            "name": "Get Show Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/recommendations/shows"
+          },
+          "docs": "Get Show Recommendations"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trending Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/lists/trending"
+          },
+          "docs": "Get Trending Lists"
+        },
+        {
+          "info": {
+            "name": "Get Popular Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/lists/popular"
+          },
+          "docs": "Get Popular Lists"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Comments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get A Comment Or Reply",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get A Comment Or Reply"
+        },
+        {
+          "info": {
+            "name": "Update A Comment Or Reply",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.trakt.tv/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update A Comment Or Reply"
+        },
+        {
+          "info": {
+            "name": "Delete A Comment Or Reply",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete A Comment Or Reply"
+        },
+        {
+          "info": {
+            "name": "Like A Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/comments/:id/like",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Like A Comment"
+        },
+        {
+          "info": {
+            "name": "Remove Like On A Comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/comments/:id/like",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Like On A Comment"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/notes"
+          },
+          "docs": "Add a personal note attached to a movie, show, season, episode, person, or history item. VIP feature."
+        },
+        {
+          "info": {
+            "name": "Get A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get A Note"
+        },
+        {
+          "info": {
+            "name": "Update A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update A Note"
+        },
+        {
+          "info": {
+            "name": "Delete A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete A Note"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Certifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Certifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/certifications/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Reference list of certifications for movies or shows."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Countries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/countries/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Countries"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Languages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Languages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/languages/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Languages"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Genres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Genres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/genres/:type",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Genres"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Networks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Networks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/networks"
+          },
+          "docs": "Reference list of television networks."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Studios",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Studios",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/studios"
+          },
+          "docs": "Reference list of production studios."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
