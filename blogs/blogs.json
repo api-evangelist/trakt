@@ -3,13 +3,10 @@
   "feeds": [
     {
       "source": "https://blog.trakt.tv",
-      "error": "URLError"
-    },
-    {
-      "source": "https://forums.trakt.tv/c/questions-help/8",
-      "error": "HTTPError"
+      "saved": 0,
+      "error": "DNS ENOTFOUND; trakt.tv/blog returned 403"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:16:26Z",
+  "post_count": 0
 }

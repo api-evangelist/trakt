@@ -62,21 +62,21 @@ apis:
         url: json-structure/trakt-show-structure.json
       - type: JSONStructure
         url: json-structure/trakt-history-structure.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-getTrendingMovies-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-getMovie-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-generateDeviceCode-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-pollDeviceToken-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-scrobbleStart-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-addToHistory-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-searchText-example.json
-      - type: Example
+      - type: Examples
         url: examples/trakt-getShowWatchedProgress-example.json
       - type: Authentication
         url: https://trakt.docs.apiary.io/#reference/authentication-oauth
@@ -89,7 +89,7 @@ common:
     url: https://trakt.tv/oauth/applications
   - type: Documentation
     url: https://trakt.docs.apiary.io/
-  - type: SignUp
+  - type: Signup
     url: https://trakt.tv/auth/join
   - type: Pricing
     url: https://trakt.tv/vip
@@ -117,25 +117,25 @@ common:
     url: https://github.com/trakt/trakt-api
   - type: SpectralRules
     url: rules/trakt-rules.yml
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/trakt-context.jsonld
   - type: Vocabulary
     url: vocabulary/trakt-vocabulary.yml
   - type: Resources
     url: finops/trakt-finops.yml
-  - type: SDK
+  - type: SDKs
     name: trakt-api (TypeScript / Deno)
     url: https://github.com/trakt/trakt-api
-  - type: SDK
+  - type: SDKs
     name: PyTrakt (Python)
     url: https://github.com/moogar0880/PyTrakt
-  - type: SDK
+  - type: SDKs
     name: nodeless-trakt (JavaScript)
     url: https://github.com/trakt/nodeless-trakt
-  - type: SDK
+  - type: SDKs
     name: oauth2-trakt (PHP)
     url: https://github.com/Bogstag/oauth2-trakt
-  - type: SDK
+  - type: SDKs
     name: Auth.js Trakt provider
     url: https://authjs.dev/reference/core/providers/trakt
   - type: Tools
