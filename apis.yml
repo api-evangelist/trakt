@@ -83,6 +83,10 @@ apis:
       - type: APIReference
         url: https://trakt.docs.apiary.io/
 common:
+  - type: DomainSecurity
+    url: security/trakt-domain-security.yml
+  - type: Authentication
+    url: authentication/trakt-authentication.yml
   - type: Website
     url: https://trakt.tv
   - type: DeveloperPortal

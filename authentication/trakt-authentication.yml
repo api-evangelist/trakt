@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/trakt-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization
+    header and required headers trakt-api-version (2) and trakt-api-key (client_id).
+  sources:
+  - openapi/trakt-openapi.yml
