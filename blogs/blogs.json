@@ -2,11 +2,10 @@
   "repo": "trakt",
   "feeds": [
     {
-      "source": "https://blog.trakt.tv",
-      "saved": 0,
-      "error": "DNS ENOTFOUND; trakt.tv/blog returned 403"
+      "source": "https://forums.trakt.tv/c/questions-help/8",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-06-27T13:16:26Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "post_count": 0
 }
