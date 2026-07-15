@@ -83,6 +83,8 @@ apis:
       - type: APIReference
         url: https://trakt.docs.apiary.io/
 common:
+  - type: AgenticAccess
+    url: agentic-access/trakt-agentic-access.yml
   - type: DomainSecurity
     url: security/trakt-domain-security.yml
   - type: Authentication
