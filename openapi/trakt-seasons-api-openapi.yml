@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Trakt Calendars Seasons API
+  description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
+
+    features into applications. It exposes Trakt''s media database, user
+
+    watch history, lists, watchlists, ratings, comments, scrobbling, and
+
+    recommendations. Authentication is OAuth 2.0 (Authorization Code and
+
+    Device flows).
+
+
+    This OpenAPI is a representative sampling of the full Trakt API v2
+
+    surface, covering authentication, movies, shows, episodes, seasons,
+
+    people, search, users, sync, scrobble, checkin, lists, calendars,
+
+    recommendations, comments, notes, and reference data. The canonical
+
+    contract is the ts-rest router published at github.com/trakt/trakt-api.
+
+    '
+  version: '2.0'
+  contact:
+    name: Trakt API Support
+    url: https://forums.trakt.tv
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.trakt.tv
+  description: Production
+- url: https://api-staging.trakt.tv
+  description: Staging
+security:
+- bearerAuth: []
+tags:
+- name: Seasons
+  description: Season-level metadata and episodes.
+paths:
+  /shows/{id}/seasons/{season}:
+    get:
+      tags:
+      - Seasons
+      operationId: getSeasonEpisodes
+      summary: Get All Episodes For A Single Season
+      description: Returns all episodes for a specific season of a show.
+      parameters:
+      - $ref: '#/components/parameters/ShowId'
+      - $ref: '#/components/parameters/Season'
+      responses:
+        '200':
+          description: Season episodes.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+components:
+  schemas:
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type: integer
+          nullable: true
+        overview:
+          type: string
+        first_aired:
+          type: string
+          format: date-time
+          nullable: true
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+  parameters:
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+    Season:
+      name: season
+      in: path
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization header and required headers trakt-api-version (2) and trakt-api-key (client_id).

@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Trakt Calendars Notes API
+  description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
+
+    features into applications. It exposes Trakt''s media database, user
+
+    watch history, lists, watchlists, ratings, comments, scrobbling, and
+
+    recommendations. Authentication is OAuth 2.0 (Authorization Code and
+
+    Device flows).
+
+
+    This OpenAPI is a representative sampling of the full Trakt API v2
+
+    surface, covering authentication, movies, shows, episodes, seasons,
+
+    people, search, users, sync, scrobble, checkin, lists, calendars,
+
+    recommendations, comments, notes, and reference data. The canonical
+
+    contract is the ts-rest router published at github.com/trakt/trakt-api.
+
+    '
+  version: '2.0'
+  contact:
+    name: Trakt API Support
+    url: https://forums.trakt.tv
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.trakt.tv
+  description: Production
+- url: https://api-staging.trakt.tv
+  description: Staging
+security:
+- bearerAuth: []
+tags:
+- name: Notes
+  description: Personal notes attached to media items.
+paths:
+  /notes:
+    post:
+      tags:
+      - Notes
+      operationId: createNote
+      summary: Add A Note
+      description: Add a personal note attached to a movie, show, season, episode, person, or history item. VIP feature.
+      responses:
+        '201':
+          description: Note created.
+  /notes/{id}:
+    get:
+      tags:
+      - Notes
+      operationId: getNote
+      summary: Get A Note
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Note.
+    put:
+      tags:
+      - Notes
+      operationId: updateNote
+      summary: Update A Note
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Note updated.
+    delete:
+      tags:
+      - Notes
+      operationId: deleteNote
+      summary: Delete A Note
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Note deleted.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization header and required headers trakt-api-version (2) and trakt-api-key (client_id).

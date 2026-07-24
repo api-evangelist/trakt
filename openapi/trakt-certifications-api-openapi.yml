@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: Trakt Calendars Certifications API
+  description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
+
+    features into applications. It exposes Trakt''s media database, user
+
+    watch history, lists, watchlists, ratings, comments, scrobbling, and
+
+    recommendations. Authentication is OAuth 2.0 (Authorization Code and
+
+    Device flows).
+
+
+    This OpenAPI is a representative sampling of the full Trakt API v2
+
+    surface, covering authentication, movies, shows, episodes, seasons,
+
+    people, search, users, sync, scrobble, checkin, lists, calendars,
+
+    recommendations, comments, notes, and reference data. The canonical
+
+    contract is the ts-rest router published at github.com/trakt/trakt-api.
+
+    '
+  version: '2.0'
+  contact:
+    name: Trakt API Support
+    url: https://forums.trakt.tv
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.trakt.tv
+  description: Production
+- url: https://api-staging.trakt.tv
+  description: Staging
+security:
+- bearerAuth: []
+tags:
+- name: Certifications
+  description: Movie and show certification reference data.
+paths:
+  /certifications/{type}:
+    get:
+      tags:
+      - Certifications
+      operationId: getCertifications
+      summary: Get Certifications
+      description: Reference list of certifications for movies or shows.
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+          enum:
+          - movies
+          - shows
+      responses:
+        '200':
+          description: Certifications.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization header and required headers trakt-api-version (2) and trakt-api-key (client_id).

@@ -1,0 +1,512 @@
+openapi: 3.0.3
+info:
+  title: Trakt Calendars Movies API
+  description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
+
+    features into applications. It exposes Trakt''s media database, user
+
+    watch history, lists, watchlists, ratings, comments, scrobbling, and
+
+    recommendations. Authentication is OAuth 2.0 (Authorization Code and
+
+    Device flows).
+
+
+    This OpenAPI is a representative sampling of the full Trakt API v2
+
+    surface, covering authentication, movies, shows, episodes, seasons,
+
+    people, search, users, sync, scrobble, checkin, lists, calendars,
+
+    recommendations, comments, notes, and reference data. The canonical
+
+    contract is the ts-rest router published at github.com/trakt/trakt-api.
+
+    '
+  version: '2.0'
+  contact:
+    name: Trakt API Support
+    url: https://forums.trakt.tv
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+servers:
+- url: https://api.trakt.tv
+  description: Production
+- url: https://api-staging.trakt.tv
+  description: Staging
+security:
+- bearerAuth: []
+tags:
+- name: Movies
+  description: Movie metadata, trending, watched, anticipated, popular, ratings, related, people.
+paths:
+  /movies/trending:
+    get:
+      tags:
+      - Movies
+      operationId: getTrendingMovies
+      summary: Get Trending Movies
+      description: Returns the most watched movies over the last 24 hours. Movies with the most watchers are returned first.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Trending movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieTrending'
+  /movies/popular:
+    get:
+      tags:
+      - Movies
+      operationId: getPopularMovies
+      summary: Get Popular Movies
+      description: Returns the most popular movies, calculated using rating percentage and number of ratings.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Popular movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+  /movies/watched/{period}:
+    get:
+      tags:
+      - Movies
+      operationId: getMostWatchedMovies
+      summary: Get The Most Watched Movies
+      description: Returns the most watched (unique users) movies in the specified time period, defaulting to weekly.
+      parameters:
+      - $ref: '#/components/parameters/Period'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Most watched movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieWatched'
+  /movies/anticipated:
+    get:
+      tags:
+      - Movies
+      operationId: getAnticipatedMovies
+      summary: Get The Most Anticipated Movies
+      description: Returns the most anticipated movies based on the number of lists a movie appears on.
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Limit'
+      - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Anticipated movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieAnticipated'
+  /movies/boxoffice:
+    get:
+      tags:
+      - Movies
+      operationId: getBoxOfficeMovies
+      summary: Get The Weekend Box Office
+      description: Returns the top 10 grossing movies in the U.S. box office last weekend.
+      responses:
+        '200':
+          description: Box office movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovieBoxOffice'
+  /movies/{id}:
+    get:
+      tags:
+      - Movies
+      operationId: getMovie
+      summary: Get A Movie
+      description: Returns a single movie's details.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      - $ref: '#/components/parameters/Extended'
+      responses:
+        '200':
+          description: Movie details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+  /movies/{id}/ratings:
+    get:
+      tags:
+      - Movies
+      operationId: getMovieRatings
+      summary: Get Movie Ratings
+      description: Returns rating (between 0 and 10) and distribution for a movie.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Movie ratings.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Ratings'
+  /movies/{id}/stats:
+    get:
+      tags:
+      - Movies
+      operationId: getMovieStats
+      summary: Get Movie Stats
+      description: Returns lots of movie stats including watchers, plays, collectors, comments, lists, votes, and recommended counts.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Movie stats.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieStats'
+  /movies/{id}/related:
+    get:
+      tags:
+      - Movies
+      operationId: getRelatedMovies
+      summary: Get Related Movies
+      description: Returns related and similar movies.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/Limit'
+      responses:
+        '200':
+          description: Related movies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+  /movies/{id}/people:
+    get:
+      tags:
+      - Movies
+      operationId: getMoviePeople
+      summary: Get All People For A Movie
+      description: Returns all cast and crew for a movie, broken up by department.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: People associated with the movie.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/People'
+  /movies/{id}/watching:
+    get:
+      tags:
+      - Movies
+      operationId: getMovieWatching
+      summary: Get Users Watching Right Now
+      description: Returns all users watching this movie right now.
+      parameters:
+      - $ref: '#/components/parameters/MovieId'
+      responses:
+        '200':
+          description: Users watching right now.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/UserProfile'
+components:
+  parameters:
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
+    MovieId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, or IMDB ID.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    Period:
+      name: period
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
+  schemas:
+    MovieTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    MovieAnticipated:
+      type: object
+      properties:
+        list_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
+    Ratings:
+      type: object
+      properties:
+        rating:
+          type: number
+        votes:
+          type: integer
+        distribution:
+          type: object
+          additionalProperties:
+            type: integer
+    UserProfile:
+      type: object
+      properties:
+        username:
+          type: string
+        private:
+          type: boolean
+        deleted:
+          type: boolean
+        name:
+          type: string
+        vip:
+          type: boolean
+        vip_ep:
+          type: boolean
+        ids:
+          type: object
+          properties:
+            slug:
+              type: string
+            uuid:
+              type: string
+    MovieWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type: string
+          format: date
+          nullable: true
+        death:
+          type: string
+          format: date
+          nullable: true
+        birthplace:
+          type: string
+          nullable: true
+        homepage:
+          type: string
+          format: uri
+          nullable: true
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+    MovieBoxOffice:
+      type: object
+      properties:
+        revenue:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    MovieStats:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        plays:
+          type: integer
+        collectors:
+          type: integer
+        collected_episodes:
+          type: integer
+          nullable: true
+        comments:
+          type: integer
+        lists:
+          type: integer
+        votes:
+          type: integer
+        recommended:
+          type: integer
+    Movie:
+      type: object
+      properties:
+        title:
+          type: string
+        year:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        tagline:
+          type: string
+        overview:
+          type: string
+        released:
+          type: string
+          format: date
+        runtime:
+          type: integer
+        country:
+          type: string
+        trailer:
+          type: string
+          format: uri
+          nullable: true
+        homepage:
+          type: string
+          format: uri
+          nullable: true
+        rating:
+          type: number
+        votes:
+          type: integer
+        comment_count:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+        language:
+          type: string
+        languages:
+          type: array
+          items:
+            type: string
+        available_translations:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        certification:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - in production
+          - post production
+          - planned
+          - rumored
+          - canceled
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth 2.0 access token from /oauth/token or /oauth/device/token. Send via Authorization header and required headers trakt-api-version (2) and trakt-api-key (client_id).
