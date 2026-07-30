@@ -1,4 +1,18 @@
 aid: trakt
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trakt.png
 name: Trakt
 description: >-
   Trakt is the personal media database for movies and TV. Its API v2 (api.trakt.tv) exposes ~150 endpoints across
@@ -28,61 +42,1065 @@ tags:
   - OAuth2
   - Public APIs
 apis:
-  - name: Trakt API v2
-    description: >-
-      RESTful JSON API for the full Trakt platform. Supports OAuth 2.0 Authorization Code and Device flows, Title-Case
-      operation summaries, and standard pagination (page/limit). All requests require headers trakt-api-version=2 and
-      trakt-api-key={client_id}.
-    humanURL: https://trakt.docs.apiary.io/
-    baseURL: https://api.trakt.tv
-    tags:
-      - Video
-      - Movies
-      - Television
-      - Sync
-      - Scrobble
-    properties:
-      - type: Documentation
-        url: https://trakt.docs.apiary.io/
-      - type: OpenAPI
-        url: openapi/trakt-openapi.yml
-      - type: JSONSchema
-        url: json-schema/trakt-movie-schema.json
-      - type: JSONSchema
-        url: json-schema/trakt-show-schema.json
-      - type: JSONSchema
-        url: json-schema/trakt-episode-schema.json
-      - type: JSONSchema
-        url: json-schema/trakt-user-schema.json
-      - type: JSONSchema
-        url: json-schema/trakt-scrobble-schema.json
-      - type: JSONStructure
-        url: json-structure/trakt-movie-structure.json
-      - type: JSONStructure
-        url: json-structure/trakt-show-structure.json
-      - type: JSONStructure
-        url: json-structure/trakt-history-structure.json
-      - type: Examples
-        url: examples/trakt-getTrendingMovies-example.json
-      - type: Examples
-        url: examples/trakt-getMovie-example.json
-      - type: Examples
-        url: examples/trakt-generateDeviceCode-example.json
-      - type: Examples
-        url: examples/trakt-pollDeviceToken-example.json
-      - type: Examples
-        url: examples/trakt-scrobbleStart-example.json
-      - type: Examples
-        url: examples/trakt-addToHistory-example.json
-      - type: Examples
-        url: examples/trakt-searchText-example.json
-      - type: Examples
-        url: examples/trakt-getShowWatchedProgress-example.json
-      - type: Authentication
-        url: https://trakt.docs.apiary.io/#reference/authentication-oauth
-      - type: APIReference
-        url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-calendars-api
+  name: Trakt Calendars API
+  description: Upcoming and recently aired schedules for shows, episodes, and movies.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Calendars
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-calendars-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-certifications-api
+  name: Trakt Certifications API
+  description: Movie and show certification reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Certifications
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-certifications-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-checkin-api
+  name: Trakt Checkin API
+  description: Lightweight social "now watching" check-ins.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Checkin
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-checkin-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-comments-api
+  name: Trakt Comments API
+  description: Comment threads, replies, likes, reactions.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Comments
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-comments-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-countries-api
+  name: Trakt Countries API
+  description: Country reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Countries
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-countries-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-episodes-api
+  name: Trakt Episodes API
+  description: Episode metadata, ratings, comments, watching.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Episodes
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-episodes-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-genres-api
+  name: Trakt Genres API
+  description: Genre reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Genres
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-genres-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-languages-api
+  name: Trakt Languages API
+  description: Language reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-languages-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-lists-api
+  name: Trakt Lists API
+  description: Trending, popular, and personal lists.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-lists-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-movies-api
+  name: Trakt Movies API
+  description: Movie metadata, trending, watched, anticipated, popular, ratings, related, people.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Movies
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-movies-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-networks-api
+  name: Trakt Networks API
+  description: Television network reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Networks
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-networks-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-notes-api
+  name: Trakt Notes API
+  description: Personal notes attached to media items.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Notes
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-notes-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-oauth-api
+  name: Trakt OAuth API
+  description: Authorization Code and Device OAuth flows.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - OAuth
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-oauth-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-people-api
+  name: Trakt People API
+  description: Person metadata, filmography, lists.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - People
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-people-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-recommendations-api
+  name: Trakt Recommendations API
+  description: Personalized recommendations for movies and shows.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Recommendations
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-recommendations-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-scrobble-api
+  name: Trakt Scrobble API
+  description: Start, pause, and stop scrobbles for movies and episodes.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Scrobble
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-scrobble-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-search-api
+  name: Trakt Search API
+  description: Text and ID lookup across movies, shows, episodes, people, lists.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-search-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-seasons-api
+  name: Trakt Seasons API
+  description: Season-level metadata and episodes.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Seasons
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-seasons-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-shows-api
+  name: Trakt Shows API
+  description: Show metadata, trending, watched, anticipated, popular, progress, seasons, episodes.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Shows
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-shows-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-studios-api
+  name: Trakt Studios API
+  description: Studio reference data.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Studios
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-studios-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-sync-api
+  name: Trakt Sync API
+  description: History, watchlist, ratings, favorites, collection, playback progress.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Sync
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-sync-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
+- aid: trakt:trakt-users-api
+  name: Trakt Users API
+  description: Profiles, settings, follows, friends, social activity, comments, watching.
+  humanURL: https://trakt.docs.apiary.io/
+  baseURL: https://api.trakt.tv
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/trakt-users-api-openapi.yml
+  - type: Documentation
+    url: https://trakt.docs.apiary.io/
+  - type: JSONSchema
+    url: json-schema/trakt-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-show-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-user-schema.json
+  - type: JSONSchema
+    url: json-schema/trakt-scrobble-schema.json
+  - type: JSONStructure
+    url: json-structure/trakt-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-show-structure.json
+  - type: JSONStructure
+    url: json-structure/trakt-history-structure.json
+  - type: Examples
+    url: examples/trakt-getTrendingMovies-example.json
+  - type: Examples
+    url: examples/trakt-getMovie-example.json
+  - type: Examples
+    url: examples/trakt-generateDeviceCode-example.json
+  - type: Examples
+    url: examples/trakt-pollDeviceToken-example.json
+  - type: Examples
+    url: examples/trakt-scrobbleStart-example.json
+  - type: Examples
+    url: examples/trakt-addToHistory-example.json
+  - type: Examples
+    url: examples/trakt-searchText-example.json
+  - type: Examples
+    url: examples/trakt-getShowWatchedProgress-example.json
+  - type: Authentication
+    url: https://trakt.docs.apiary.io/#reference/authentication-oauth
+  - type: APIReference
+    url: https://trakt.docs.apiary.io/
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/trakt/overview
   - type: AgenticAccess
     url: agentic-access/trakt-agentic-access.yml
   - type: DomainSecurity
