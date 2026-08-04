@@ -1,0 +1,326 @@
+{
+  "info": {
+    "_postman_id": "cafea58f-a8e8-4958-849b-be977e9a74a9",
+    "name": "Trakt Calendars Notes API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:53.000Z",
+    "updatedAt": "2026-07-28T03:18:53.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cafea58f-a8e8-4958-849b-be977e9a74a9"
+  },
+  "item": [
+    {
+      "name": "notes",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "Get A Note",
+              "id": "5733a1d4-fec9-4217-9dc1-7ce99183768c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6ce4bc8a-8f66-4160-bf4e-198ced73b473",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "9bbab3b1-f527-4c55-92ae-4e456c94abef",
+                  "name": "Note.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:18:53.000Z",
+                  "updatedAt": "2026-07-28T03:18:53.000Z",
+                  "uid": "35240-9bbab3b1-f527-4c55-92ae-4e456c94abef"
+                }
+              ],
+              "createdAt": "2026-07-28T03:18:53.000Z",
+              "updatedAt": "2026-07-28T03:18:53.000Z",
+              "uid": "35240-5733a1d4-fec9-4217-9dc1-7ce99183768c"
+            },
+            {
+              "name": "Update A Note",
+              "id": "2bcfe3ff-ca93-4f10-91ba-f85eabbedc8d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d19f4396-4df1-4e8a-b3f3-86a01ae80f8d",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "02c17685-362e-41e9-9196-314fc9aed16a",
+                  "name": "Note updated.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:18:53.000Z",
+                  "updatedAt": "2026-07-28T03:18:53.000Z",
+                  "uid": "35240-02c17685-362e-41e9-9196-314fc9aed16a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:18:53.000Z",
+              "updatedAt": "2026-07-28T03:18:53.000Z",
+              "uid": "35240-2bcfe3ff-ca93-4f10-91ba-f85eabbedc8d"
+            },
+            {
+              "name": "Delete A Note",
+              "id": "fa4a1597-c1cb-428f-a281-2cf252fc66ed",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/notes/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "3497eb71-46b6-4363-81d0-7ec726d1d575",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "be2f8dbf-d27a-4095-859f-5da99ec69939",
+                  "name": "Note deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/notes/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "notes",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:18:53.000Z",
+                  "updatedAt": "2026-07-28T03:18:53.000Z",
+                  "uid": "35240-be2f8dbf-d27a-4095-859f-5da99ec69939"
+                }
+              ],
+              "createdAt": "2026-07-28T03:18:53.000Z",
+              "updatedAt": "2026-07-28T03:18:53.000Z",
+              "uid": "35240-fa4a1597-c1cb-428f-a281-2cf252fc66ed"
+            }
+          ],
+          "id": "6b0e99de-d957-4e0e-ab20-fdc1f5870040",
+          "createdAt": "2026-07-28T03:18:53.000Z",
+          "updatedAt": "2026-07-28T03:18:53.000Z",
+          "uid": "35240-6b0e99de-d957-4e0e-ab20-fdc1f5870040"
+        },
+        {
+          "name": "Add A Note",
+          "id": "b15fbe45-8068-4971-a628-8ac0e3dd8d2b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/notes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notes"
+              ]
+            },
+            "description": "Add a personal note attached to a movie, show, season, episode, person, or history item. VIP feature."
+          },
+          "response": [
+            {
+              "id": "d64aa275-57a8-4b04-afbe-2ae52147fa90",
+              "name": "Note created.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/notes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "notes"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:18:53.000Z",
+              "updatedAt": "2026-07-28T03:18:53.000Z",
+              "uid": "35240-d64aa275-57a8-4b04-afbe-2ae52147fa90"
+            }
+          ],
+          "createdAt": "2026-07-28T03:18:53.000Z",
+          "updatedAt": "2026-07-28T03:18:53.000Z",
+          "uid": "35240-b15fbe45-8068-4971-a628-8ac0e3dd8d2b"
+        }
+      ],
+      "id": "b588bdd8-a2a6-4071-930a-435ca203e92e",
+      "createdAt": "2026-07-28T03:18:53.000Z",
+      "updatedAt": "2026-07-28T03:18:53.000Z",
+      "uid": "35240-b588bdd8-a2a6-4071-930a-435ca203e92e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

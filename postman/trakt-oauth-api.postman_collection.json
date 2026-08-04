@@ -1,0 +1,555 @@
+{
+  "info": {
+    "_postman_id": "f3a34dc4-d554-48f7-981b-081994ef71c9",
+    "name": "Trakt Calendars OAuth API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:18:54.000Z",
+    "updatedAt": "2026-07-28T03:18:54.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f3a34dc4-d554-48f7-981b-081994ef71c9"
+  },
+  "item": [
+    {
+      "name": "oauth",
+      "item": [
+        {
+          "name": "device",
+          "item": [
+            {
+              "name": "code",
+              "item": [
+                {
+                  "name": "Generate New Device Codes",
+                  "id": "5603112d-09b9-443d-982a-4a36bdbe9157",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"client_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/device/code",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "device",
+                        "code"
+                      ]
+                    },
+                    "description": "Generate new codes to start the device authentication process. The device_code and interval are used to poll for the access_token. The user_code and verification_url should be presented to the user."
+                  },
+                  "response": [
+                    {
+                      "id": "8cc31419-5af4-489e-b399-0d2404eebc14",
+                      "name": "Device code issued.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"client_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/device/code",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "device",
+                            "code"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"device_code\": \"<string>\",\n  \"user_code\": \"<string>\",\n  \"verification_url\": \"<uri>\",\n  \"expires_in\": \"<integer>\",\n  \"interval\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:18:54.000Z",
+                      "updatedAt": "2026-07-28T03:18:54.000Z",
+                      "uid": "35240-8cc31419-5af4-489e-b399-0d2404eebc14"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:54.000Z",
+                  "updatedAt": "2026-07-28T03:18:54.000Z",
+                  "uid": "35240-5603112d-09b9-443d-982a-4a36bdbe9157"
+                }
+              ],
+              "id": "8c07daf7-1d97-442c-9ffe-592052121c4d",
+              "createdAt": "2026-07-28T03:18:54.000Z",
+              "updatedAt": "2026-07-28T03:18:54.000Z",
+              "uid": "35240-8c07daf7-1d97-442c-9ffe-592052121c4d"
+            },
+            {
+              "name": "token",
+              "item": [
+                {
+                  "name": "Poll For The Access Token",
+                  "id": "a26121af-d55c-4536-b973-d8008f376d7f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/device/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "device",
+                        "token"
+                      ]
+                    },
+                    "description": "Poll using the device_code at the returned interval until the user authorizes the app. Returns access_token on success. Status codes 400/404/409/410/418/429 indicate pending, expired, denied, or polling-too-fast states."
+                  },
+                  "response": [
+                    {
+                      "id": "0631f1f1-42c6-4a67-b578-20cde4a335a4",
+                      "name": "Token issued.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/device/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "device",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:18:54.000Z",
+                      "updatedAt": "2026-07-28T03:18:54.000Z",
+                      "uid": "35240-0631f1f1-42c6-4a67-b578-20cde4a335a4"
+                    },
+                    {
+                      "id": "2f536dee-241e-41be-a736-242e09710ad3",
+                      "name": "Pending \u2014 keep polling.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/oauth/device/token",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "oauth",
+                            "device",
+                            "token"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:18:54.000Z",
+                      "updatedAt": "2026-07-28T03:18:54.000Z",
+                      "uid": "35240-2f536dee-241e-41be-a736-242e09710ad3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:18:54.000Z",
+                  "updatedAt": "2026-07-28T03:18:54.000Z",
+                  "uid": "35240-a26121af-d55c-4536-b973-d8008f376d7f"
+                }
+              ],
+              "id": "38c091d2-c3c7-48ce-8743-4a2783d32b0c",
+              "createdAt": "2026-07-28T03:18:54.000Z",
+              "updatedAt": "2026-07-28T03:18:54.000Z",
+              "uid": "35240-38c091d2-c3c7-48ce-8743-4a2783d32b0c"
+            }
+          ],
+          "id": "e84d30ed-e820-488c-8127-928a523f4aa2",
+          "createdAt": "2026-07-28T03:18:54.000Z",
+          "updatedAt": "2026-07-28T03:18:54.000Z",
+          "uid": "35240-e84d30ed-e820-488c-8127-928a523f4aa2"
+        },
+        {
+          "name": "token",
+          "item": [
+            {
+              "name": "Exchange A Token",
+              "id": "7c60bf37-8a87-4cac-b68d-79f730908e56",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"redirect_uri\": \"<uri>\",\n  \"grant_type\": \"authorization_code\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/oauth/token",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "token"
+                  ]
+                },
+                "description": "Exchange an OAuth authorization code or refresh token for an access token."
+              },
+              "response": [
+                {
+                  "id": "ab110cdf-1131-4196-ad85-36b145a2c05a",
+                  "name": "Token issued.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"redirect_uri\": \"<uri>\",\n  \"grant_type\": \"authorization_code\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"access_token\": \"<string>\",\n  \"token_type\": \"<string>\",\n  \"expires_in\": \"<integer>\",\n  \"refresh_token\": \"<string>\",\n  \"scope\": \"<string>\",\n  \"created_at\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:18:54.000Z",
+                  "updatedAt": "2026-07-28T03:18:54.000Z",
+                  "uid": "35240-ab110cdf-1131-4196-ad85-36b145a2c05a"
+                },
+                {
+                  "id": "c2e13c5f-291e-4f77-9029-a772ead25ef6",
+                  "name": "Invalid request.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"code\": \"<string>\",\n  \"client_id\": \"<string>\",\n  \"client_secret\": \"<string>\",\n  \"redirect_uri\": \"<uri>\",\n  \"grant_type\": \"authorization_code\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/token",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "token"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:18:54.000Z",
+                  "updatedAt": "2026-07-28T03:18:54.000Z",
+                  "uid": "35240-c2e13c5f-291e-4f77-9029-a772ead25ef6"
+                }
+              ],
+              "createdAt": "2026-07-28T03:18:54.000Z",
+              "updatedAt": "2026-07-28T03:18:54.000Z",
+              "uid": "35240-7c60bf37-8a87-4cac-b68d-79f730908e56"
+            }
+          ],
+          "id": "32131a80-0897-44f0-a066-76fb2d10cd2a",
+          "createdAt": "2026-07-28T03:18:54.000Z",
+          "updatedAt": "2026-07-28T03:18:54.000Z",
+          "uid": "35240-32131a80-0897-44f0-a066-76fb2d10cd2a"
+        },
+        {
+          "name": "revoke",
+          "item": [
+            {
+              "name": "Revoke An Access Token",
+              "id": "1c3d1d9f-6d39-48cc-b32b-55913e2c8e86",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/oauth/revoke",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "oauth",
+                    "revoke"
+                  ]
+                },
+                "description": "Revoke an access_token when the user signs out of the app."
+              },
+              "response": [
+                {
+                  "id": "3aad43c3-ec65-45b7-a8c8-5ac62765db20",
+                  "name": "Token revoked.",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/oauth/revoke",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "oauth",
+                        "revoke"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:18:54.000Z",
+                  "updatedAt": "2026-07-28T03:18:54.000Z",
+                  "uid": "35240-3aad43c3-ec65-45b7-a8c8-5ac62765db20"
+                }
+              ],
+              "createdAt": "2026-07-28T03:18:54.000Z",
+              "updatedAt": "2026-07-28T03:18:54.000Z",
+              "uid": "35240-1c3d1d9f-6d39-48cc-b32b-55913e2c8e86"
+            }
+          ],
+          "id": "853ec4b1-ba79-4990-a8ed-5d356b0f6756",
+          "createdAt": "2026-07-28T03:18:54.000Z",
+          "updatedAt": "2026-07-28T03:18:54.000Z",
+          "uid": "35240-853ec4b1-ba79-4990-a8ed-5d356b0f6756"
+        }
+      ],
+      "id": "1e790faf-a8b4-4a83-8d36-700cf740dcbc",
+      "createdAt": "2026-07-28T03:18:54.000Z",
+      "updatedAt": "2026-07-28T03:18:54.000Z",
+      "uid": "35240-1e790faf-a8b4-4a83-8d36-700cf740dcbc"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

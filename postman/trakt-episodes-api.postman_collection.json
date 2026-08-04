@@ -1,0 +1,198 @@
+{
+  "info": {
+    "_postman_id": "1294c7eb-ffda-480f-af1a-837de713085d",
+    "name": "Trakt Calendars Episodes API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:44.000Z",
+    "updatedAt": "2026-07-28T03:17:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1294c7eb-ffda-480f-af1a-837de713085d"
+  },
+  "item": [
+    {
+      "name": "shows",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "seasons",
+              "item": [
+                {
+                  "name": "{season}",
+                  "item": [
+                    {
+                      "name": "episodes",
+                      "item": [
+                        {
+                          "name": "{episode}",
+                          "item": [
+                            {
+                              "name": "Get A Single Episode For A Show",
+                              "id": "ff839375-cb3c-46f9-9ba6-53595ddcf368",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/shows/:id/seasons/:season/episodes/:episode",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "shows",
+                                    ":id",
+                                    "seasons",
+                                    ":season",
+                                    "episodes",
+                                    ":episode"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "3d39987e-4cd0-47b3-a85f-e972846e1a2c",
+                                      "key": "id",
+                                      "value": "<string>",
+                                      "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                                    },
+                                    {
+                                      "id": "f416ddaf-659b-4396-a890-0b2879beaa96",
+                                      "key": "season",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    },
+                                    {
+                                      "id": "34f07c91-3ffd-4134-9c1e-011ead5c21d0",
+                                      "key": "episode",
+                                      "value": "<integer>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a single episode's details."
+                              },
+                              "response": [
+                                {
+                                  "id": "3d4205a6-ae66-49fe-914c-7fb498230dc4",
+                                  "name": "Episode details.",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/shows/:id/seasons/:season/episodes/:episode",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "shows",
+                                        ":id",
+                                        "seasons",
+                                        ":season",
+                                        "episodes",
+                                        ":episode"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "id"
+                                        },
+                                        {
+                                          "key": "season"
+                                        },
+                                        {
+                                          "key": "episode"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"season\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"title\": \"<string>\",\n  \"ids\": {\n    \"trakt\": \"<integer>\",\n    \"slug\": \"<string>\",\n    \"imdb\": \"<string>\",\n    \"tmdb\": \"<integer>\",\n    \"tvdb\": \"<integer>\"\n  },\n  \"number_abs\": \"<integer>\",\n  \"overview\": \"<string>\",\n  \"first_aired\": \"<dateTime>\",\n  \"runtime\": \"<integer>\",\n  \"episode_type\": \"season_premiere\"\n}",
+                                  "createdAt": "2026-07-28T03:17:44.000Z",
+                                  "updatedAt": "2026-07-28T03:17:44.000Z",
+                                  "uid": "35240-3d4205a6-ae66-49fe-914c-7fb498230dc4"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T03:17:44.000Z",
+                              "updatedAt": "2026-07-28T03:17:44.000Z",
+                              "uid": "35240-ff839375-cb3c-46f9-9ba6-53595ddcf368"
+                            }
+                          ],
+                          "id": "bafe847c-f03d-4553-955c-4e7eb64dbc2c",
+                          "createdAt": "2026-07-28T03:17:44.000Z",
+                          "updatedAt": "2026-07-28T03:17:44.000Z",
+                          "uid": "35240-bafe847c-f03d-4553-955c-4e7eb64dbc2c"
+                        }
+                      ],
+                      "id": "634596b0-a179-4d07-aea1-8ed3ffedc1e5",
+                      "createdAt": "2026-07-28T03:17:44.000Z",
+                      "updatedAt": "2026-07-28T03:17:44.000Z",
+                      "uid": "35240-634596b0-a179-4d07-aea1-8ed3ffedc1e5"
+                    }
+                  ],
+                  "id": "4912037e-05c5-40c1-b7f9-1a57780b9b70",
+                  "createdAt": "2026-07-28T03:17:44.000Z",
+                  "updatedAt": "2026-07-28T03:17:44.000Z",
+                  "uid": "35240-4912037e-05c5-40c1-b7f9-1a57780b9b70"
+                }
+              ],
+              "id": "e252af16-0c6c-40f1-848d-33e94f679117",
+              "createdAt": "2026-07-28T03:17:44.000Z",
+              "updatedAt": "2026-07-28T03:17:44.000Z",
+              "uid": "35240-e252af16-0c6c-40f1-848d-33e94f679117"
+            }
+          ],
+          "id": "0630ed98-e26f-482c-9161-70d07609dbb0",
+          "createdAt": "2026-07-28T03:17:44.000Z",
+          "updatedAt": "2026-07-28T03:17:44.000Z",
+          "uid": "35240-0630ed98-e26f-482c-9161-70d07609dbb0"
+        }
+      ],
+      "id": "2199db3d-7b20-4597-973d-c424d2b27ad2",
+      "createdAt": "2026-07-28T03:17:44.000Z",
+      "updatedAt": "2026-07-28T03:17:44.000Z",
+      "uid": "35240-2199db3d-7b20-4597-973d-c424d2b27ad2"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

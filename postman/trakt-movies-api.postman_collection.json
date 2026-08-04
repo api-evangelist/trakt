@@ -1,0 +1,1249 @@
+{
+  "info": {
+    "_postman_id": "7261e461-9b2c-4bbc-976e-3c06efbc4a50",
+    "name": "Trakt Calendars Movies API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:51.000Z",
+    "updatedAt": "2026-07-28T03:17:51.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-7261e461-9b2c-4bbc-976e-3c06efbc4a50"
+  },
+  "item": [
+    {
+      "name": "movies",
+      "item": [
+        {
+          "name": "trending",
+          "item": [
+            {
+              "name": "Get Trending Movies",
+              "id": "95f3e5a0-49f8-4c90-be88-5feb2e7c03eb",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/movies/trending?page=1&limit=10&extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "movies",
+                    "trending"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ]
+                },
+                "description": "Returns the most watched movies over the last 24 hours. Movies with the most watchers are returned first."
+              },
+              "response": [
+                {
+                  "id": "42b78a9e-4739-4d2f-b8fd-cada2a51cd72",
+                  "name": "Trending movies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/trending?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        "trending"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"watchers\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"in production\"\n    }\n  },\n  {\n    \"watchers\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"canceled\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-42b78a9e-4739-4d2f-b8fd-cada2a51cd72"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-95f3e5a0-49f8-4c90-be88-5feb2e7c03eb"
+            }
+          ],
+          "id": "3cc1059a-4a73-4851-b155-b8448b78a4cb",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-3cc1059a-4a73-4851-b155-b8448b78a4cb"
+        },
+        {
+          "name": "popular",
+          "item": [
+            {
+              "name": "Get Popular Movies",
+              "id": "cf5bd6dc-b493-4323-933a-c70a1ae3b9c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/movies/popular?page=1&limit=10&extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "movies",
+                    "popular"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ]
+                },
+                "description": "Returns the most popular movies, calculated using rating percentage and number of ratings."
+              },
+              "response": [
+                {
+                  "id": "58bc2f47-aca2-4bf9-baae-8baf12761c85",
+                  "name": "Popular movies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/popular?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        "popular"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"canceled\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"post production\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-58bc2f47-aca2-4bf9-baae-8baf12761c85"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-cf5bd6dc-b493-4323-933a-c70a1ae3b9c9"
+            }
+          ],
+          "id": "5e30cb66-036e-483e-ae00-b4854475841e",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-5e30cb66-036e-483e-ae00-b4854475841e"
+        },
+        {
+          "name": "watched",
+          "item": [
+            {
+              "name": "{period}",
+              "item": [
+                {
+                  "name": "Get The Most Watched Movies",
+                  "id": "dadc5b77-e6ef-4e60-acb2-1f2ad8731178",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/watched/:period?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        "watched",
+                        ":period"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2b0c9d44-6959-40ac-88c2-ed3c224da962",
+                          "key": "period",
+                          "value": "daily",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the most watched (unique users) movies in the specified time period, defaulting to weekly."
+                  },
+                  "response": [
+                    {
+                      "id": "a2f77de3-2ad1-4572-b7f8-08855ba2db56",
+                      "name": "Most watched movies.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/watched/:period?page=1&limit=10&extended=images",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            "watched",
+                            ":period"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page number for pagination.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Items per page.",
+                              "key": "limit",
+                              "value": "10"
+                            },
+                            {
+                              "description": "Request extra fields in the response.",
+                              "key": "extended",
+                              "value": "images"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "period"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"watcher_count\": \"<integer>\",\n    \"play_count\": \"<integer>\",\n    \"collected_count\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"in production\"\n    }\n  },\n  {\n    \"watcher_count\": \"<integer>\",\n    \"play_count\": \"<integer>\",\n    \"collected_count\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"planned\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-a2f77de3-2ad1-4572-b7f8-08855ba2db56"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-dadc5b77-e6ef-4e60-acb2-1f2ad8731178"
+                }
+              ],
+              "id": "b9ab2b2b-c0e5-4777-a754-e03382a93d3c",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-b9ab2b2b-c0e5-4777-a754-e03382a93d3c"
+            }
+          ],
+          "id": "31993eae-7935-4bd4-ad2f-87b83f1142ba",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-31993eae-7935-4bd4-ad2f-87b83f1142ba"
+        },
+        {
+          "name": "anticipated",
+          "item": [
+            {
+              "name": "Get The Most Anticipated Movies",
+              "id": "ffac9f81-77e7-4f4e-8fab-bae334cd97df",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/movies/anticipated?page=1&limit=10&extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "movies",
+                    "anticipated"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ]
+                },
+                "description": "Returns the most anticipated movies based on the number of lists a movie appears on."
+              },
+              "response": [
+                {
+                  "id": "e49fecbc-9686-4559-9c8d-c7767c22909a",
+                  "name": "Anticipated movies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/anticipated?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        "anticipated"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"list_count\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"rumored\"\n    }\n  },\n  {\n    \"list_count\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"in production\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-e49fecbc-9686-4559-9c8d-c7767c22909a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-ffac9f81-77e7-4f4e-8fab-bae334cd97df"
+            }
+          ],
+          "id": "bbaeadb7-4b34-4e30-9c94-6b06cc2eb6c4",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-bbaeadb7-4b34-4e30-9c94-6b06cc2eb6c4"
+        },
+        {
+          "name": "boxoffice",
+          "item": [
+            {
+              "name": "Get The Weekend Box Office",
+              "id": "a43ecfae-5261-44d0-b7ba-9afcdcd54822",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/movies/boxoffice",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "movies",
+                    "boxoffice"
+                  ]
+                },
+                "description": "Returns the top 10 grossing movies in the U.S. box office last weekend."
+              },
+              "response": [
+                {
+                  "id": "21f4a89e-1850-4d4b-9e4a-afe2390bd8d4",
+                  "name": "Box office movies.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/boxoffice",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        "boxoffice"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"revenue\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"canceled\"\n    }\n  },\n  {\n    \"revenue\": \"<integer>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"planned\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-21f4a89e-1850-4d4b-9e4a-afe2390bd8d4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-a43ecfae-5261-44d0-b7ba-9afcdcd54822"
+            }
+          ],
+          "id": "1e30f865-2a14-45ee-bd50-49c3604dddbc",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-1e30f865-2a14-45ee-bd50-49c3604dddbc"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "ratings",
+              "item": [
+                {
+                  "name": "Get Movie Ratings",
+                  "id": "3b3f88a0-63aa-4dbc-ac46-2315f57c7e4a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id/ratings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id",
+                        "ratings"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b499dfeb-1d92-406e-8542-bd55aeb8f956",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns rating (between 0 and 10) and distribution for a movie."
+                  },
+                  "response": [
+                    {
+                      "id": "dd49b224-32d4-4880-b50f-0b02ec2ac692",
+                      "name": "Movie ratings.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/:id/ratings",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            ":id",
+                            "ratings"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"rating\": \"<number>\",\n  \"votes\": \"<integer>\",\n  \"distribution\": {\n    \"nostrudf\": \"<integer>\",\n    \"fugiat27e\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-dd49b224-32d4-4880-b50f-0b02ec2ac692"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-3b3f88a0-63aa-4dbc-ac46-2315f57c7e4a"
+                }
+              ],
+              "id": "cbd3b474-25f5-42c5-8e09-d1a158335281",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-cbd3b474-25f5-42c5-8e09-d1a158335281"
+            },
+            {
+              "name": "stats",
+              "item": [
+                {
+                  "name": "Get Movie Stats",
+                  "id": "d76b5dbb-5e37-42a6-8a47-2975e0de27c2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id/stats",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id",
+                        "stats"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9e87e598-fb52-4e90-b58e-e8a72a139f20",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns lots of movie stats including watchers, plays, collectors, comments, lists, votes, and recommended counts."
+                  },
+                  "response": [
+                    {
+                      "id": "72c91505-426c-43ae-af17-eac4df6aa020",
+                      "name": "Movie stats.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/:id/stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            ":id",
+                            "stats"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"watchers\": \"<integer>\",\n  \"plays\": \"<integer>\",\n  \"collectors\": \"<integer>\",\n  \"collected_episodes\": \"<integer>\",\n  \"comments\": \"<integer>\",\n  \"lists\": \"<integer>\",\n  \"votes\": \"<integer>\",\n  \"recommended\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-72c91505-426c-43ae-af17-eac4df6aa020"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-d76b5dbb-5e37-42a6-8a47-2975e0de27c2"
+                }
+              ],
+              "id": "444baeb6-7d97-4be4-8fe2-87f414ccad9c",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-444baeb6-7d97-4be4-8fe2-87f414ccad9c"
+            },
+            {
+              "name": "related",
+              "item": [
+                {
+                  "name": "Get Related Movies",
+                  "id": "60c9a2f2-6a27-4aa9-9115-05cfbf02ca7f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id/related?page=1&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id",
+                        "related"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "cf0575b4-7299-40b8-bc92-8438474496cd",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns related and similar movies."
+                  },
+                  "response": [
+                    {
+                      "id": "1d5584be-639b-4c87-8da9-7fc8a2de59f2",
+                      "name": "Related movies.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/:id/related?page=1&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            ":id",
+                            "related"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page number for pagination.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Items per page.",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"canceled\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"post production\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-1d5584be-639b-4c87-8da9-7fc8a2de59f2"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-60c9a2f2-6a27-4aa9-9115-05cfbf02ca7f"
+                }
+              ],
+              "id": "fe8e6583-b2d5-4afb-b15f-fcb9b1d9b5f8",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-fe8e6583-b2d5-4afb-b15f-fcb9b1d9b5f8"
+            },
+            {
+              "name": "people",
+              "item": [
+                {
+                  "name": "Get All People For A Movie",
+                  "id": "d62575b1-1365-4491-9a34-44d85b42ca9f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id/people",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id",
+                        "people"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4783eef7-c3ce-4c08-98a6-210f9f358c70",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns all cast and crew for a movie, broken up by department."
+                  },
+                  "response": [
+                    {
+                      "id": "484cc6e1-5836-4781-8078-6a6af225f6bd",
+                      "name": "People associated with the movie.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/:id/people",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            ":id",
+                            "people"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cast\": [\n    {\n      \"characters\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"person\": {\n        \"name\": \"<string>\",\n        \"ids\": {\n          \"trakt\": \"<integer>\",\n          \"slug\": \"<string>\",\n          \"imdb\": \"<string>\",\n          \"tmdb\": \"<integer>\",\n          \"tvdb\": \"<integer>\"\n        },\n        \"biography\": \"<string>\",\n        \"birthday\": \"<date>\",\n        \"death\": \"<date>\",\n        \"birthplace\": \"<string>\",\n        \"homepage\": \"<uri>\"\n      }\n    },\n    {\n      \"characters\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"person\": {\n        \"name\": \"<string>\",\n        \"ids\": {\n          \"trakt\": \"<integer>\",\n          \"slug\": \"<string>\",\n          \"imdb\": \"<string>\",\n          \"tmdb\": \"<integer>\",\n          \"tvdb\": \"<integer>\"\n        },\n        \"biography\": \"<string>\",\n        \"birthday\": \"<date>\",\n        \"death\": \"<date>\",\n        \"birthplace\": \"<string>\",\n        \"homepage\": \"<uri>\"\n      }\n    }\n  ],\n  \"crew\": {\n    \"dolore_28\": [\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-484cc6e1-5836-4781-8078-6a6af225f6bd"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-d62575b1-1365-4491-9a34-44d85b42ca9f"
+                }
+              ],
+              "id": "33eb3b9b-7dab-4c14-9f23-ee312a8687e4",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-33eb3b9b-7dab-4c14-9f23-ee312a8687e4"
+            },
+            {
+              "name": "watching",
+              "item": [
+                {
+                  "name": "Get Users Watching Right Now",
+                  "id": "28509b36-4e35-4006-883f-ccc75d2c623f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id/watching",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id",
+                        "watching"
+                      ],
+                      "variable": [
+                        {
+                          "id": "cbd413a1-0b47-4e65-b4a1-2e19c1eef7f2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns all users watching this movie right now."
+                  },
+                  "response": [
+                    {
+                      "id": "9a008745-11a9-4e99-8b30-59883ac06944",
+                      "name": "Users watching right now.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/movies/:id/watching",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "movies",
+                            ":id",
+                            "watching"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"username\": \"<string>\",\n    \"private\": \"<boolean>\",\n    \"deleted\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"vip\": \"<boolean>\",\n    \"vip_ep\": \"<boolean>\",\n    \"ids\": {\n      \"slug\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  },\n  {\n    \"username\": \"<string>\",\n    \"private\": \"<boolean>\",\n    \"deleted\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"vip\": \"<boolean>\",\n    \"vip_ep\": \"<boolean>\",\n    \"ids\": {\n      \"slug\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:17:51.000Z",
+                      "updatedAt": "2026-07-28T03:17:51.000Z",
+                      "uid": "35240-9a008745-11a9-4e99-8b30-59883ac06944"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-28509b36-4e35-4006-883f-ccc75d2c623f"
+                }
+              ],
+              "id": "612fed12-48c4-49eb-9805-6f6407e4b42f",
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-612fed12-48c4-49eb-9805-6f6407e4b42f"
+            },
+            {
+              "name": "Get A Movie",
+              "id": "117bc9d1-7b81-4dc5-9365-e6aaca091011",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/movies/:id?extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "movies",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "ba2895eb-31bc-49c8-bcf3-321b46fe849d",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "description": "Returns a single movie's details."
+              },
+              "response": [
+                {
+                  "id": "650dcd90-8cae-4b8a-b7fd-7c19dbe29114",
+                  "name": "Movie details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/movies/:id?extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "movies",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"title\": \"<string>\",\n  \"year\": \"<integer>\",\n  \"ids\": {\n    \"trakt\": \"<integer>\",\n    \"slug\": \"<string>\",\n    \"imdb\": \"<string>\",\n    \"tmdb\": \"<integer>\",\n    \"tvdb\": \"<integer>\"\n  },\n  \"tagline\": \"<string>\",\n  \"overview\": \"<string>\",\n  \"released\": \"<date>\",\n  \"runtime\": \"<integer>\",\n  \"country\": \"<string>\",\n  \"trailer\": \"<uri>\",\n  \"homepage\": \"<uri>\",\n  \"rating\": \"<number>\",\n  \"votes\": \"<integer>\",\n  \"comment_count\": \"<integer>\",\n  \"updated_at\": \"<dateTime>\",\n  \"language\": \"<string>\",\n  \"languages\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"available_translations\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"genres\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"certification\": \"<string>\",\n  \"status\": \"rumored\"\n}",
+                  "createdAt": "2026-07-28T03:17:51.000Z",
+                  "updatedAt": "2026-07-28T03:17:51.000Z",
+                  "uid": "35240-650dcd90-8cae-4b8a-b7fd-7c19dbe29114"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:51.000Z",
+              "updatedAt": "2026-07-28T03:17:51.000Z",
+              "uid": "35240-117bc9d1-7b81-4dc5-9365-e6aaca091011"
+            }
+          ],
+          "id": "543d2fc8-d724-4242-a02f-d8e95cd22c8e",
+          "createdAt": "2026-07-28T03:17:51.000Z",
+          "updatedAt": "2026-07-28T03:17:51.000Z",
+          "uid": "35240-543d2fc8-d724-4242-a02f-d8e95cd22c8e"
+        }
+      ],
+      "id": "65542471-6fa4-4668-9040-62799323ecfa",
+      "createdAt": "2026-07-28T03:17:51.000Z",
+      "updatedAt": "2026-07-28T03:17:51.000Z",
+      "uid": "35240-65542471-6fa4-4668-9040-62799323ecfa"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

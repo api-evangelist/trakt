@@ -1,0 +1,177 @@
+{
+  "info": {
+    "_postman_id": "e0d3e864-25ed-45f1-9fdd-e2b5d125e435",
+    "name": "Trakt Calendars Lists API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:50.000Z",
+    "updatedAt": "2026-07-28T03:17:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0d3e864-25ed-45f1-9fdd-e2b5d125e435"
+  },
+  "item": [
+    {
+      "name": "lists",
+      "item": [
+        {
+          "name": "trending",
+          "item": [
+            {
+              "name": "Get Trending Lists",
+              "id": "feb81e55-c198-497b-b4ef-b36971fb71dd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/lists/trending",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lists",
+                    "trending"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "f8aa19db-bfef-4b61-be1e-71b7963c5068",
+                  "name": "Trending lists.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/lists/trending",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lists",
+                        "trending"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:50.000Z",
+                  "updatedAt": "2026-07-28T03:17:50.000Z",
+                  "uid": "35240-f8aa19db-bfef-4b61-be1e-71b7963c5068"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:50.000Z",
+              "updatedAt": "2026-07-28T03:17:50.000Z",
+              "uid": "35240-feb81e55-c198-497b-b4ef-b36971fb71dd"
+            }
+          ],
+          "id": "1537c116-a408-4c21-999e-1a54fe4ae6a7",
+          "createdAt": "2026-07-28T03:17:50.000Z",
+          "updatedAt": "2026-07-28T03:17:50.000Z",
+          "uid": "35240-1537c116-a408-4c21-999e-1a54fe4ae6a7"
+        },
+        {
+          "name": "popular",
+          "item": [
+            {
+              "name": "Get Popular Lists",
+              "id": "d1200bb4-5416-49af-aef8-5337ec90494d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/lists/popular",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "lists",
+                    "popular"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "66f40c09-3c19-49b1-9ae6-3ff2dc45a98a",
+                  "name": "Popular lists.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/lists/popular",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "lists",
+                        "popular"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:50.000Z",
+                  "updatedAt": "2026-07-28T03:17:50.000Z",
+                  "uid": "35240-66f40c09-3c19-49b1-9ae6-3ff2dc45a98a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:50.000Z",
+              "updatedAt": "2026-07-28T03:17:50.000Z",
+              "uid": "35240-d1200bb4-5416-49af-aef8-5337ec90494d"
+            }
+          ],
+          "id": "b7aebd17-ab48-4058-bcd5-8633737a75c6",
+          "createdAt": "2026-07-28T03:17:50.000Z",
+          "updatedAt": "2026-07-28T03:17:50.000Z",
+          "uid": "35240-b7aebd17-ab48-4058-bcd5-8633737a75c6"
+        }
+      ],
+      "id": "89177e76-7360-4907-b338-9f6e1d305f8e",
+      "createdAt": "2026-07-28T03:17:50.000Z",
+      "updatedAt": "2026-07-28T03:17:50.000Z",
+      "uid": "35240-89177e76-7360-4907-b338-9f6e1d305f8e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

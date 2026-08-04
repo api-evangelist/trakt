@@ -1,0 +1,1028 @@
+{
+  "info": {
+    "_postman_id": "1468f79d-ff45-487c-809c-87c228dcaf20",
+    "name": "Trakt Calendars Users API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:07.000Z",
+    "updatedAt": "2026-07-28T03:20:07.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1468f79d-ff45-487c-809c-87c228dcaf20"
+  },
+  "item": [
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "settings",
+          "item": [
+            {
+              "name": "Retrieve Settings",
+              "id": "23e1c96c-9875-4a47-8ba4-9ed137dc5b5d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/settings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    "settings"
+                  ]
+                },
+                "description": "Get the user's settings (account, profile, sharing, limits, permissions, browsing)."
+              },
+              "response": [
+                {
+                  "id": "135ca706-c133-4501-88b2-d1b2bc061da7",
+                  "name": "User settings.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/settings",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        "settings"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"user\": {\n    \"username\": \"<string>\",\n    \"private\": \"<boolean>\",\n    \"deleted\": \"<boolean>\",\n    \"name\": \"<string>\",\n    \"vip\": \"<boolean>\",\n    \"vip_ep\": \"<boolean>\",\n    \"ids\": {\n      \"slug\": \"<string>\",\n      \"uuid\": \"<string>\"\n    }\n  },\n  \"account\": {\n    \"timezone\": \"<string>\",\n    \"date_format\": \"<string>\",\n    \"time_24hr\": \"<boolean>\",\n    \"cover_image\": \"<uri>\",\n    \"token\": \"<string>\"\n  },\n  \"sharing_text\": {},\n  \"limits\": {},\n  \"permissions\": {}\n}",
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-135ca706-c133-4501-88b2-d1b2bc061da7"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-23e1c96c-9875-4a47-8ba4-9ed137dc5b5d"
+            }
+          ],
+          "id": "91ce3a08-e5eb-42c0-9112-e88100775a9d",
+          "createdAt": "2026-07-28T03:20:08.000Z",
+          "updatedAt": "2026-07-28T03:20:08.000Z",
+          "uid": "35240-91ce3a08-e5eb-42c0-9112-e88100775a9d"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "stats",
+              "item": [
+                {
+                  "name": "Get Stats",
+                  "id": "b3ced4e3-8291-414c-abf4-430fce554940",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/stats",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "stats"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f9dc911f-d40b-4ce9-8779-b3d6751e2067",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    },
+                    "description": "Returns stats about the movies, shows, and episodes a user has watched, collected, and rated."
+                  },
+                  "response": [
+                    {
+                      "id": "52714dec-741b-4889-bd05-dc4ed5ac39b4",
+                      "name": "User stats.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/stats",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "stats"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"movies\": {},\n  \"shows\": {},\n  \"seasons\": {},\n  \"episodes\": {},\n  \"network\": {},\n  \"ratings\": {}\n}",
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-52714dec-741b-4889-bd05-dc4ed5ac39b4"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-b3ced4e3-8291-414c-abf4-430fce554940"
+                }
+              ],
+              "id": "83c3ed22-2656-4ee6-a6e7-b5858aff8a35",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-83c3ed22-2656-4ee6-a6e7-b5858aff8a35"
+            },
+            {
+              "name": "watching",
+              "item": [
+                {
+                  "name": "Get Watching",
+                  "id": "d7192d4c-a633-4ea6-96ec-97e8ab6ce93f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/watching",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "watching"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d9f17edc-cc07-480f-b437-d0fbdb8532c2",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    },
+                    "description": "Returns a movie or episode if the user is currently watching something."
+                  },
+                  "response": [
+                    {
+                      "id": "eb86ecb1-c72c-4121-bc91-045f9ac3890d",
+                      "name": "User watching.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/watching",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "watching"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-eb86ecb1-c72c-4121-bc91-045f9ac3890d"
+                    },
+                    {
+                      "id": "2443eb51-8895-46ec-9f71-0c3c5ffc200c",
+                      "name": "User is not watching anything.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/watching",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "watching"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-2443eb51-8895-46ec-9f71-0c3c5ffc200c"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-d7192d4c-a633-4ea6-96ec-97e8ab6ce93f"
+                }
+              ],
+              "id": "43b96f90-5749-4317-bb2a-bcad13a0da51",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-43b96f90-5749-4317-bb2a-bcad13a0da51"
+            },
+            {
+              "name": "followers",
+              "item": [
+                {
+                  "name": "Get Followers",
+                  "id": "aa4bb988-651f-4f04-924d-b7c89f107197",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/followers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "followers"
+                      ],
+                      "variable": [
+                        {
+                          "id": "1a7c9d54-0ac4-4302-840e-3e90fcda3828",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "52f097ea-0e69-4e7b-aa7a-58b2a8768d42",
+                      "name": "Followers list.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/followers",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "followers"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-52f097ea-0e69-4e7b-aa7a-58b2a8768d42"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-aa4bb988-651f-4f04-924d-b7c89f107197"
+                }
+              ],
+              "id": "b8d3d36d-216e-4d37-8f87-eb4ba1339e7c",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-b8d3d36d-216e-4d37-8f87-eb4ba1339e7c"
+            },
+            {
+              "name": "following",
+              "item": [
+                {
+                  "name": "Get Following",
+                  "id": "9699e981-56c7-4e27-becb-e022d1434952",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/following",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "following"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4d4e412f-56c8-4e90-aa8a-9fcd0514eaf3",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "51086839-0891-48bd-b428-6ef5df7fedf3",
+                      "name": "Following list.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/following",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "following"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-51086839-0891-48bd-b428-6ef5df7fedf3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-9699e981-56c7-4e27-becb-e022d1434952"
+                }
+              ],
+              "id": "404d3cad-b904-4e06-940c-f4bc1559fa12",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-404d3cad-b904-4e06-940c-f4bc1559fa12"
+            },
+            {
+              "name": "friends",
+              "item": [
+                {
+                  "name": "Get Friends",
+                  "id": "74740dd1-2c5d-400e-9203-c54ed8f6aad2",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/friends",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "friends"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d3d36e86-5021-43c1-aba4-9dd71561f24b",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "c7294e9b-36d8-4abb-855b-dda193ca250a",
+                      "name": "Friends list.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/friends",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "friends"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-c7294e9b-36d8-4abb-855b-dda193ca250a"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-74740dd1-2c5d-400e-9203-c54ed8f6aad2"
+                }
+              ],
+              "id": "10badb19-03a8-4921-9a77-3e494bba631a",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-10badb19-03a8-4921-9a77-3e494bba631a"
+            },
+            {
+              "name": "follow",
+              "item": [
+                {
+                  "name": "Follow This User",
+                  "id": "a1cb6d3c-d67e-463b-ae48-2d8c9306b44f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/follow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "follow"
+                      ],
+                      "variable": [
+                        {
+                          "id": "7e30345f-1bc9-4ba7-8563-150222656e29",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "249cb192-7c26-442f-8efc-2dd3d95ccb30",
+                      "name": "Follow created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/follow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "follow"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-249cb192-7c26-442f-8efc-2dd3d95ccb30"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-a1cb6d3c-d67e-463b-ae48-2d8c9306b44f"
+                },
+                {
+                  "name": "Unfollow This User",
+                  "id": "7de3090a-17af-45a2-8c6a-812a2ffb033e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/follow",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "follow"
+                      ],
+                      "variable": [
+                        {
+                          "id": "b317d507-232d-4964-a8e6-e7ebb3cc9ebb",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "0a17f59a-180a-4ecc-9bc8-e3e6bbf6e8e9",
+                      "name": "Unfollowed.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/follow",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "follow"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-0a17f59a-180a-4ecc-9bc8-e3e6bbf6e8e9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-7de3090a-17af-45a2-8c6a-812a2ffb033e"
+                }
+              ],
+              "id": "40bfbe50-0bf7-425b-85bf-7eab26a90e01",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-40bfbe50-0bf7-425b-85bf-7eab26a90e01"
+            },
+            {
+              "name": "lists",
+              "item": [
+                {
+                  "name": "Get A User's Custom Lists",
+                  "id": "e05639e4-e5cc-49d5-a4cb-144c665bc406",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/lists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "lists"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ea42e7b1-a53b-426e-8afc-455e9716ccea",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "3851e2b6-114e-47e1-b57f-d0d422128e7b",
+                      "name": "User lists.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/lists",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "lists"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-3851e2b6-114e-47e1-b57f-d0d422128e7b"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-e05639e4-e5cc-49d5-a4cb-144c665bc406"
+                },
+                {
+                  "name": "Create A Custom List",
+                  "id": "3d5352d4-6471-42e2-a4ff-285cabe397dd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id/lists",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id",
+                        "lists"
+                      ],
+                      "variable": [
+                        {
+                          "id": "ccad8d96-bb03-4420-a3a3-c23c52d71a55",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) User slug or 'me' for the authenticated user."
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "cf35b552-2de4-4b55-894f-1fefd0d236e9",
+                      "name": "List created.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/users/:id/lists",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "users",
+                            ":id",
+                            "lists"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:20:08.000Z",
+                      "updatedAt": "2026-07-28T03:20:08.000Z",
+                      "uid": "35240-cf35b552-2de4-4b55-894f-1fefd0d236e9"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-3d5352d4-6471-42e2-a4ff-285cabe397dd"
+                }
+              ],
+              "id": "45b05715-1081-4c65-ba4a-c4d32918530f",
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-45b05715-1081-4c65-ba4a-c4d32918530f"
+            },
+            {
+              "name": "Get User Profile",
+              "id": "5096480b-b7e9-46a1-8ed3-904e7da7d588",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users/:id?extended=episodes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "episodes"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "10fa6ae0-772a-41af-8721-90ebbb339f0a",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) User slug or 'me' for the authenticated user."
+                    }
+                  ]
+                },
+                "description": "Get a user's profile information."
+              },
+              "response": [
+                {
+                  "id": "7ccbd6c7-13e1-4b9f-b61b-62e9d254c8e4",
+                  "name": "User profile.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/users/:id?extended=episodes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "users",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "episodes"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"username\": \"<string>\",\n  \"private\": \"<boolean>\",\n  \"deleted\": \"<boolean>\",\n  \"name\": \"<string>\",\n  \"vip\": \"<boolean>\",\n  \"vip_ep\": \"<boolean>\",\n  \"ids\": {\n    \"slug\": \"<string>\",\n    \"uuid\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-07-28T03:20:08.000Z",
+                  "updatedAt": "2026-07-28T03:20:08.000Z",
+                  "uid": "35240-7ccbd6c7-13e1-4b9f-b61b-62e9d254c8e4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:08.000Z",
+              "updatedAt": "2026-07-28T03:20:08.000Z",
+              "uid": "35240-5096480b-b7e9-46a1-8ed3-904e7da7d588"
+            }
+          ],
+          "id": "85497633-c239-442a-b0f0-dcd4cb1cb7f2",
+          "createdAt": "2026-07-28T03:20:08.000Z",
+          "updatedAt": "2026-07-28T03:20:08.000Z",
+          "uid": "35240-85497633-c239-442a-b0f0-dcd4cb1cb7f2"
+        }
+      ],
+      "id": "9f5145e7-b7e1-417c-9d35-d4b28982ff1a",
+      "createdAt": "2026-07-28T03:20:08.000Z",
+      "updatedAt": "2026-07-28T03:20:08.000Z",
+      "uid": "35240-9f5145e7-b7e1-417c-9d35-d4b28982ff1a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

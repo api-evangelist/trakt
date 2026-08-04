@@ -1,0 +1,98 @@
+{
+  "info": {
+    "_postman_id": "440fb46f-f06b-4aa5-b041-0ae469cbb4c5",
+    "name": "Trakt Calendars Studios API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:01.000Z",
+    "updatedAt": "2026-07-28T03:20:01.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-440fb46f-f06b-4aa5-b041-0ae469cbb4c5"
+  },
+  "item": [
+    {
+      "name": "studios",
+      "item": [
+        {
+          "name": "Get Studios",
+          "id": "25b5ca35-d391-47d2-a2ca-5a3ba954b209",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/studios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "studios"
+              ]
+            },
+            "description": "Reference list of production studios."
+          },
+          "response": [
+            {
+              "id": "33975fad-0907-41c8-a4da-b92056c5dcb4",
+              "name": "Studios.",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/studios",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "studios"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T03:20:02.000Z",
+              "updatedAt": "2026-07-28T03:20:02.000Z",
+              "uid": "35240-33975fad-0907-41c8-a4da-b92056c5dcb4"
+            }
+          ],
+          "createdAt": "2026-07-28T03:20:02.000Z",
+          "updatedAt": "2026-07-28T03:20:02.000Z",
+          "uid": "35240-25b5ca35-d391-47d2-a2ca-5a3ba954b209"
+        }
+      ],
+      "id": "e601b3cc-0147-4311-9fa8-88a26d9684e7",
+      "createdAt": "2026-07-28T03:20:02.000Z",
+      "updatedAt": "2026-07-28T03:20:02.000Z",
+      "uid": "35240-e601b3cc-0147-4311-9fa8-88a26d9684e7"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

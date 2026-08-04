@@ -1,0 +1,405 @@
+{
+  "info": {
+    "_postman_id": "a3f6f564-8f03-4fa3-8bb2-418738f9608a",
+    "name": "Trakt Calendars API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:39.000Z",
+    "updatedAt": "2026-07-28T03:17:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a3f6f564-8f03-4fa3-8bb2-418738f9608a"
+  },
+  "item": [
+    {
+      "name": "calendars",
+      "item": [
+        {
+          "name": "all",
+          "item": [
+            {
+              "name": "shows",
+              "item": [
+                {
+                  "name": "{start_date}",
+                  "item": [
+                    {
+                      "name": "{days}",
+                      "item": [
+                        {
+                          "name": "Get Shows",
+                          "id": "0ed1998d-72a2-4b3a-829e-9ff76e39e916",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/calendars/all/shows/:start_date/:days",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "calendars",
+                                "all",
+                                "shows",
+                                ":start_date",
+                                ":days"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bae4e392-f850-44c9-be63-6ce26dc731cf",
+                                  "key": "start_date",
+                                  "value": "<date>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "4c31abb2-631a-4f89-8cec-c2dd40ba5b53",
+                                  "key": "days",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Returns all shows airing during the time period specified."
+                          },
+                          "response": [
+                            {
+                              "id": "a9dcc0cb-4da8-4a89-9d75-e29be82596ba",
+                              "name": "Calendar entries.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/calendars/all/shows/:start_date/:days",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "calendars",
+                                    "all",
+                                    "shows",
+                                    ":start_date",
+                                    ":days"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "start_date"
+                                    },
+                                    {
+                                      "key": "days"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:17:40.000Z",
+                              "updatedAt": "2026-07-28T03:17:40.000Z",
+                              "uid": "35240-a9dcc0cb-4da8-4a89-9d75-e29be82596ba"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:17:40.000Z",
+                          "updatedAt": "2026-07-28T03:17:40.000Z",
+                          "uid": "35240-0ed1998d-72a2-4b3a-829e-9ff76e39e916"
+                        }
+                      ],
+                      "id": "da98fd33-caa6-4161-b978-bfabe7b23257",
+                      "createdAt": "2026-07-28T03:17:40.000Z",
+                      "updatedAt": "2026-07-28T03:17:40.000Z",
+                      "uid": "35240-da98fd33-caa6-4161-b978-bfabe7b23257"
+                    }
+                  ],
+                  "id": "b993a4f0-9f8f-4f57-9584-f9c7d66900ee",
+                  "createdAt": "2026-07-28T03:17:40.000Z",
+                  "updatedAt": "2026-07-28T03:17:40.000Z",
+                  "uid": "35240-b993a4f0-9f8f-4f57-9584-f9c7d66900ee"
+                }
+              ],
+              "id": "2585e880-6d84-4803-9858-fbf271bb7a5c",
+              "createdAt": "2026-07-28T03:17:40.000Z",
+              "updatedAt": "2026-07-28T03:17:40.000Z",
+              "uid": "35240-2585e880-6d84-4803-9858-fbf271bb7a5c"
+            },
+            {
+              "name": "movies",
+              "item": [
+                {
+                  "name": "{start_date}",
+                  "item": [
+                    {
+                      "name": "{days}",
+                      "item": [
+                        {
+                          "name": "Get Movies",
+                          "id": "780f598d-d5b6-4b91-bb6d-96c4f4c21de3",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/calendars/all/movies/:start_date/:days",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "calendars",
+                                "all",
+                                "movies",
+                                ":start_date",
+                                ":days"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9d7158a7-dcd2-42d9-88f2-7d15b59a0904",
+                                  "key": "start_date",
+                                  "value": "<date>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "48320aba-325a-4029-87fb-8cc026e0ee73",
+                                  "key": "days",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Returns all movies released during the time period specified."
+                          },
+                          "response": [
+                            {
+                              "id": "3d28c0c6-dee3-45e2-8f50-e172ce764730",
+                              "name": "Calendar entries.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/calendars/all/movies/:start_date/:days",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "calendars",
+                                    "all",
+                                    "movies",
+                                    ":start_date",
+                                    ":days"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "start_date"
+                                    },
+                                    {
+                                      "key": "days"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:17:40.000Z",
+                              "updatedAt": "2026-07-28T03:17:40.000Z",
+                              "uid": "35240-3d28c0c6-dee3-45e2-8f50-e172ce764730"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:17:40.000Z",
+                          "updatedAt": "2026-07-28T03:17:40.000Z",
+                          "uid": "35240-780f598d-d5b6-4b91-bb6d-96c4f4c21de3"
+                        }
+                      ],
+                      "id": "37e341cf-bb96-4321-b851-34b9b67a85cb",
+                      "createdAt": "2026-07-28T03:17:40.000Z",
+                      "updatedAt": "2026-07-28T03:17:40.000Z",
+                      "uid": "35240-37e341cf-bb96-4321-b851-34b9b67a85cb"
+                    }
+                  ],
+                  "id": "1d8159a7-0f75-47d7-b757-f65d9c48bbe0",
+                  "createdAt": "2026-07-28T03:17:40.000Z",
+                  "updatedAt": "2026-07-28T03:17:40.000Z",
+                  "uid": "35240-1d8159a7-0f75-47d7-b757-f65d9c48bbe0"
+                }
+              ],
+              "id": "93860142-19d2-476a-a798-a48139c2b1fa",
+              "createdAt": "2026-07-28T03:17:40.000Z",
+              "updatedAt": "2026-07-28T03:17:40.000Z",
+              "uid": "35240-93860142-19d2-476a-a798-a48139c2b1fa"
+            }
+          ],
+          "id": "25d0e67a-e564-491e-945a-f13555522b70",
+          "createdAt": "2026-07-28T03:17:40.000Z",
+          "updatedAt": "2026-07-28T03:17:40.000Z",
+          "uid": "35240-25d0e67a-e564-491e-945a-f13555522b70"
+        },
+        {
+          "name": "my",
+          "item": [
+            {
+              "name": "shows",
+              "item": [
+                {
+                  "name": "{start_date}",
+                  "item": [
+                    {
+                      "name": "{days}",
+                      "item": [
+                        {
+                          "name": "Get My Shows",
+                          "id": "ad8f63dd-d544-4a15-b1ee-2d590abdb5b9",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/calendars/my/shows/:start_date/:days",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "calendars",
+                                "my",
+                                "shows",
+                                ":start_date",
+                                ":days"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "54e44ff7-4790-47d1-ad89-b71320b991ea",
+                                  "key": "start_date",
+                                  "value": "<date>",
+                                  "description": "(Required) "
+                                },
+                                {
+                                  "id": "04154d79-04f4-430f-b294-1184e82fc89b",
+                                  "key": "days",
+                                  "value": "<integer>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Returns all shows airing during the time period specified for the authenticated user."
+                          },
+                          "response": [
+                            {
+                              "id": "5e6bc987-f0d9-412c-ada4-abe834feeba5",
+                              "name": "Personalized calendar entries.",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/calendars/my/shows/:start_date/:days",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "calendars",
+                                    "my",
+                                    "shows",
+                                    ":start_date",
+                                    ":days"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "start_date"
+                                    },
+                                    {
+                                      "key": "days"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:17:40.000Z",
+                              "updatedAt": "2026-07-28T03:17:40.000Z",
+                              "uid": "35240-5e6bc987-f0d9-412c-ada4-abe834feeba5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:17:40.000Z",
+                          "updatedAt": "2026-07-28T03:17:40.000Z",
+                          "uid": "35240-ad8f63dd-d544-4a15-b1ee-2d590abdb5b9"
+                        }
+                      ],
+                      "id": "7bc111f8-b9ce-4e4d-aa69-4bebd3f2ec4c",
+                      "createdAt": "2026-07-28T03:17:40.000Z",
+                      "updatedAt": "2026-07-28T03:17:40.000Z",
+                      "uid": "35240-7bc111f8-b9ce-4e4d-aa69-4bebd3f2ec4c"
+                    }
+                  ],
+                  "id": "e0737c62-533d-4c00-845c-a7f60242f7c1",
+                  "createdAt": "2026-07-28T03:17:40.000Z",
+                  "updatedAt": "2026-07-28T03:17:40.000Z",
+                  "uid": "35240-e0737c62-533d-4c00-845c-a7f60242f7c1"
+                }
+              ],
+              "id": "a88d93e0-b8d5-425e-a8c8-55f7d1f8ff81",
+              "createdAt": "2026-07-28T03:17:40.000Z",
+              "updatedAt": "2026-07-28T03:17:40.000Z",
+              "uid": "35240-a88d93e0-b8d5-425e-a8c8-55f7d1f8ff81"
+            }
+          ],
+          "id": "a9f25b44-bd76-4652-9221-f3efff7d5453",
+          "createdAt": "2026-07-28T03:17:40.000Z",
+          "updatedAt": "2026-07-28T03:17:40.000Z",
+          "uid": "35240-a9f25b44-bd76-4652-9221-f3efff7d5453"
+        }
+      ],
+      "id": "65c109f1-0883-4749-bdbf-7f7485e4c45d",
+      "createdAt": "2026-07-28T03:17:40.000Z",
+      "updatedAt": "2026-07-28T03:17:40.000Z",
+      "uid": "35240-65c109f1-0883-4749-bdbf-7f7485e4c45d"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

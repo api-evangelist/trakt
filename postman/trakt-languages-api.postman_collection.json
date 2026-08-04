@@ -1,0 +1,121 @@
+{
+  "info": {
+    "_postman_id": "69e0673d-47cf-43b7-af44-8b6c0bd84ba1",
+    "name": "Trakt Calendars Languages API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:49.000Z",
+    "updatedAt": "2026-07-28T03:17:49.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-69e0673d-47cf-43b7-af44-8b6c0bd84ba1"
+  },
+  "item": [
+    {
+      "name": "languages",
+      "item": [
+        {
+          "name": "{type}",
+          "item": [
+            {
+              "name": "Get Languages",
+              "id": "a6cecd04-93dd-483a-b6d3-05631a5ff087",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/languages/:type",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "languages",
+                    ":type"
+                  ],
+                  "variable": [
+                    {
+                      "id": "2b827d78-4c57-46b8-a247-63a0a8c656a7",
+                      "key": "type",
+                      "value": "shows",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "5f3082b5-f4ce-41a2-9cef-e61042b71b89",
+                  "name": "Languages.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/languages/:type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "languages",
+                        ":type"
+                      ],
+                      "variable": [
+                        {
+                          "key": "type"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:50.000Z",
+                  "updatedAt": "2026-07-28T03:17:50.000Z",
+                  "uid": "35240-5f3082b5-f4ce-41a2-9cef-e61042b71b89"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:50.000Z",
+              "updatedAt": "2026-07-28T03:17:50.000Z",
+              "uid": "35240-a6cecd04-93dd-483a-b6d3-05631a5ff087"
+            }
+          ],
+          "id": "d1ffd4a0-aa01-420a-80e1-0de8a27e0254",
+          "createdAt": "2026-07-28T03:17:50.000Z",
+          "updatedAt": "2026-07-28T03:17:50.000Z",
+          "uid": "35240-d1ffd4a0-aa01-420a-80e1-0de8a27e0254"
+        }
+      ],
+      "id": "bf47e04d-cebd-4687-83df-82350d8c155e",
+      "createdAt": "2026-07-28T03:17:50.000Z",
+      "updatedAt": "2026-07-28T03:17:50.000Z",
+      "uid": "35240-bf47e04d-cebd-4687-83df-82350d8c155e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

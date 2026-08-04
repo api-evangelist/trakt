@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "ef341e5e-bf51-4cc7-ac68-a5067412d1ce",
+    "name": "Trakt Calendars Search API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:58.000Z",
+    "updatedAt": "2026-07-28T03:19:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ef341e5e-bf51-4cc7-ac68-a5067412d1ce"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "{type}",
+          "item": [
+            {
+              "name": "Get Text Query Results",
+              "id": "f29a8f8a-b791-4161-bbab-063b831fa506",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search/:type?query=<string>&page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search",
+                    ":type"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) ",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "c57d0a08-80d0-4df5-a24b-e939c614a9fd",
+                      "key": "type",
+                      "value": "episode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Search all text fields that a media object contains. Accepts movie, show, episode, person, list (one or more, comma separated)."
+              },
+              "response": [
+                {
+                  "id": "db096f84-c245-4534-a6ef-b4b0a58ab5a0",
+                  "name": "Search results.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/search/:type?query=<string>&page=1&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "search",
+                        ":type"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) ",
+                          "key": "query",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "type"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"type\": \"list\",\n    \"score\": \"<number>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"rumored\"\n    },\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"pilot\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    },\n    \"episode\": {\n      \"season\": \"<integer>\",\n      \"number\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"number_abs\": \"<integer>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"episode_type\": \"series_finale\"\n    },\n    \"person\": {\n      \"name\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"biography\": \"<string>\",\n      \"birthday\": \"<date>\",\n      \"death\": \"<date>\",\n      \"birthplace\": \"<string>\",\n      \"homepage\": \"<uri>\"\n    }\n  },\n  {\n    \"type\": \"person\",\n    \"score\": \"<number>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"in production\"\n    },\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"planned\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    },\n    \"episode\": {\n      \"season\": \"<integer>\",\n      \"number\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"number_abs\": \"<integer>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"episode_type\": \"season_finale\"\n    },\n    \"person\": {\n      \"name\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"biography\": \"<string>\",\n      \"birthday\": \"<date>\",\n      \"death\": \"<date>\",\n      \"birthplace\": \"<string>\",\n      \"homepage\": \"<uri>\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T03:19:58.000Z",
+                  "updatedAt": "2026-07-28T03:19:58.000Z",
+                  "uid": "35240-db096f84-c245-4534-a6ef-b4b0a58ab5a0"
+                }
+              ],
+              "createdAt": "2026-07-28T03:19:58.000Z",
+              "updatedAt": "2026-07-28T03:19:58.000Z",
+              "uid": "35240-f29a8f8a-b791-4161-bbab-063b831fa506"
+            }
+          ],
+          "id": "92709d75-bc3c-4047-bf7b-87711d341dcd",
+          "createdAt": "2026-07-28T03:19:58.000Z",
+          "updatedAt": "2026-07-28T03:19:58.000Z",
+          "uid": "35240-92709d75-bc3c-4047-bf7b-87711d341dcd"
+        },
+        {
+          "name": "{id_type}",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get ID Lookup Results",
+                  "id": "956839fc-e2c1-49c7-aa7b-910410f2d8f0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/search/:id_type/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "search",
+                        ":id_type",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e40bbc23-d34c-4324-b444-483d12bafcc2",
+                          "key": "id_type",
+                          "value": "tvdb",
+                          "description": "(Required) "
+                        },
+                        {
+                          "id": "8c607946-90e5-4248-b8e2-78dddd739898",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Lookup items by their Trakt, IMDB, TMDB, or TVDB ID."
+                  },
+                  "response": [
+                    {
+                      "id": "bc2d19f1-fd91-4ec6-a943-ca94aca3d277",
+                      "name": "Lookup results.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/search/:id_type/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "search",
+                            ":id_type",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id_type"
+                            },
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"type\": \"list\",\n    \"score\": \"<number>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"rumored\"\n    },\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"pilot\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    },\n    \"episode\": {\n      \"season\": \"<integer>\",\n      \"number\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"number_abs\": \"<integer>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"episode_type\": \"series_finale\"\n    },\n    \"person\": {\n      \"name\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"biography\": \"<string>\",\n      \"birthday\": \"<date>\",\n      \"death\": \"<date>\",\n      \"birthplace\": \"<string>\",\n      \"homepage\": \"<uri>\"\n    }\n  },\n  {\n    \"type\": \"person\",\n    \"score\": \"<number>\",\n    \"movie\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"tagline\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"released\": \"<date>\",\n      \"runtime\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"languages\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"available_translations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"certification\": \"<string>\",\n      \"status\": \"in production\"\n    },\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"planned\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    },\n    \"episode\": {\n      \"season\": \"<integer>\",\n      \"number\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"number_abs\": \"<integer>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"episode_type\": \"season_finale\"\n    },\n    \"person\": {\n      \"name\": \"<string>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"biography\": \"<string>\",\n      \"birthday\": \"<date>\",\n      \"death\": \"<date>\",\n      \"birthplace\": \"<string>\",\n      \"homepage\": \"<uri>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:19:58.000Z",
+                      "updatedAt": "2026-07-28T03:19:58.000Z",
+                      "uid": "35240-bc2d19f1-fd91-4ec6-a943-ca94aca3d277"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:58.000Z",
+                  "updatedAt": "2026-07-28T03:19:58.000Z",
+                  "uid": "35240-956839fc-e2c1-49c7-aa7b-910410f2d8f0"
+                }
+              ],
+              "id": "6461d99d-8a2b-49a9-969c-01ed10661bf9",
+              "createdAt": "2026-07-28T03:19:58.000Z",
+              "updatedAt": "2026-07-28T03:19:58.000Z",
+              "uid": "35240-6461d99d-8a2b-49a9-969c-01ed10661bf9"
+            }
+          ],
+          "id": "c197346d-6687-4c77-b180-3be875c5732e",
+          "createdAt": "2026-07-28T03:19:58.000Z",
+          "updatedAt": "2026-07-28T03:19:58.000Z",
+          "uid": "35240-c197346d-6687-4c77-b180-3be875c5732e"
+        }
+      ],
+      "id": "ada33289-64fa-4eea-bca7-e19e4c7e0d96",
+      "createdAt": "2026-07-28T03:19:58.000Z",
+      "updatedAt": "2026-07-28T03:19:58.000Z",
+      "uid": "35240-ada33289-64fa-4eea-bca7-e19e4c7e0d96"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

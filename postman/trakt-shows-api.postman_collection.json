@@ -1,0 +1,934 @@
+{
+  "info": {
+    "_postman_id": "4d8b38c0-5d9c-4e75-9e22-b8a5b33bbef0",
+    "name": "Trakt Calendars Shows API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:20:00.000Z",
+    "updatedAt": "2026-07-28T03:20:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d8b38c0-5d9c-4e75-9e22-b8a5b33bbef0"
+  },
+  "item": [
+    {
+      "name": "shows",
+      "item": [
+        {
+          "name": "trending",
+          "item": [
+            {
+              "name": "Get Trending Shows",
+              "id": "80865ad4-f166-430f-bd1e-53595d19980c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows/trending?page=1&limit=10&extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows",
+                    "trending"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ]
+                },
+                "description": "Returns the most watched shows over the last 24 hours."
+              },
+              "response": [
+                {
+                  "id": "3930060b-e5d5-4987-93d3-414ba2c9a0d4",
+                  "name": "Trending shows.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/trending?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        "trending"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"watchers\": \"<integer>\",\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"pilot\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    }\n  },\n  {\n    \"watchers\": \"<integer>\",\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"pilot\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    }\n  }\n]",
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-3930060b-e5d5-4987-93d3-414ba2c9a0d4"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-80865ad4-f166-430f-bd1e-53595d19980c"
+            }
+          ],
+          "id": "16428c58-011c-4aec-aee8-d9577ab5906c",
+          "createdAt": "2026-07-28T03:20:01.000Z",
+          "updatedAt": "2026-07-28T03:20:01.000Z",
+          "uid": "35240-16428c58-011c-4aec-aee8-d9577ab5906c"
+        },
+        {
+          "name": "popular",
+          "item": [
+            {
+              "name": "Get Popular Shows",
+              "id": "48ab2f91-dfd8-4633-972f-d227689a81d9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows/popular?page=1&limit=10&extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows",
+                    "popular"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ]
+                },
+                "description": "Returns the most popular shows."
+              },
+              "response": [
+                {
+                  "id": "ad157645-89f5-419f-91db-8bf0a186c51a",
+                  "name": "Popular shows.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/popular?page=1&limit=10&extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        "popular"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        },
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"certification\": \"<string>\",\n    \"network\": \"<string>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"status\": \"continuing\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"aired_episodes\": \"<integer>\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"certification\": \"<string>\",\n    \"network\": \"<string>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"status\": \"planned\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"aired_episodes\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-ad157645-89f5-419f-91db-8bf0a186c51a"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-48ab2f91-dfd8-4633-972f-d227689a81d9"
+            }
+          ],
+          "id": "ff2958c5-2560-4399-a6d0-254fe550e7eb",
+          "createdAt": "2026-07-28T03:20:01.000Z",
+          "updatedAt": "2026-07-28T03:20:01.000Z",
+          "uid": "35240-ff2958c5-2560-4399-a6d0-254fe550e7eb"
+        },
+        {
+          "name": "watched",
+          "item": [
+            {
+              "name": "{period}",
+              "item": [
+                {
+                  "name": "Get The Most Watched Shows",
+                  "id": "d483361a-207d-4467-9cd9-583afc9fe016",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/watched/:period?page=1&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        "watched",
+                        ":period"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "c0f8cfb4-ed6d-44db-ae14-9f0e18052b0e",
+                          "key": "period",
+                          "value": "yearly",
+                          "description": "(Required) "
+                        }
+                      ]
+                    },
+                    "description": "Returns the most watched shows in the specified time period."
+                  },
+                  "response": [
+                    {
+                      "id": "b36a0af8-42f7-4e13-b7c2-a36d04533fd8",
+                      "name": "Most watched shows.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/watched/:period?page=1&limit=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            "watched",
+                            ":period"
+                          ],
+                          "query": [
+                            {
+                              "description": "Page number for pagination.",
+                              "key": "page",
+                              "value": "1"
+                            },
+                            {
+                              "description": "Items per page.",
+                              "key": "limit",
+                              "value": "10"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "period"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"watcher_count\": \"<integer>\",\n    \"play_count\": \"<integer>\",\n    \"collected_count\": \"<integer>\",\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"ended\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    }\n  },\n  {\n    \"watcher_count\": \"<integer>\",\n    \"play_count\": \"<integer>\",\n    \"collected_count\": \"<integer>\",\n    \"show\": {\n      \"title\": \"<string>\",\n      \"year\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"runtime\": \"<integer>\",\n      \"certification\": \"<string>\",\n      \"network\": \"<string>\",\n      \"country\": \"<string>\",\n      \"trailer\": \"<uri>\",\n      \"homepage\": \"<uri>\",\n      \"status\": \"canceled\",\n      \"rating\": \"<number>\",\n      \"votes\": \"<integer>\",\n      \"comment_count\": \"<integer>\",\n      \"updated_at\": \"<dateTime>\",\n      \"language\": \"<string>\",\n      \"genres\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"aired_episodes\": \"<integer>\"\n    }\n  }\n]",
+                      "createdAt": "2026-07-28T03:20:01.000Z",
+                      "updatedAt": "2026-07-28T03:20:01.000Z",
+                      "uid": "35240-b36a0af8-42f7-4e13-b7c2-a36d04533fd8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-d483361a-207d-4467-9cd9-583afc9fe016"
+                }
+              ],
+              "id": "072935d5-4c39-4169-82e3-f92f105f10bc",
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-072935d5-4c39-4169-82e3-f92f105f10bc"
+            }
+          ],
+          "id": "f54bef80-872e-4280-900a-228f537136c0",
+          "createdAt": "2026-07-28T03:20:01.000Z",
+          "updatedAt": "2026-07-28T03:20:01.000Z",
+          "uid": "35240-f54bef80-872e-4280-900a-228f537136c0"
+        },
+        {
+          "name": "anticipated",
+          "item": [
+            {
+              "name": "Get The Most Anticipated Shows",
+              "id": "09200cb9-c3da-4840-97df-4b2887743976",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows/anticipated?page=1&limit=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows",
+                    "anticipated"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination.",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Items per page.",
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ]
+                },
+                "description": "Returns the most anticipated shows based on the number of lists a show appears on."
+              },
+              "response": [
+                {
+                  "id": "26a7ecb3-7f34-4768-9322-7f443d4821ab",
+                  "name": "Anticipated shows.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/anticipated?page=1&limit=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        "anticipated"
+                      ],
+                      "query": [
+                        {
+                          "description": "Page number for pagination.",
+                          "key": "page",
+                          "value": "1"
+                        },
+                        {
+                          "description": "Items per page.",
+                          "key": "limit",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"certification\": \"<string>\",\n    \"network\": \"<string>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"status\": \"continuing\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"aired_episodes\": \"<integer>\"\n  },\n  {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"certification\": \"<string>\",\n    \"network\": \"<string>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"status\": \"planned\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"aired_episodes\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-26a7ecb3-7f34-4768-9322-7f443d4821ab"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-09200cb9-c3da-4840-97df-4b2887743976"
+            }
+          ],
+          "id": "7846ac68-ff9a-41f7-bc3a-8ee53a68b3ca",
+          "createdAt": "2026-07-28T03:20:01.000Z",
+          "updatedAt": "2026-07-28T03:20:01.000Z",
+          "uid": "35240-7846ac68-ff9a-41f7-bc3a-8ee53a68b3ca"
+        },
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "seasons",
+              "item": [
+                {
+                  "name": "Get All Seasons For A Show",
+                  "id": "5ffec656-ea0c-4c73-9f82-bef316ec2d47",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id/seasons",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id",
+                        "seasons"
+                      ],
+                      "variable": [
+                        {
+                          "id": "464d0d69-0a43-4ab2-88c7-bbbbe5b1083f",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns all seasons for a show including the number of episodes in each season."
+                  },
+                  "response": [
+                    {
+                      "id": "30ec6955-15e7-4c66-a474-c24aecb04677",
+                      "name": "Show seasons.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/seasons",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "seasons"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"number\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"episode_count\": \"<integer>\",\n    \"aired_episodes\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"network\": \"<string>\"\n  },\n  {\n    \"number\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"episode_count\": \"<integer>\",\n    \"aired_episodes\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"network\": \"<string>\"\n  }\n]",
+                      "createdAt": "2026-07-28T03:20:01.000Z",
+                      "updatedAt": "2026-07-28T03:20:01.000Z",
+                      "uid": "35240-30ec6955-15e7-4c66-a474-c24aecb04677"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-5ffec656-ea0c-4c73-9f82-bef316ec2d47"
+                }
+              ],
+              "id": "9b36e894-6523-45b5-b1d8-57d301130f3d",
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-9b36e894-6523-45b5-b1d8-57d301130f3d"
+            },
+            {
+              "name": "progress",
+              "item": [
+                {
+                  "name": "watched",
+                  "item": [
+                    {
+                      "name": "Get Show Watched Progress",
+                      "id": "4561f526-ab0e-4827-bf99-f5384fd7957e",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/progress/watched",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "progress",
+                            "watched"
+                          ],
+                          "variable": [
+                            {
+                              "id": "3bd93353-5fb2-4dd9-9d8a-1b4f8cf9df22",
+                              "key": "id",
+                              "value": "<string>",
+                              "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                            }
+                          ]
+                        },
+                        "description": "Returns watched progress for a show including details on all aired seasons and episodes."
+                      },
+                      "response": [
+                        {
+                          "id": "07616c43-075a-4ebe-86b4-0c693a612572",
+                          "name": "Watched progress.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/shows/:id/progress/watched",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "shows",
+                                ":id",
+                                "progress",
+                                "watched"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"aired\": \"<integer>\",\n  \"completed\": \"<integer>\",\n  \"last_watched_at\": \"<dateTime>\",\n  \"reset_at\": \"<dateTime>\",\n  \"seasons\": [\n    {\n      \"number\": \"<integer>\",\n      \"aired\": \"<integer>\",\n      \"completed\": \"<integer>\",\n      \"episodes\": [\n        {\n          \"number\": \"<integer>\",\n          \"completed\": \"<boolean>\",\n          \"last_watched_at\": \"<dateTime>\"\n        },\n        {\n          \"number\": \"<integer>\",\n          \"completed\": \"<boolean>\",\n          \"last_watched_at\": \"<dateTime>\"\n        }\n      ]\n    },\n    {\n      \"number\": \"<integer>\",\n      \"aired\": \"<integer>\",\n      \"completed\": \"<integer>\",\n      \"episodes\": [\n        {\n          \"number\": \"<integer>\",\n          \"completed\": \"<boolean>\",\n          \"last_watched_at\": \"<dateTime>\"\n        },\n        {\n          \"number\": \"<integer>\",\n          \"completed\": \"<boolean>\",\n          \"last_watched_at\": \"<dateTime>\"\n        }\n      ]\n    }\n  ],\n  \"hidden_seasons\": [\n    {\n      \"number\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"episode_count\": \"<integer>\",\n      \"aired_episodes\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"network\": \"<string>\"\n    },\n    {\n      \"number\": \"<integer>\",\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"episode_count\": \"<integer>\",\n      \"aired_episodes\": \"<integer>\",\n      \"title\": \"<string>\",\n      \"overview\": \"<string>\",\n      \"first_aired\": \"<dateTime>\",\n      \"network\": \"<string>\"\n    }\n  ],\n  \"next_episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"mid_season_finale\"\n  },\n  \"last_episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"mid_season_premiere\"\n  }\n}",
+                          "createdAt": "2026-07-28T03:20:01.000Z",
+                          "updatedAt": "2026-07-28T03:20:01.000Z",
+                          "uid": "35240-07616c43-075a-4ebe-86b4-0c693a612572"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:20:01.000Z",
+                      "updatedAt": "2026-07-28T03:20:01.000Z",
+                      "uid": "35240-4561f526-ab0e-4827-bf99-f5384fd7957e"
+                    }
+                  ],
+                  "id": "97aa3a59-a11d-4673-b1a4-7c08a5c21792",
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-97aa3a59-a11d-4673-b1a4-7c08a5c21792"
+                }
+              ],
+              "id": "d928dc6b-2307-4478-92a3-5b924f6fe082",
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-d928dc6b-2307-4478-92a3-5b924f6fe082"
+            },
+            {
+              "name": "people",
+              "item": [
+                {
+                  "name": "Get All People For A Show",
+                  "id": "f9162625-c056-4983-b0c2-7c76da1e823a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id/people",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id",
+                        "people"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a17fa90d-6bd5-4231-bc37-3f37bfd60346",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                        }
+                      ]
+                    },
+                    "description": "Returns all cast and crew for a show."
+                  },
+                  "response": [
+                    {
+                      "id": "5724785d-81ec-4929-ad89-a98e4d97b22e",
+                      "name": "Show people.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/shows/:id/people",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "shows",
+                            ":id",
+                            "people"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cast\": [\n    {\n      \"characters\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"person\": {\n        \"name\": \"<string>\",\n        \"ids\": {\n          \"trakt\": \"<integer>\",\n          \"slug\": \"<string>\",\n          \"imdb\": \"<string>\",\n          \"tmdb\": \"<integer>\",\n          \"tvdb\": \"<integer>\"\n        },\n        \"biography\": \"<string>\",\n        \"birthday\": \"<date>\",\n        \"death\": \"<date>\",\n        \"birthplace\": \"<string>\",\n        \"homepage\": \"<uri>\"\n      }\n    },\n    {\n      \"characters\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"person\": {\n        \"name\": \"<string>\",\n        \"ids\": {\n          \"trakt\": \"<integer>\",\n          \"slug\": \"<string>\",\n          \"imdb\": \"<string>\",\n          \"tmdb\": \"<integer>\",\n          \"tvdb\": \"<integer>\"\n        },\n        \"biography\": \"<string>\",\n        \"birthday\": \"<date>\",\n        \"death\": \"<date>\",\n        \"birthplace\": \"<string>\",\n        \"homepage\": \"<uri>\"\n      }\n    }\n  ],\n  \"crew\": {\n    \"sed1ef\": [\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      }\n    ],\n    \"reprehenderit9\": [\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      }\n    ],\n    \"anim_\": [\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"person\": {\n          \"name\": \"<string>\",\n          \"ids\": {\n            \"trakt\": \"<integer>\",\n            \"slug\": \"<string>\",\n            \"imdb\": \"<string>\",\n            \"tmdb\": \"<integer>\",\n            \"tvdb\": \"<integer>\"\n          },\n          \"biography\": \"<string>\",\n          \"birthday\": \"<date>\",\n          \"death\": \"<date>\",\n          \"birthplace\": \"<string>\",\n          \"homepage\": \"<uri>\"\n        }\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:20:01.000Z",
+                      "updatedAt": "2026-07-28T03:20:01.000Z",
+                      "uid": "35240-5724785d-81ec-4929-ad89-a98e4d97b22e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-f9162625-c056-4983-b0c2-7c76da1e823a"
+                }
+              ],
+              "id": "27c1c93e-f4da-41f5-9df9-6324dcd73453",
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-27c1c93e-f4da-41f5-9df9-6324dcd73453"
+            },
+            {
+              "name": "Get A Single Show",
+              "id": "1d06f2ab-d6e6-4c2d-8ad9-73dbc0dca3cc",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/shows/:id?extended=images",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "shows",
+                    ":id"
+                  ],
+                  "query": [
+                    {
+                      "description": "Request extra fields in the response.",
+                      "key": "extended",
+                      "value": "images"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "fc101ba6-cc7c-43ed-b116-58d5e7ebb43c",
+                      "key": "id",
+                      "value": "<string>",
+                      "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                    }
+                  ]
+                },
+                "description": "Returns a single show's details."
+              },
+              "response": [
+                {
+                  "id": "fc6fa761-204f-4fd2-9750-26fb407c38cd",
+                  "name": "Show details.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/shows/:id?extended=images",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "shows",
+                        ":id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Request extra fields in the response.",
+                          "key": "extended",
+                          "value": "images"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"title\": \"<string>\",\n  \"year\": \"<integer>\",\n  \"ids\": {\n    \"trakt\": \"<integer>\",\n    \"slug\": \"<string>\",\n    \"imdb\": \"<string>\",\n    \"tmdb\": \"<integer>\",\n    \"tvdb\": \"<integer>\"\n  },\n  \"overview\": \"<string>\",\n  \"first_aired\": \"<dateTime>\",\n  \"runtime\": \"<integer>\",\n  \"certification\": \"<string>\",\n  \"network\": \"<string>\",\n  \"country\": \"<string>\",\n  \"trailer\": \"<uri>\",\n  \"homepage\": \"<uri>\",\n  \"status\": \"ended\",\n  \"rating\": \"<number>\",\n  \"votes\": \"<integer>\",\n  \"comment_count\": \"<integer>\",\n  \"updated_at\": \"<dateTime>\",\n  \"language\": \"<string>\",\n  \"genres\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"aired_episodes\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T03:20:01.000Z",
+                  "updatedAt": "2026-07-28T03:20:01.000Z",
+                  "uid": "35240-fc6fa761-204f-4fd2-9750-26fb407c38cd"
+                }
+              ],
+              "createdAt": "2026-07-28T03:20:01.000Z",
+              "updatedAt": "2026-07-28T03:20:01.000Z",
+              "uid": "35240-1d06f2ab-d6e6-4c2d-8ad9-73dbc0dca3cc"
+            }
+          ],
+          "id": "c7bcf29d-ccb4-4a00-a660-66d8a9924c54",
+          "createdAt": "2026-07-28T03:20:01.000Z",
+          "updatedAt": "2026-07-28T03:20:01.000Z",
+          "uid": "35240-c7bcf29d-ccb4-4a00-a660-66d8a9924c54"
+        }
+      ],
+      "id": "f3fa03fd-e01e-4526-a9c4-f665d67c62f8",
+      "createdAt": "2026-07-28T03:20:01.000Z",
+      "updatedAt": "2026-07-28T03:20:01.000Z",
+      "uid": "35240-f3fa03fd-e01e-4526-a9c4-f665d67c62f8"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

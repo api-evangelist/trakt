@@ -1,0 +1,426 @@
+{
+  "info": {
+    "_postman_id": "81f0e8e2-a7be-4527-882f-a86a5ab8f79d",
+    "name": "Trakt Calendars Comments API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:42.000Z",
+    "updatedAt": "2026-07-28T03:17:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-81f0e8e2-a7be-4527-882f-a86a5ab8f79d"
+  },
+  "item": [
+    {
+      "name": "comments",
+      "item": [
+        {
+          "name": "{id}",
+          "item": [
+            {
+              "name": "like",
+              "item": [
+                {
+                  "name": "Like A Comment",
+                  "id": "26acbcce-fad9-4196-a4c3-187bbb7ebb00",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/comments/:id/like",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "comments",
+                        ":id",
+                        "like"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d2ee3d0e-1fe3-4019-a32c-e25e787b81a0",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "ba3eb8bc-0cab-4d35-9f60-eb3a22663678",
+                      "name": "Liked.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/comments/:id/like",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "comments",
+                            ":id",
+                            "like"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:17:43.000Z",
+                      "updatedAt": "2026-07-28T03:17:43.000Z",
+                      "uid": "35240-ba3eb8bc-0cab-4d35-9f60-eb3a22663678"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:43.000Z",
+                  "updatedAt": "2026-07-28T03:17:43.000Z",
+                  "uid": "35240-26acbcce-fad9-4196-a4c3-187bbb7ebb00"
+                },
+                {
+                  "name": "Remove Like On A Comment",
+                  "id": "7c7ea070-b354-4c0e-aec7-ff48fa5b9b54",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/comments/:id/like",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "comments",
+                        ":id",
+                        "like"
+                      ],
+                      "variable": [
+                        {
+                          "id": "6dc3a056-de33-46b5-a87c-878487495d8a",
+                          "key": "id",
+                          "value": "<integer>",
+                          "description": "(Required) "
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "2b4257ec-3389-4b29-8ae6-663d77603150",
+                      "name": "Like removed.",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/comments/:id/like",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "comments",
+                            ":id",
+                            "like"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T03:17:43.000Z",
+                      "updatedAt": "2026-07-28T03:17:43.000Z",
+                      "uid": "35240-2b4257ec-3389-4b29-8ae6-663d77603150"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:17:43.000Z",
+                  "updatedAt": "2026-07-28T03:17:43.000Z",
+                  "uid": "35240-7c7ea070-b354-4c0e-aec7-ff48fa5b9b54"
+                }
+              ],
+              "id": "42188e74-c0c7-48c9-bb7b-ed6e4157523d",
+              "createdAt": "2026-07-28T03:17:43.000Z",
+              "updatedAt": "2026-07-28T03:17:43.000Z",
+              "uid": "35240-42188e74-c0c7-48c9-bb7b-ed6e4157523d"
+            },
+            {
+              "name": "Get A Comment Or Reply",
+              "id": "a5461d4d-bc49-4021-89aa-9b78e75d00ca",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/comments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "b47d2cc6-5754-440c-89cf-5a986d043d53",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "00920596-61ad-497c-a2ca-2d08f452797f",
+                  "name": "Comment.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/comments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "comments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:43.000Z",
+                  "updatedAt": "2026-07-28T03:17:43.000Z",
+                  "uid": "35240-00920596-61ad-497c-a2ca-2d08f452797f"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:43.000Z",
+              "updatedAt": "2026-07-28T03:17:43.000Z",
+              "uid": "35240-a5461d4d-bc49-4021-89aa-9b78e75d00ca"
+            },
+            {
+              "name": "Update A Comment Or Reply",
+              "id": "c9dcfd74-f39d-424d-9016-9daf2f023f84",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/comments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "a664d6a1-6e04-4135-98e4-6147e257a9f9",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "00358af6-bf3b-4942-8a69-09231f142969",
+                  "name": "Comment updated.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/comments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "comments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:43.000Z",
+                  "updatedAt": "2026-07-28T03:17:43.000Z",
+                  "uid": "35240-00358af6-bf3b-4942-8a69-09231f142969"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:43.000Z",
+              "updatedAt": "2026-07-28T03:17:43.000Z",
+              "uid": "35240-c9dcfd74-f39d-424d-9016-9daf2f023f84"
+            },
+            {
+              "name": "Delete A Comment Or Reply",
+              "id": "5f9d4383-2c1a-44a2-9696-69d4d3065452",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/comments/:id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "comments",
+                    ":id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "8ddb77fa-ab95-4138-8e16-63a43bece079",
+                      "key": "id",
+                      "value": "<integer>",
+                      "description": "(Required) "
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "id": "da04254e-566c-400e-823a-ec221808f25d",
+                  "name": "Deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/comments/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "comments",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "No Content",
+                  "code": 204,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:43.000Z",
+                  "updatedAt": "2026-07-28T03:17:43.000Z",
+                  "uid": "35240-da04254e-566c-400e-823a-ec221808f25d"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:43.000Z",
+              "updatedAt": "2026-07-28T03:17:43.000Z",
+              "uid": "35240-5f9d4383-2c1a-44a2-9696-69d4d3065452"
+            }
+          ],
+          "id": "de8f8e43-7c4a-4d69-9386-0975a60b611c",
+          "createdAt": "2026-07-28T03:17:43.000Z",
+          "updatedAt": "2026-07-28T03:17:43.000Z",
+          "uid": "35240-de8f8e43-7c4a-4d69-9386-0975a60b611c"
+        }
+      ],
+      "id": "23047754-228c-4907-afa8-9e50dbf9aa12",
+      "createdAt": "2026-07-28T03:17:43.000Z",
+      "updatedAt": "2026-07-28T03:17:43.000Z",
+      "uid": "35240-23047754-228c-4907-afa8-9e50dbf9aa12"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}

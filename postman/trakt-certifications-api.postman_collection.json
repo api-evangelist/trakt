@@ -1,0 +1,122 @@
+{
+  "info": {
+    "_postman_id": "6e0027aa-9f1e-4d5b-a2ec-1eb1bb74c910",
+    "name": "Trakt Calendars Certifications API",
+    "description": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:17:40.000Z",
+    "updatedAt": "2026-07-28T03:17:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6e0027aa-9f1e-4d5b-a2ec-1eb1bb74c910"
+  },
+  "item": [
+    {
+      "name": "certifications",
+      "item": [
+        {
+          "name": "{type}",
+          "item": [
+            {
+              "name": "Get Certifications",
+              "id": "559b3862-c061-4e9f-8088-670b465b2191",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/certifications/:type",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "certifications",
+                    ":type"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d127b553-4625-4c47-97f6-e99f98a0ccc0",
+                      "key": "type",
+                      "value": "movies",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "description": "Reference list of certifications for movies or shows."
+              },
+              "response": [
+                {
+                  "id": "f321d8dd-4000-4fa8-8664-16c8584b6607",
+                  "name": "Certifications.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/certifications/:type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "certifications",
+                        ":type"
+                      ],
+                      "variable": [
+                        {
+                          "key": "type"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T03:17:41.000Z",
+                  "updatedAt": "2026-07-28T03:17:41.000Z",
+                  "uid": "35240-f321d8dd-4000-4fa8-8664-16c8584b6607"
+                }
+              ],
+              "createdAt": "2026-07-28T03:17:41.000Z",
+              "updatedAt": "2026-07-28T03:17:41.000Z",
+              "uid": "35240-559b3862-c061-4e9f-8088-670b465b2191"
+            }
+          ],
+          "id": "5e667636-4491-4291-b79a-420473f8e036",
+          "createdAt": "2026-07-28T03:17:41.000Z",
+          "updatedAt": "2026-07-28T03:17:41.000Z",
+          "uid": "35240-5e667636-4491-4291-b79a-420473f8e036"
+        }
+      ],
+      "id": "4dd407ef-3336-4296-8a76-2845572d9063",
+      "createdAt": "2026-07-28T03:17:41.000Z",
+      "updatedAt": "2026-07-28T03:17:41.000Z",
+      "uid": "35240-4dd407ef-3336-4296-8a76-2845572d9063"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.trakt.tv"
+    }
+  ]
+}
