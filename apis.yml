@@ -1099,6 +1099,9 @@ apis:
   - type: APIReference
     url: https://trakt.docs.apiary.io/
 common:
+  - type: License
+    name: MIT
+    url: https://github.com/trakt/trakt-api/blob/master/LICENSE
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/trakt/overview
   - type: AgenticAccess
