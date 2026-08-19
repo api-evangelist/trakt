@@ -1,0 +1,1724 @@
+{
+  "item": [
+    {
+      "id": "d65ea7c6-0a78-40ed-8648-5b95afcf79e3",
+      "name": "Sync",
+      "description": {
+        "content": "History, watchlist, ratings, favorites, collection, playback progress.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14f0bea2-0a00-453f-bc88-d493ec657a3a",
+          "name": "Get Last Activity",
+          "request": {
+            "name": "Get Last Activity",
+            "description": {
+              "content": "Returns timestamps for the last activity of each Sync resource, so apps can determine what to refresh.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "last_activities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "20591a26-c000-4bce-907b-8f5ad1ce0923",
+              "name": "Last activities.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "last_activities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"all\": \"1953-12-11T00:36:37.606Z\",\n  \"movies\": {},\n  \"episodes\": {},\n  \"shows\": {},\n  \"seasons\": {},\n  \"comments\": {},\n  \"lists\": {},\n  \"watchlist\": {},\n  \"favorites\": {},\n  \"recommendations\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbda98b9-5bba-4468-9762-f521bf615669",
+          "name": "Get Playback Progress",
+          "request": {
+            "name": "Get Playback Progress",
+            "description": {
+              "content": "Returns paused and unfinished playback progress for the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "playback"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8774748f-1c9e-4e55-b791-f0cf51a63ad0",
+              "name": "Playback progress.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "playback"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e79b3746-d0f1-4df5-820d-ff0296ad3175",
+          "name": "Remove A Playback Item",
+          "request": {
+            "name": "Remove A Playback Item",
+            "description": {
+              "content": "Remove a playback item from a user's playback progress list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "playback",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bfdd19c4-3fd0-4a2f-bc5a-ae7ce0e560ef",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "playback",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "363da2ed-5d2e-4f1d-ad26-f9b9e1e64069",
+          "name": "Get Movie Collection",
+          "request": {
+            "name": "Get Movie Collection",
+            "description": {
+              "content": "Returns movies in the authenticated user collection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "collection",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e02a4f04-094f-4f8c-aaad-43e67732f5d5",
+              "name": "Movie collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "collection",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf2d8472-4a60-4369-8eb8-1a5148c0c6c6",
+          "name": "Get Show Collection",
+          "request": {
+            "name": "Get Show Collection",
+            "description": {
+              "content": "Returns shows in the authenticated user collection, including collected seasons and episodes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "collection",
+                "shows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89c9e09c-223a-458b-8e2c-3553df215bfe",
+              "name": "Show collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "collection",
+                    "shows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8ca6014-07f3-49a8-b990-32d74d4076fc",
+          "name": "Add Items To Collection",
+          "request": {
+            "name": "Add Items To Collection",
+            "description": {
+              "content": "Add items to a user's collection. Accepts movies, shows, seasons, episodes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "collection"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c60a43a6-bde6-42e5-bc4b-095aea261f77",
+              "name": "Added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "collection"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "56b275d1-5890-423b-9dda-0531cf30e804",
+          "name": "Remove Items From Collection",
+          "request": {
+            "name": "Remove Items From Collection",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "collection",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "01af40d6-c4e6-434e-a3f0-41916c9ba982",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "collection",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3dd3ea24-10ae-4a2b-b590-5832c77ef768",
+          "name": "Get Watched Movies",
+          "request": {
+            "name": "Get Watched Movies",
+            "description": {
+              "content": "Returns all movies a user has watched, sorted by most plays.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "watched",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4cb0a862-d02b-4df7-b9ef-e6bc5192dd12",
+              "name": "Watched movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "watched",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d5f7a883-7793-4912-bf44-e6bc36bcec11",
+          "name": "Get Watched Shows",
+          "request": {
+            "name": "Get Watched Shows",
+            "description": {
+              "content": "Returns all shows a user has watched, sorted by most plays.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "watched",
+                "shows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fd4e949a-925a-485b-a4e4-bcc3bf4d77a3",
+              "name": "Watched shows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "watched",
+                    "shows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "affe6fd6-4a89-4d12-9286-cd74e6737208",
+          "name": "Get Watched History",
+          "request": {
+            "name": "Get Watched History",
+            "description": {
+              "content": "Returns movies and episodes that a user has watched, sorted by most recent.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                }
+              ],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bd28fc78-a0d8-400b-aa18-5abdb4c1121a",
+              "name": "History entries.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b229ecfb-b058-43ef-bced-3e9051f543a6",
+          "name": "Add Items To Watched History",
+          "request": {
+            "name": "Add Items To Watched History",
+            "description": {
+              "content": "Add items to a user's watch history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b79793ac-efa6-48d7-941f-b62dea6c9d60",
+              "name": "History add result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70af4336-62f4-4ffc-a9f0-3ee54ef39eee",
+          "name": "Remove Items From History",
+          "request": {
+            "name": "Remove Items From History",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "history",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76a5042c-fb03-4db3-aa95-3af92981c0e3",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "history",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0847632b-6ff5-42a7-a9ae-317089ea45aa",
+          "name": "Add New Ratings",
+          "request": {
+            "name": "Add New Ratings",
+            "description": {
+              "content": "Rate one or more items.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ebbe95a8-ff5d-4f60-87be-99a8ad92af5c",
+              "name": "Ratings added.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "413da77c-c718-4d23-8424-88fbb16f6351",
+          "name": "Remove Ratings",
+          "request": {
+            "name": "Remove Ratings",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "ratings",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4e8c5e40-8c39-443a-8569-1185c7f5ef82",
+              "name": "Ratings removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "ratings",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3738d0cf-caee-485a-ac86-8babdee7c5bf",
+          "name": "Get Watchlist",
+          "request": {
+            "name": "Get Watchlist",
+            "description": {
+              "content": "Returns all items in a user's watchlist.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync",
+                "watchlist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddca77ee-1b98-4d68-a31f-3b90787070df",
+              "name": "Watchlist items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "watchlist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68f893b2-0981-49e9-bb4b-ee66eed7f618",
+          "name": "Add Items To Watchlist",
+          "request": {
+            "name": "Add Items To Watchlist",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "watchlist"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "103a74c5-4ba5-435e-9c6d-89c41ddd5395",
+              "name": "Watchlist add result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "watchlist"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7598f531-d0e7-41bc-9d0b-5dbd8f948b9d",
+          "name": "Remove Items From Watchlist",
+          "request": {
+            "name": "Remove Items From Watchlist",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "watchlist",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e6e119e-57fd-431a-9fca-dcbcc91d9059",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "watchlist",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25304145-0d8b-46f3-a771-4023b90b4222",
+          "name": "Get Favorites",
+          "request": {
+            "name": "Get Favorites",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "favorites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "92b1e345-91bd-4522-866e-c31195fc2257",
+              "name": "Favorites items.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "favorites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2fdb4631-fdfb-420a-9c94-a882fc3fc212",
+          "name": "Add Items To Favorites",
+          "request": {
+            "name": "Add Items To Favorites",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "favorites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8a7e8a0e-1fe1-4094-a20c-21b146c2b428",
+              "name": "Favorites add result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "favorites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b2267c8-4be9-49bb-ae78-8b66598d1729",
+          "name": "Remove Items From Favorites",
+          "request": {
+            "name": "Remove Items From Favorites",
+            "description": {},
+            "url": {
+              "path": [
+                "sync",
+                "favorites",
+                "remove"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf9b8c27-86e7-4359-ad3e-2c6564b52441",
+              "name": "Removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync",
+                    "favorites",
+                    "remove"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movies\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\",\n      \"rating\": \"<integer>\"\n    }\n  ],\n  \"shows\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      }\n    }\n  ],\n  \"seasons\": [\n    \"<object>\",\n    \"<object>\"\n  ],\n  \"episodes\": [\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    },\n    {\n      \"ids\": {\n        \"trakt\": \"<integer>\",\n        \"slug\": \"<string>\",\n        \"imdb\": \"<string>\",\n        \"tmdb\": \"<integer>\",\n        \"tvdb\": \"<integer>\"\n      },\n      \"watched_at\": \"<dateTime>\"\n    }\n  ],\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "8d2c395d-b0a8-4d89-bfff-c0d01482f275",
+    "name": "Trakt Calendars Sync API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

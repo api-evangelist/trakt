@@ -1,0 +1,244 @@
+{
+  "item": [
+    {
+      "id": "ace762ca-af67-40ef-8d7d-b573aa90e8ae",
+      "name": "Checkin",
+      "description": {
+        "content": "Lightweight social \"now watching\" check-ins.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8d4e8f8-d09a-4bf7-bb92-823244ba5e91",
+          "name": "Check Into An Item",
+          "request": {
+            "name": "Check Into An Item",
+            "description": {
+              "content": "Check into a movie or episode. Sets the watching status; auto-expires after the runtime elapses.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checkin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"sharing\": {\n    \"twitter\": \"<boolean>\",\n    \"mastodon\": \"<boolean>\",\n    \"tumblr\": \"<boolean>\"\n  },\n  \"message\": \"<string>\",\n  \"venue_id\": \"<string>\",\n  \"venue_name\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "383c8eab-0f39-4746-9ab2-47e9345c83f8",
+              "name": "Checkin created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"sharing\": {\n    \"twitter\": \"<boolean>\",\n    \"mastodon\": \"<boolean>\",\n    \"tumblr\": \"<boolean>\"\n  },\n  \"message\": \"<string>\",\n  \"venue_id\": \"<string>\",\n  \"venue_name\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "631a1708-c756-4df5-9db7-b1f7fa82484d",
+              "name": "Already checked in (conflict).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"sharing\": {\n    \"twitter\": \"<boolean>\",\n    \"mastodon\": \"<boolean>\",\n    \"tumblr\": \"<boolean>\"\n  },\n  \"message\": \"<string>\",\n  \"venue_id\": \"<string>\",\n  \"venue_name\": \"<string>\",\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1156b537-a330-4315-9900-ec67cf619dd0",
+          "name": "Delete Any Active Checkins",
+          "request": {
+            "name": "Delete Any Active Checkins",
+            "description": {},
+            "url": {
+              "path": [
+                "checkin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fb013d66-4020-4c7e-a449-6312a2255884",
+              "name": "Active checkin cancelled.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checkin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "895209a2-3d33-4e57-9109-09cc4f7bdcea",
+    "name": "Trakt Calendars Checkin API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

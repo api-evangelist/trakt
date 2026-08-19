@@ -1,0 +1,310 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Sync API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sync",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Last Activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/last_activities"
+          },
+          "docs": "Returns timestamps for the last activity of each Sync resource, so apps can determine what to refresh."
+        },
+        {
+          "info": {
+            "name": "Get Playback Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/playback"
+          },
+          "docs": "Returns paused and unfinished playback progress for the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Remove A Playback Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/sync/playback/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a playback item from a user's playback progress list."
+        },
+        {
+          "info": {
+            "name": "Get Movie Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/collection/movies"
+          },
+          "docs": "Returns movies in the authenticated user collection."
+        },
+        {
+          "info": {
+            "name": "Get Show Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/collection/shows"
+          },
+          "docs": "Returns shows in the authenticated user collection, including collected seasons and episodes."
+        },
+        {
+          "info": {
+            "name": "Add Items To Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/collection",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add items to a user's collection. Accepts movies, shows, seasons, episodes."
+        },
+        {
+          "info": {
+            "name": "Remove Items From Collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/collection/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Collection"
+        },
+        {
+          "info": {
+            "name": "Get Watched Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watched/movies"
+          },
+          "docs": "Returns all movies a user has watched, sorted by most plays."
+        },
+        {
+          "info": {
+            "name": "Get Watched Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watched/shows"
+          },
+          "docs": "Returns all shows a user has watched, sorted by most plays."
+        },
+        {
+          "info": {
+            "name": "Get Watched History",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/history",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns movies and episodes that a user has watched, sorted by most recent."
+        },
+        {
+          "info": {
+            "name": "Add Items To Watched History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/history",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add items to a user's watch history."
+        },
+        {
+          "info": {
+            "name": "Remove Items From History",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/history/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From History"
+        },
+        {
+          "info": {
+            "name": "Add New Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/ratings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rate one or more items."
+        },
+        {
+          "info": {
+            "name": "Remove Ratings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/ratings/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Ratings"
+        },
+        {
+          "info": {
+            "name": "Get Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/watchlist"
+          },
+          "docs": "Returns all items in a user's watchlist."
+        },
+        {
+          "info": {
+            "name": "Add Items To Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/watchlist",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Items To Watchlist"
+        },
+        {
+          "info": {
+            "name": "Remove Items From Watchlist",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/watchlist/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Watchlist"
+        },
+        {
+          "info": {
+            "name": "Get Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/sync/favorites"
+          },
+          "docs": "Get Favorites"
+        },
+        {
+          "info": {
+            "name": "Add Items To Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/favorites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Items To Favorites"
+        },
+        {
+          "info": {
+            "name": "Remove Items From Favorites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/sync/favorites/remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove Items From Favorites"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

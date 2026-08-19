@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "8f8b35a8-bfca-4fb5-b75c-c157f36f9960",
+      "name": "People",
+      "description": {
+        "content": "Person metadata, filmography, lists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f424eee-eec0-47c8-af7c-c536af920d90",
+          "name": "Get A Single Person",
+          "request": {
+            "name": "Get A Single Person",
+            "description": {
+              "content": "Returns a single person's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8e162c7-9835-4bcc-b555-70db141c70f4",
+              "name": "Person details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"ids\": {\n    \"trakt\": 9546,\n    \"slug\": \"string\",\n    \"imdb\": \"string\",\n    \"tmdb\": 5924,\n    \"tvdb\": 3687\n  },\n  \"biography\": \"string\",\n  \"birthday\": \"1995-06-08\",\n  \"death\": \"1968-12-04\",\n  \"birthplace\": \"string\",\n  \"homepage\": \"https://JFSo.orjxNZRMBr\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ee2fad1-0d91-4671-a5aa-0e8aa1eeda7d",
+          "name": "Get Movies For A Person",
+          "request": {
+            "name": "Get Movies For A Person",
+            "description": {
+              "content": "Returns all movies where this person is in the cast or crew.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people",
+                ":id",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e0a188e-8cc4-4578-954b-b3edcf06ceda",
+              "name": "Person filmography for movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people",
+                    ":id",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c69a7474-c102-4e8d-829a-9c3bbce69f5c",
+          "name": "Get Shows For A Person",
+          "request": {
+            "name": "Get Shows For A Person",
+            "description": {
+              "content": "Returns all shows where this person is in the cast or crew.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "people",
+                ":id",
+                "shows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "08372530-9148-4c35-b2bc-c888ed195ef8",
+              "name": "Person filmography for shows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "people",
+                    ":id",
+                    "shows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "95c25846-e693-44eb-bada-922d08e2ae6b",
+    "name": "Trakt Calendars People API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

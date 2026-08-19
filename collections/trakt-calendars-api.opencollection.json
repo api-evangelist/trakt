@@ -1,0 +1,93 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Calendars",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/all/shows/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows airing during the time period specified."
+        },
+        {
+          "info": {
+            "name": "Get Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/all/movies/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all movies released during the time period specified."
+        },
+        {
+          "info": {
+            "name": "Get My Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/calendars/my/shows/:start_date/:days",
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "days",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows airing during the time period specified for the authenticated user."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

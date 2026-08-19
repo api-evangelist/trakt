@@ -1,0 +1,341 @@
+{
+  "item": [
+    {
+      "id": "61b3d097-fea4-4205-ab1b-9be6c6979748",
+      "name": "Scrobble",
+      "description": {
+        "content": "Start, pause, and stop scrobbles for movies and episodes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7318cf9b-04ef-4541-9e31-cd1b9f330a8b",
+          "name": "Start Watching In A Media Center",
+          "request": {
+            "name": "Start Watching In A Media Center",
+            "description": {
+              "content": "Use when the video initially starts playing or is unpaused.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scrobble",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e919f811-651e-4f16-9879-4ca9576a4ebb",
+              "name": "Scrobble started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrobble",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7311,\n  \"action\": \"pause\",\n  \"progress\": 4717.886073371652,\n  \"sharing\": {\n    \"twitter\": false,\n    \"mastodon\": false,\n    \"tumblr\": true\n  },\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"show\": {\n    \"title\": \"string\",\n    \"year\": 2240,\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"string\",\n    \"first_aired\": \"1947-08-19T03:28:08.744Z\",\n    \"runtime\": 3088,\n    \"certification\": \"string\",\n    \"network\": \"string\",\n    \"country\": \"string\",\n    \"trailer\": \"http://ltbUuDTYsKjrivcGnfPcbZcNQ.xepuEV4.3phAFuxXeSna4.TO.C\",\n    \"homepage\": \"https://ySWjuEwevLkkxQVvIuxUbWLgbq.tjhVGHeoXNhqbQ\",\n    \"status\": \"planned\",\n    \"rating\": 9316.703371466543,\n    \"votes\": 2736,\n    \"comment_count\": 7923,\n    \"updated_at\": \"2024-11-19T20:00:39.981Z\",\n    \"language\": \"string\",\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aired_episodes\": 510\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa5c98f1-3999-4277-8034-032c09439ef6",
+          "name": "Pause Watching In A Media Center",
+          "request": {
+            "name": "Pause Watching In A Media Center",
+            "description": {},
+            "url": {
+              "path": [
+                "scrobble",
+                "pause"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da4afbac-6715-45fc-9c41-f408bf6a507b",
+              "name": "Scrobble paused.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrobble",
+                    "pause"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9779,\n  \"action\": \"start\",\n  \"progress\": 6473.094013911214,\n  \"sharing\": {\n    \"twitter\": true,\n    \"mastodon\": false,\n    \"tumblr\": true\n  },\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"show\": {\n    \"title\": \"string\",\n    \"year\": 8188,\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"string\",\n    \"first_aired\": \"2015-09-22T15:00:44.049Z\",\n    \"runtime\": 479,\n    \"certification\": \"string\",\n    \"network\": \"string\",\n    \"country\": \"string\",\n    \"trailer\": \"http://mcxjGtDtpUzenAZiOrvDtOXFUTIS.fdzPHC+nHHEwbsvIVlJkXBsSkfXSSOIrA8jUt.T\",\n    \"homepage\": \"http://IeJNJFLVuUti.gno73SzK8+XaZ1qe,7JyxpslS-7A\",\n    \"status\": \"ended\",\n    \"rating\": 6944.902510568591,\n    \"votes\": 5280,\n    \"comment_count\": 7786,\n    \"updated_at\": \"1966-09-25T23:32:58.060Z\",\n    \"language\": \"string\",\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aired_episodes\": 1135\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e618fa3-6543-4abb-9b71-d2106f04e5e5",
+          "name": "Stop Or Finish Watching In A Media Center",
+          "request": {
+            "name": "Stop Or Finish Watching In A Media Center",
+            "description": {
+              "content": "If progress is above 80% the item is marked scrobble; if 1–79% it is treated as pause.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "scrobble",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8e69008-f2d7-467c-a6e1-abd0ddc4e4c9",
+              "name": "Scrobble stopped.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "scrobble",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"progress\": \"<number>\",\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"app_version\": \"<string>\",\n  \"app_date\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9779,\n  \"action\": \"start\",\n  \"progress\": 6473.094013911214,\n  \"sharing\": {\n    \"twitter\": true,\n    \"mastodon\": false,\n    \"tumblr\": true\n  },\n  \"movie\": {\n    \"title\": \"<string>\",\n    \"year\": \"<integer>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"tagline\": \"<string>\",\n    \"overview\": \"<string>\",\n    \"released\": \"<date>\",\n    \"runtime\": \"<integer>\",\n    \"country\": \"<string>\",\n    \"trailer\": \"<uri>\",\n    \"homepage\": \"<uri>\",\n    \"rating\": \"<number>\",\n    \"votes\": \"<integer>\",\n    \"comment_count\": \"<integer>\",\n    \"updated_at\": \"<dateTime>\",\n    \"language\": \"<string>\",\n    \"languages\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"available_translations\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"genres\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"certification\": \"<string>\",\n    \"status\": \"<string>\"\n  },\n  \"episode\": {\n    \"season\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"title\": \"<string>\",\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"number_abs\": \"<integer>\",\n    \"overview\": \"<string>\",\n    \"first_aired\": \"<dateTime>\",\n    \"runtime\": \"<integer>\",\n    \"episode_type\": \"<string>\"\n  },\n  \"show\": {\n    \"title\": \"string\",\n    \"year\": 8188,\n    \"ids\": {\n      \"trakt\": \"<integer>\",\n      \"slug\": \"<string>\",\n      \"imdb\": \"<string>\",\n      \"tmdb\": \"<integer>\",\n      \"tvdb\": \"<integer>\"\n    },\n    \"overview\": \"string\",\n    \"first_aired\": \"2015-09-22T15:00:44.049Z\",\n    \"runtime\": 479,\n    \"certification\": \"string\",\n    \"network\": \"string\",\n    \"country\": \"string\",\n    \"trailer\": \"http://mcxjGtDtpUzenAZiOrvDtOXFUTIS.fdzPHC+nHHEwbsvIVlJkXBsSkfXSSOIrA8jUt.T\",\n    \"homepage\": \"http://IeJNJFLVuUti.gno73SzK8+XaZ1qe,7JyxpslS-7A\",\n    \"status\": \"ended\",\n    \"rating\": 6944.902510568591,\n    \"votes\": 5280,\n    \"comment_count\": 7786,\n    \"updated_at\": \"1966-09-25T23:32:58.060Z\",\n    \"language\": \"string\",\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aired_episodes\": 1135\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "6a382189-edf1-47f5-ac83-5bb4afb5632f",
+    "name": "Trakt Calendars Scrobble API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

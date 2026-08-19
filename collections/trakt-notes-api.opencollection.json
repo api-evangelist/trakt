@@ -1,0 +1,89 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Notes API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/notes"
+          },
+          "docs": "Add a personal note attached to a movie, show, season, episode, person, or history item. VIP feature."
+        },
+        {
+          "info": {
+            "name": "Get A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get A Note"
+        },
+        {
+          "info": {
+            "name": "Update A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Update A Note"
+        },
+        {
+          "info": {
+            "name": "Delete A Note",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/notes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete A Note"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

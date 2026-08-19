@@ -1,0 +1,173 @@
+{
+  "item": [
+    {
+      "id": "411a0f38-40c3-4d5a-88fc-4293d90e59d7",
+      "name": "Episodes",
+      "description": {
+        "content": "Episode metadata, ratings, comments, watching.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e370b8b-20ab-41c9-97bd-d0796ee5d776",
+          "name": "Get A Single Episode For A Show",
+          "request": {
+            "name": "Get A Single Episode For A Show",
+            "description": {
+              "content": "Returns a single episode's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":id",
+                "seasons",
+                ":season",
+                "episodes",
+                ":episode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "season",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "episode",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f717bddf-5375-42d7-b003-7fa50cd4cabb",
+              "name": "Episode details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":id",
+                    "seasons",
+                    ":season",
+                    "episodes",
+                    ":episode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "season",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "episode",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"season\": 1181,\n  \"number\": 5575,\n  \"title\": \"string\",\n  \"ids\": {\n    \"trakt\": 4589,\n    \"slug\": \"string\",\n    \"imdb\": \"string\",\n    \"tmdb\": 281,\n    \"tvdb\": 6919\n  },\n  \"number_abs\": 5808,\n  \"overview\": \"string\",\n  \"first_aired\": \"1988-05-29T05:57:45.742Z\",\n  \"runtime\": 465,\n  \"episode_type\": \"mid_season_premiere\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4cf3ba2c-3b1b-4f5b-a6b9-4d82f7124935",
+    "name": "Trakt Calendars Episodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

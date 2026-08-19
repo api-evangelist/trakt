@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Checkin API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checkin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check Into An Item",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/checkin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check into a movie or episode. Sets the watching status; auto-expires after the runtime elapses."
+        },
+        {
+          "info": {
+            "name": "Delete Any Active Checkins",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/checkin"
+          },
+          "docs": "Delete Any Active Checkins"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

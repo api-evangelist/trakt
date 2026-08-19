@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Scrobble API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scrobble",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Start Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/start",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Use when the video initially starts playing or is unpaused."
+        },
+        {
+          "info": {
+            "name": "Pause Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/pause",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pause Watching In A Media Center"
+        },
+        {
+          "info": {
+            "name": "Stop Or Finish Watching In A Media Center",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/scrobble/stop",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "If progress is above 80% the item is marked scrobble; if 1–79% it is treated as pause."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

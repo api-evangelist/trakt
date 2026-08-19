@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Shows API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Trending Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/trending",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most watched shows over the last 24 hours."
+        },
+        {
+          "info": {
+            "name": "Get Popular Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/popular",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns the most popular shows."
+        },
+        {
+          "info": {
+            "name": "Get The Most Watched Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/watched/:period",
+            "params": [
+              {
+                "name": "period",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns the most watched shows in the specified time period."
+        },
+        {
+          "info": {
+            "name": "Get The Most Anticipated Shows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/anticipated",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Items per page."
+              }
+            ]
+          },
+          "docs": "Returns the most anticipated shows based on the number of lists a show appears on."
+        },
+        {
+          "info": {
+            "name": "Get A Single Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns a single show's details."
+        },
+        {
+          "info": {
+            "name": "Get All Seasons For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all seasons for a show including the number of episodes in each season."
+        },
+        {
+          "info": {
+            "name": "Get Show Watched Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/progress/watched",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns watched progress for a show including details on all aired seasons and episodes."
+        },
+        {
+          "info": {
+            "name": "Get All People For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/people",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              }
+            ]
+          },
+          "docs": "Returns all cast and crew for a show."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Episodes API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get A Single Episode For A Show",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons/:season/episodes/:episode",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "episode",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single episode's details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

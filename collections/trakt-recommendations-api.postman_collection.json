@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "f5a83a2b-f574-47d0-b544-c7313ecf312f",
+      "name": "Recommendations",
+      "description": {
+        "content": "Personalized recommendations for movies and shows.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b64351e8-ffdd-4ef1-8278-3d7219e52b03",
+          "name": "Get Movie Recommendations",
+          "request": {
+            "name": "Get Movie Recommendations",
+            "description": {
+              "content": "Personalized movie recommendations for a user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "recommendations",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "84e23981-f676-48ef-b850-3e8fdb1ab93a",
+              "name": "Recommended movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recommendations",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"year\": 2715,\n    \"ids\": {\n      \"trakt\": 5555,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 4371,\n      \"tvdb\": 7238\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"2003-04-02\",\n    \"runtime\": 5821,\n    \"country\": \"string\",\n    \"trailer\": \"https://xglEHWiDJxhawteMteJRpwXPmQaTBFPlc.mtsaC.E7fU.jbYM5J+OSPgafm8ZQ851KdRtnMJ.jTaHRFKmmjYS\",\n    \"homepage\": \"https://PPaNkOuB.ppbLE98mfsurqNthb3amzRAY32FOJ.K3JvprToV4\",\n    \"rating\": 1675.8019853374306,\n    \"votes\": 9964,\n    \"comment_count\": 3184,\n    \"updated_at\": \"1972-05-22T15:14:30.184Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"in production\"\n  },\n  {\n    \"title\": \"string\",\n    \"year\": 574,\n    \"ids\": {\n      \"trakt\": 7063,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 9825,\n      \"tvdb\": 320\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"2023-06-21\",\n    \"runtime\": 7378,\n    \"country\": \"string\",\n    \"trailer\": \"https://iGIyb.gcvlPEAofZ-2Q8N602n3jCvc.dcNE,R3RWGdrn9dBcvk\",\n    \"homepage\": \"https://oSqdToDYpP.uopfX,wwTO9f+Y3dsKfUMMlE8\",\n    \"rating\": 9072.829223071,\n    \"votes\": 5534,\n    \"comment_count\": 814,\n    \"updated_at\": \"1949-03-18T14:12:59.418Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"post production\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a1afcd75-546e-4e0b-96a1-35e439be9d52",
+          "name": "Hide A Movie Recommendation",
+          "request": {
+            "name": "Hide A Movie Recommendation",
+            "description": {},
+            "url": {
+              "path": [
+                "recommendations",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d409ec42-b8b7-4d9c-b6d7-c868371f4563",
+              "name": "Hidden.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recommendations",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a887d9-5b4e-42ed-a524-289efc0ba556",
+          "name": "Get Show Recommendations",
+          "request": {
+            "name": "Get Show Recommendations",
+            "description": {},
+            "url": {
+              "path": [
+                "recommendations",
+                "shows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "57fcf5a4-1c3d-470c-bc38-33c97a8d15c6",
+              "name": "Recommended shows.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "recommendations",
+                    "shows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"year\": 6258,\n    \"ids\": {\n      \"trakt\": 8585,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 1385,\n      \"tvdb\": 9195\n    },\n    \"overview\": \"string\",\n    \"first_aired\": \"1990-11-20T12:38:44.230Z\",\n    \"runtime\": 7478,\n    \"certification\": \"string\",\n    \"network\": \"string\",\n    \"country\": \"string\",\n    \"trailer\": \"http://xnoFnvtIJZYQcdcfuJBLAdykWGehkC.bbJrbnVd41TlK\",\n    \"homepage\": \"http://XaLJfAqUVZZcdW.jbgkjbU+vffaMnuG-bUWMoFNL1Hk\",\n    \"status\": \"upcoming\",\n    \"rating\": 1628.643098182484,\n    \"votes\": 5023,\n    \"comment_count\": 9104,\n    \"updated_at\": \"2004-06-06T01:37:55.584Z\",\n    \"language\": \"string\",\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aired_episodes\": 8306\n  },\n  {\n    \"title\": \"string\",\n    \"year\": 9292,\n    \"ids\": {\n      \"trakt\": 6387,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 7636,\n      \"tvdb\": 5273\n    },\n    \"overview\": \"string\",\n    \"first_aired\": \"2026-02-16T00:54:38.803Z\",\n    \"runtime\": 7608,\n    \"certification\": \"string\",\n    \"network\": \"string\",\n    \"country\": \"string\",\n    \"trailer\": \"http://AKUqtABBqYPfapoxflmxXgAzu.zbaczW+VfE-TS4XeCEQkLfg.1NJeOHs-ettIjFeL+D8+LxYhYZ05jOeE2O3Hp2SI\",\n    \"homepage\": \"https://B.oxuoziBsyuke5BrqsHDw5O7QpQwICELdHpZ\",\n    \"status\": \"canceled\",\n    \"rating\": 4224.699176900971,\n    \"votes\": 8479,\n    \"comment_count\": 9564,\n    \"updated_at\": \"1953-09-21T01:00:17.050Z\",\n    \"language\": \"string\",\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"aired_episodes\": 7612\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9d0f756c-f92c-4b6c-8cc9-b35f880a9d35",
+    "name": "Trakt Calendars Recommendations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

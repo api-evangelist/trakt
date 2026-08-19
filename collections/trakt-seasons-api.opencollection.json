@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Seasons API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seasons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get All Episodes For A Single Season",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/shows/:id/seasons/:season",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+              },
+              {
+                "name": "season",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all episodes for a specific season of a show."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

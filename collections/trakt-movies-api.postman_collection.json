@@ -1,0 +1,1207 @@
+{
+  "item": [
+    {
+      "id": "077407c7-afbb-491f-b883-eccbb3e999c3",
+      "name": "Movies",
+      "description": {
+        "content": "Movie metadata, trending, watched, anticipated, popular, ratings, related, people.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f28ffb0b-13b3-45d1-97c6-601e350e4133",
+          "name": "Get Trending Movies",
+          "request": {
+            "name": "Get Trending Movies",
+            "description": {
+              "content": "Returns the most watched movies over the last 24 hours. Movies with the most watchers are returned first.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                "trending"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "edb38912-2c65-41ad-8fe5-5d07cf4e22d3",
+              "name": "Trending movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    "trending"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"watchers\": 7637,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 2085,\n      \"ids\": {\n        \"trakt\": 8126,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 1270,\n        \"tvdb\": 8959\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1957-09-25\",\n      \"runtime\": 2423,\n      \"country\": \"string\",\n      \"trailer\": \"http://KAgtPtAZJPIMV.pdmBExwBkF-uDb5ndUG3aXObUYJiuVC2M5Z6pDLnT40RZd1y+3S8KXcUm-5dwZQXopBgz6ae\",\n      \"homepage\": \"https://iY.cotlZbNIL2LSRE4en59uKg2o+pN,GyJNgwGMeGkFmn,lav+8OYwwFGQwc.Ojut7yNKO4xlutPEdMx\",\n      \"rating\": 1505.1688631300365,\n      \"votes\": 7672,\n      \"comment_count\": 9935,\n      \"updated_at\": \"2024-07-18T05:12:22.339Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"rumored\"\n    }\n  },\n  {\n    \"watchers\": 1543,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 4534,\n      \"ids\": {\n        \"trakt\": 9116,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 7401,\n        \"tvdb\": 8917\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1979-07-18\",\n      \"runtime\": 2545,\n      \"country\": \"string\",\n      \"trailer\": \"http://uovvWPmLiupFVULB.nmqNCx2hPN4q+HFoC+ahH\",\n      \"homepage\": \"http://hwDTauhMLWXYLQtwGcWG.tkwNbrI\",\n      \"rating\": 9437.423181247299,\n      \"votes\": 5313,\n      \"comment_count\": 6400,\n      \"updated_at\": \"1969-10-24T06:38:55.960Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"canceled\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c6613e9-eee6-48bd-8cac-92cb3798059b",
+          "name": "Get Popular Movies",
+          "request": {
+            "name": "Get Popular Movies",
+            "description": {
+              "content": "Returns the most popular movies, calculated using rating percentage and number of ratings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                "popular"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cbe674b-d006-4ede-aa94-13cce241bd33",
+              "name": "Popular movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    "popular"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"year\": 6724,\n    \"ids\": {\n      \"trakt\": 2599,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 7949,\n      \"tvdb\": 2824\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"2026-04-10\",\n    \"runtime\": 2462,\n    \"country\": \"string\",\n    \"trailer\": \"http://ZwMcTPCIEmTlIFb.lmxhEgs,ZGFYAVfV-TQ,p7XmWPxxq8-ekCavlFFluJKzR9g6hnronM7Tk+2q4tRnefPwDTP0WbsR8VaBrjMp-+HkWGO\",\n    \"homepage\": \"http://XrftoVIkOEnZJNXcfQhWccgf.hkgeXo5EwP3ZfsCoHPehMl2Z0s5tDZ0GocmTgA9LyvlvVZGBjMHgZo7Hu.DUqlDK\",\n    \"rating\": 8889.810748943195,\n    \"votes\": 2660,\n    \"comment_count\": 9907,\n    \"updated_at\": \"2006-02-28T07:43:01.531Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"rumored\"\n  },\n  {\n    \"title\": \"string\",\n    \"year\": 9333,\n    \"ids\": {\n      \"trakt\": 7886,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 2810,\n      \"tvdb\": 8474\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"1969-06-16\",\n    \"runtime\": 5370,\n    \"country\": \"string\",\n    \"trailer\": \"https://gpYJXnBrmfVhZi.upZ.pi1+H.W+y4BafP37uizb1uUQqibF.bQkfZzOv4u5gdT\",\n    \"homepage\": \"http://tEFRTDShAmTfzWs.mysfQqGNnfFclXQsF+HzdyXCG1fESFnu3S6urCaL5IC4lgwNMdKPnQkkYxXXj\",\n    \"rating\": 2954.0151402782,\n    \"votes\": 7493,\n    \"comment_count\": 409,\n    \"updated_at\": \"1952-02-08T07:19:12.798Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"planned\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14c47641-0619-45a9-91d2-24f7b7238658",
+          "name": "Get The Most Watched Movies",
+          "request": {
+            "name": "Get The Most Watched Movies",
+            "description": {
+              "content": "Returns the most watched (unique users) movies in the specified time period, defaulting to weekly.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                "watched",
+                ":period"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "period",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d40c471e-5c9e-4e35-b213-dcbd35008c1d",
+              "name": "Most watched movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    "watched",
+                    ":period"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "period",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"watcher_count\": 2249,\n    \"play_count\": 5915,\n    \"collected_count\": 3548,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 887,\n      \"ids\": {\n        \"trakt\": 6847,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 4102,\n        \"tvdb\": 3902\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1948-03-07\",\n      \"runtime\": 2325,\n      \"country\": \"string\",\n      \"trailer\": \"http://FpUWjdgqteTBCaOUnHowDSG.gpfOQk9.EnlKAEs0,VCJ+ndJhnNqR9fhBU4uFCTdsiB+WLdfsTDEKqfjdADSha-9OF9JUI4\",\n      \"homepage\": \"https://eyTAHTXiSAJRAujYhWEV.fkqU\",\n      \"rating\": 5683.87880697421,\n      \"votes\": 533,\n      \"comment_count\": 4046,\n      \"updated_at\": \"2025-09-07T00:39:13.512Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"released\"\n    }\n  },\n  {\n    \"watcher_count\": 5754,\n    \"play_count\": 5909,\n    \"collected_count\": 6740,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 4494,\n      \"ids\": {\n        \"trakt\": 9771,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 4911,\n        \"tvdb\": 2997\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1956-12-17\",\n      \"runtime\": 3273,\n      \"country\": \"string\",\n      \"trailer\": \"https://OGvBcfcWYKNthxLaZUssbqUknEK.swohjcUrPqe1IfQw1i9XQxiFYnBZIT\",\n      \"homepage\": \"http://P.ctFz-mBFglwgFfLJ1y\",\n      \"rating\": 7433.371235405386,\n      \"votes\": 556,\n      \"comment_count\": 763,\n      \"updated_at\": \"2022-09-05T07:48:04.875Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"rumored\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d8d74845-133b-441c-b9f5-1b692c1a4852",
+          "name": "Get The Most Anticipated Movies",
+          "request": {
+            "name": "Get The Most Anticipated Movies",
+            "description": {
+              "content": "Returns the most anticipated movies based on the number of lists a movie appears on.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                "anticipated"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0c11f01-47e9-440a-b598-4b8d6603f17d",
+              "name": "Anticipated movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    "anticipated"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"list_count\": 79,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 8884,\n      \"ids\": {\n        \"trakt\": 1806,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 6602,\n        \"tvdb\": 1125\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"2023-11-15\",\n      \"runtime\": 175,\n      \"country\": \"string\",\n      \"trailer\": \"https://UNOudUkdqDCrF.hrxhiNcPy2hDRIR,pyFP4x5swLxI3oVSPkWyvaSTmf9xU0jNQYCKpV0TuQziHd5WQS2\",\n      \"homepage\": \"https://VcXHKAGQARtZNoImzFEdDvtQKxY.enoqw+cYF4tdxqZcfkgPJc+jnQAcckuqPNczkzNFXNOmEhGwUNnyF7lhv8\",\n      \"rating\": 8340.576007872807,\n      \"votes\": 2822,\n      \"comment_count\": 6881,\n      \"updated_at\": \"2011-01-06T11:42:33.918Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"rumored\"\n    }\n  },\n  {\n    \"list_count\": 6703,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 9005,\n      \"ids\": {\n        \"trakt\": 3925,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 4965,\n        \"tvdb\": 7556\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1975-09-22\",\n      \"runtime\": 4097,\n      \"country\": \"string\",\n      \"trailer\": \"http://pSzHZHWNUPXOrz.taggDNPwayvc3uYy.UG3aQUBv-ToH32UaYvBXSRU-26i1kKo+TmEOAUp8\",\n      \"homepage\": \"https://DXUErZpPtMMyzKtAWdRnWQsvHiWWp.ksbmOm-3FJkfjDMKYvf\",\n      \"rating\": 4889.700235438034,\n      \"votes\": 8887,\n      \"comment_count\": 9185,\n      \"updated_at\": \"2000-05-12T07:14:25.313Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"planned\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "218a842b-9cd6-4afe-a52e-061b0102c1b7",
+          "name": "Get The Weekend Box Office",
+          "request": {
+            "name": "Get The Weekend Box Office",
+            "description": {
+              "content": "Returns the top 10 grossing movies in the U.S. box office last weekend.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                "boxoffice"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4958c5a-0cc7-4285-9838-5f85b13adebf",
+              "name": "Box office movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    "boxoffice"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"revenue\": 4950,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 1758,\n      \"ids\": {\n        \"trakt\": 7452,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 3321,\n        \"tvdb\": 9243\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1999-10-10\",\n      \"runtime\": 7367,\n      \"country\": \"string\",\n      \"trailer\": \"https://ZLwhkwyHQ.sqyr4mcgFWl3N.ZSOAucM6Kaxix1kejzJ74ofaXxKiY2N.w\",\n      \"homepage\": \"https://XxHLdZOnuV.lcch6OFOFQlkhsuXRn-oKhRW5A\",\n      \"rating\": 8971.663323089544,\n      \"votes\": 7824,\n      \"comment_count\": 820,\n      \"updated_at\": \"1949-04-08T19:52:07.559Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"in production\"\n    }\n  },\n  {\n    \"revenue\": 82,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 5898,\n      \"ids\": {\n        \"trakt\": 293,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 1600,\n        \"tvdb\": 9296\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"2008-04-25\",\n      \"runtime\": 9514,\n      \"country\": \"string\",\n      \"trailer\": \"https://LuYj.nsowSQnQE+XP5s1hDKxbD.5xOZ-LPQ1i.FE\",\n      \"homepage\": \"https://JYdEAAqttVjWmUwsyYIvsqIFCb.vuIFoRF\",\n      \"rating\": 1533.4017331601901,\n      \"votes\": 7924,\n      \"comment_count\": 1026,\n      \"updated_at\": \"1950-05-28T20:40:45.010Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"post production\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b4b0bd41-4149-468d-a92e-aec979002390",
+          "name": "Get A Movie",
+          "request": {
+            "name": "Get A Movie",
+            "description": {
+              "content": "Returns a single movie's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "extended",
+                  "value": "<string>",
+                  "description": "Request extra fields in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c62e761-9473-4660-82b1-186d2af7bd7c",
+              "name": "Movie details.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "extended",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"title\": \"string\",\n  \"year\": 3085,\n  \"ids\": {\n    \"trakt\": 1874,\n    \"slug\": \"string\",\n    \"imdb\": \"string\",\n    \"tmdb\": 3126,\n    \"tvdb\": 898\n  },\n  \"tagline\": \"string\",\n  \"overview\": \"string\",\n  \"released\": \"1950-02-26\",\n  \"runtime\": 7267,\n  \"country\": \"string\",\n  \"trailer\": \"https://yfyYPcWrmZQVUDmAxneyOGXWbH.jbeCkh5alFDMggX,84smk2R4.Rch5bqblZMncE,7BQhzS78Bry+wIA5gMQVr-ZJv+B9\",\n  \"homepage\": \"http://AegXWjRzcZx.mskweNEa3pd++SgMoAEftandDABFFxZFkNWtf4tn-r7UO8Xh3yo9S.P\",\n  \"rating\": 6205.115651825366,\n  \"votes\": 8234,\n  \"comment_count\": 8993,\n  \"updated_at\": \"2001-02-22T01:19:59.966Z\",\n  \"language\": \"string\",\n  \"languages\": [\n    \"string\",\n    \"string\"\n  ],\n  \"available_translations\": [\n    \"string\",\n    \"string\"\n  ],\n  \"genres\": [\n    \"string\",\n    \"string\"\n  ],\n  \"certification\": \"string\",\n  \"status\": \"released\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53991827-36ae-4e4b-94ce-bb92250599f2",
+          "name": "Get Movie Ratings",
+          "request": {
+            "name": "Get Movie Ratings",
+            "description": {
+              "content": "Returns rating (between 0 and 10) and distribution for a movie.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id",
+                "ratings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb4152ca-a23e-4e53-931b-175af4973fec",
+              "name": "Movie ratings.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id",
+                    "ratings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rating\": 3011.2304744525286,\n  \"votes\": 8030,\n  \"distribution\": {\n    \"key_0\": 2761\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc151da3-d6a2-4163-9f5d-6694684d8a67",
+          "name": "Get Movie Stats",
+          "request": {
+            "name": "Get Movie Stats",
+            "description": {
+              "content": "Returns lots of movie stats including watchers, plays, collectors, comments, lists, votes, and recommended counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed970b37-b0e7-4a11-9e11-bc3ee9a9f4a2",
+              "name": "Movie stats.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"watchers\": 1418,\n  \"plays\": 96,\n  \"collectors\": 71,\n  \"collected_episodes\": 2100,\n  \"comments\": 6920,\n  \"lists\": 5504,\n  \"votes\": 8402,\n  \"recommended\": 2112\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73eaae58-0d16-4456-9dec-d44937026bd1",
+          "name": "Get Related Movies",
+          "request": {
+            "name": "Get Related Movies",
+            "description": {
+              "content": "Returns related and similar movies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id",
+                "related"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a895090-91d6-4e60-b8c8-534e349dac8d",
+              "name": "Related movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id",
+                    "related"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"title\": \"string\",\n    \"year\": 6724,\n    \"ids\": {\n      \"trakt\": 2599,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 7949,\n      \"tvdb\": 2824\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"2026-04-10\",\n    \"runtime\": 2462,\n    \"country\": \"string\",\n    \"trailer\": \"http://ZwMcTPCIEmTlIFb.lmxhEgs,ZGFYAVfV-TQ,p7XmWPxxq8-ekCavlFFluJKzR9g6hnronM7Tk+2q4tRnefPwDTP0WbsR8VaBrjMp-+HkWGO\",\n    \"homepage\": \"http://XrftoVIkOEnZJNXcfQhWccgf.hkgeXo5EwP3ZfsCoHPehMl2Z0s5tDZ0GocmTgA9LyvlvVZGBjMHgZo7Hu.DUqlDK\",\n    \"rating\": 8889.810748943195,\n    \"votes\": 2660,\n    \"comment_count\": 9907,\n    \"updated_at\": \"2006-02-28T07:43:01.531Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"rumored\"\n  },\n  {\n    \"title\": \"string\",\n    \"year\": 9333,\n    \"ids\": {\n      \"trakt\": 7886,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 2810,\n      \"tvdb\": 8474\n    },\n    \"tagline\": \"string\",\n    \"overview\": \"string\",\n    \"released\": \"1969-06-16\",\n    \"runtime\": 5370,\n    \"country\": \"string\",\n    \"trailer\": \"https://gpYJXnBrmfVhZi.upZ.pi1+H.W+y4BafP37uizb1uUQqibF.bQkfZzOv4u5gdT\",\n    \"homepage\": \"http://tEFRTDShAmTfzWs.mysfQqGNnfFclXQsF+HzdyXCG1fESFnu3S6urCaL5IC4lgwNMdKPnQkkYxXXj\",\n    \"rating\": 2954.0151402782,\n    \"votes\": 7493,\n    \"comment_count\": 409,\n    \"updated_at\": \"1952-02-08T07:19:12.798Z\",\n    \"language\": \"string\",\n    \"languages\": [\n      \"string\",\n      \"string\"\n    ],\n    \"available_translations\": [\n      \"string\",\n      \"string\"\n    ],\n    \"genres\": [\n      \"string\",\n      \"string\"\n    ],\n    \"certification\": \"string\",\n    \"status\": \"planned\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bfdac72e-d9fb-43ac-8ab1-ed094f1c1d21",
+          "name": "Get All People For A Movie",
+          "request": {
+            "name": "Get All People For A Movie",
+            "description": {
+              "content": "Returns all cast and crew for a movie, broken up by department.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id",
+                "people"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c1c87913-47b9-42f0-9ce5-fd551e8bdfea",
+              "name": "People associated with the movie.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id",
+                    "people"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cast\": [\n    {\n      \"characters\": [\n        \"string\",\n        \"string\"\n      ],\n      \"person\": {\n        \"name\": \"string\",\n        \"ids\": {\n          \"trakt\": 1551,\n          \"slug\": \"string\",\n          \"imdb\": \"string\",\n          \"tmdb\": 5759,\n          \"tvdb\": 1862\n        },\n        \"biography\": \"string\",\n        \"birthday\": \"2003-12-28\",\n        \"death\": \"1951-03-06\",\n        \"birthplace\": \"string\",\n        \"homepage\": \"https://UtiNgwNCBKqVDqVGzbGIDTqnBrkroXj.gyf8oM9aZ-TdCdenHYR\"\n      }\n    },\n    {\n      \"characters\": [\n        \"string\",\n        \"string\"\n      ],\n      \"person\": {\n        \"name\": \"string\",\n        \"ids\": {\n          \"trakt\": 7913,\n          \"slug\": \"string\",\n          \"imdb\": \"string\",\n          \"tmdb\": 1276,\n          \"tvdb\": 8904\n        },\n        \"biography\": \"string\",\n        \"birthday\": \"1964-05-20\",\n        \"death\": \"2024-05-17\",\n        \"birthplace\": \"string\",\n        \"homepage\": \"http://lqIuGsgdrfbzbIHgaAYTPfmtifpBVXrWP.lpfztYaxdnaJgAodI.6KS24NWvckwS0Cs0Hess75lda1EDNOs9ku1hLpXmxF+JccJSuUBhcMN,WgtG4+zLEXaJP\"\n      }\n    }\n  ],\n  \"crew\": {\n    \"key_0\": [\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 4132,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 8595,\n            \"tvdb\": 8697\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"1962-11-21\",\n          \"death\": \"1951-02-22\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"http://SyPEk.rxphq-gG8z7kWUE\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 6549,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 1727,\n            \"tvdb\": 6053\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"1950-03-27\",\n          \"death\": \"1972-06-11\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"http://thCJjE.utwtpCuN\"\n        }\n      }\n    ],\n    \"key_1\": [\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 3830,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 894,\n            \"tvdb\": 8158\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"2025-05-21\",\n          \"death\": \"2004-02-01\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"https://kPhi.rth4Edj1L,ZQvdOPh21iQYRWb4C\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 4928,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 6977,\n            \"tvdb\": 5178\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"1951-05-28\",\n          \"death\": \"1987-07-11\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"https://ejysFDAmTyRSEsrvaIuNM.incuJiy6HO5hWh0nKZ5SylrvJOprLSc7E03PwAg,jFOTYF\"\n        }\n      }\n    ],\n    \"key_2\": [\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 7531,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 5285,\n            \"tvdb\": 8415\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"1998-10-15\",\n          \"death\": \"1980-02-13\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"https://XJaITJKrMtSXnxfASkPTtuQJVYAzJXhXl.exgUbNa+Y5-UXcZ9+ND3pSRI\"\n        }\n      },\n      {\n        \"jobs\": [\n          \"string\",\n          \"string\"\n        ],\n        \"person\": {\n          \"name\": \"string\",\n          \"ids\": {\n            \"trakt\": 3544,\n            \"slug\": \"string\",\n            \"imdb\": \"string\",\n            \"tmdb\": 5260,\n            \"tvdb\": 1072\n          },\n          \"biography\": \"string\",\n          \"birthday\": \"1990-01-11\",\n          \"death\": \"1966-03-10\",\n          \"birthplace\": \"string\",\n          \"homepage\": \"http://jIjUtNpqaQWsXILydbyWWFgSj.budVoWaqqP+BbwNBhf3cN2N-z,lzIve8AzOYQ6Otk\"\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f56b95d-2215-40dc-836e-935a547c3efc",
+          "name": "Get Users Watching Right Now",
+          "request": {
+            "name": "Get Users Watching Right Now",
+            "description": {
+              "content": "Returns all users watching this movie right now.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "movies",
+                ":id",
+                "watching"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "35d6479e-204b-464e-829d-f2f94908ecdc",
+              "name": "Users watching right now.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "movies",
+                    ":id",
+                    "watching"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, or IMDB ID."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"username\": \"string\",\n    \"private\": true,\n    \"deleted\": true,\n    \"name\": \"string\",\n    \"vip\": false,\n    \"vip_ep\": false,\n    \"ids\": {\n      \"slug\": \"string\",\n      \"uuid\": \"string\"\n    }\n  },\n  {\n    \"username\": \"string\",\n    \"private\": true,\n    \"deleted\": true,\n    \"name\": \"string\",\n    \"vip\": true,\n    \"vip_ep\": false,\n    \"ids\": {\n      \"slug\": \"string\",\n      \"uuid\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "421c4f64-1ed2-4964-a21d-b47463bd42af",
+    "name": "Trakt Calendars Movies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

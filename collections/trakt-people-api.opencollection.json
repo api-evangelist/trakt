@@ -1,0 +1,84 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars People API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "People",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get A Single Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Returns a single person's details."
+        },
+        {
+          "info": {
+            "name": "Get Movies For A Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id/movies",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all movies where this person is in the cast or crew."
+        },
+        {
+          "info": {
+            "name": "Get Shows For A Person",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/people/:id/shows",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all shows where this person is in the cast or crew."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

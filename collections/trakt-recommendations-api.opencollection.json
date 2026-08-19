@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Recommendations API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recommendations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Movie Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/recommendations/movies"
+          },
+          "docs": "Personalized movie recommendations for a user."
+        },
+        {
+          "info": {
+            "name": "Hide A Movie Recommendation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/recommendations/movies"
+          },
+          "docs": "Hide A Movie Recommendation"
+        },
+        {
+          "info": {
+            "name": "Get Show Recommendations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/recommendations/shows"
+          },
+          "docs": "Get Show Recommendations"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

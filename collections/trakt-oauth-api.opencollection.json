@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars OAuth API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "OAuth",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate New Device Codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/device/code",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate new codes to start the device authentication process. The device_code and interval are used to poll for the access_token. The user_code and verification_url should be presented to the user."
+        },
+        {
+          "info": {
+            "name": "Poll For The Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/device/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Poll using the device_code at the returned interval until the user authorizes the app. Returns access_token on success. Status codes 400/404/409/410/418/429 indicate pending, expired, denied, or polling-too-fast states."
+        },
+        {
+          "info": {
+            "name": "Exchange A Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/token",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exchange an OAuth authorization code or refresh token for an access token."
+        },
+        {
+          "info": {
+            "name": "Revoke An Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/oauth/revoke"
+          },
+          "docs": "Revoke an access_token when the user signs out of the app."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

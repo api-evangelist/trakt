@@ -1,0 +1,155 @@
+{
+  "item": [
+    {
+      "id": "a8d3cf4a-d984-4bf8-b351-3e38b223c8aa",
+      "name": "Seasons",
+      "description": {
+        "content": "Season-level metadata and episodes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "12aceeee-532d-4080-bb61-242589b9c688",
+          "name": "Get All Episodes For A Single Season",
+          "request": {
+            "name": "Get All Episodes For A Single Season",
+            "description": {
+              "content": "Returns all episodes for a specific season of a show.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "shows",
+                ":id",
+                "seasons",
+                ":season"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "season",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "287efe1d-019e-45d1-885c-8ed2890cebaf",
+              "name": "Season episodes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "shows",
+                    ":id",
+                    "seasons",
+                    ":season"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "season",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"season\": 9406,\n    \"number\": 2107,\n    \"title\": \"string\",\n    \"ids\": {\n      \"trakt\": 2918,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 7966,\n      \"tvdb\": 3342\n    },\n    \"number_abs\": 1530,\n    \"overview\": \"string\",\n    \"first_aired\": \"2011-07-25T10:53:42.885Z\",\n    \"runtime\": 9834,\n    \"episode_type\": \"standard\"\n  },\n  {\n    \"season\": 7172,\n    \"number\": 5446,\n    \"title\": \"string\",\n    \"ids\": {\n      \"trakt\": 9444,\n      \"slug\": \"string\",\n      \"imdb\": \"string\",\n      \"tmdb\": 9939,\n      \"tvdb\": 5507\n    },\n    \"number_abs\": 2449,\n    \"overview\": \"string\",\n    \"first_aired\": \"1967-03-25T04:45:30.307Z\",\n    \"runtime\": 7937,\n    \"episode_type\": \"mid_season_finale\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "59a4d7be-4cf7-4f89-a495-3248c3c94558",
+    "name": "Trakt Calendars Seasons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

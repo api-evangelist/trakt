@@ -1,0 +1,281 @@
+{
+  "item": [
+    {
+      "id": "5be242d3-acc3-4983-898f-ecd60370e414",
+      "name": "Search",
+      "description": {
+        "content": "Text and ID lookup across movies, shows, episodes, people, lists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8cc98b88-a711-4f1c-99d9-a9dbf8dc437a",
+          "name": "Get Text Query Results",
+          "request": {
+            "name": "Get Text Query Results",
+            "description": {
+              "content": "Search all text fields that a media object contains. Accepts movie, show, episode, person, list (one or more, comma separated).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                ":type"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "10",
+                  "description": "Items per page."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "type",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f4e3113b-729e-45a7-9313-f742f74ae1c9",
+              "name": "Search results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    ":type"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "type",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"movie\",\n    \"score\": 7390.130253382738,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 675,\n      \"ids\": {\n        \"trakt\": 8000,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 2039,\n        \"tvdb\": 1035\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"2025-08-03\",\n      \"runtime\": 7545,\n      \"country\": \"string\",\n      \"trailer\": \"https://zgJuKQMwIiUrsSKTKzcGAaXdFge.ttNncOoqg+T.9lTMOD,Jy\",\n      \"homepage\": \"https://BdjarkWy.diqzDSBztuXE,isZzNarWEKk\",\n      \"rating\": 7771.368893897279,\n      \"votes\": 7227,\n      \"comment_count\": 1484,\n      \"updated_at\": \"1990-06-08T08:37:18.768Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"rumored\"\n    },\n    \"show\": {\n      \"title\": \"string\",\n      \"year\": 7805,\n      \"ids\": {\n        \"trakt\": 7123,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 312,\n        \"tvdb\": 6832\n      },\n      \"overview\": \"string\",\n      \"first_aired\": \"1966-01-11T22:58:20.184Z\",\n      \"runtime\": 818,\n      \"certification\": \"string\",\n      \"network\": \"string\",\n      \"country\": \"string\",\n      \"trailer\": \"https://bFCGqwaQAMOmDRcjjTuY.wksGyubAqDt8ALvcQtiVIGtn0nHAKdblFMZ1z2\",\n      \"homepage\": \"http://PluRIFPzFhoGQRGKvIYKxjHveujWe.cygbdTeOKwYYFGHST3Zf\",\n      \"status\": \"planned\",\n      \"rating\": 2065.509211045372,\n      \"votes\": 8038,\n      \"comment_count\": 1949,\n      \"updated_at\": \"1953-11-24T16:35:19.765Z\",\n      \"language\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"aired_episodes\": 1531\n    },\n    \"episode\": {\n      \"season\": 1652,\n      \"number\": 5236,\n      \"title\": \"string\",\n      \"ids\": {\n        \"trakt\": 2030,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 5813,\n        \"tvdb\": 2231\n      },\n      \"number_abs\": 7863,\n      \"overview\": \"string\",\n      \"first_aired\": \"1950-08-25T14:18:17.630Z\",\n      \"runtime\": 2026,\n      \"episode_type\": \"series_premiere\"\n    },\n    \"person\": {\n      \"name\": \"string\",\n      \"ids\": {\n        \"trakt\": 4524,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 7276,\n        \"tvdb\": 9953\n      },\n      \"biography\": \"string\",\n      \"birthday\": \"2024-12-19\",\n      \"death\": \"1996-01-01\",\n      \"birthplace\": \"string\",\n      \"homepage\": \"http://PoVJ.natiHYOG5mh7AKroOvFATOJoM+Xs6dcq0H-6BZukPIRywCFw\"\n    }\n  },\n  {\n    \"type\": \"movie\",\n    \"score\": 7918.170548934862,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 5612,\n      \"ids\": {\n        \"trakt\": 3062,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 1260,\n        \"tvdb\": 9613\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"2021-12-23\",\n      \"runtime\": 9128,\n      \"country\": \"string\",\n      \"trailer\": \"http://YrtfePDtztrrHTNWIdl.zadGEyVnQNojuDtSU,uLs3dEVhHkyDH8dHrSkNsd0lOt64HwqO,tHPCAokffeZuROjm\",\n      \"homepage\": \"http://bfadcgeSfacak.djyuzIAFebd9TQ,UCcxum+XV.H2NM50V0FmAPSK8h6HDI4Ey\",\n      \"rating\": 2669.3848079658956,\n      \"votes\": 8142,\n      \"comment_count\": 7906,\n      \"updated_at\": \"2025-08-02T03:08:09.043Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"released\"\n    },\n    \"show\": {\n      \"title\": \"string\",\n      \"year\": 3456,\n      \"ids\": {\n        \"trakt\": 1819,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 5614,\n        \"tvdb\": 4657\n      },\n      \"overview\": \"string\",\n      \"first_aired\": \"1947-01-08T17:03:59.437Z\",\n      \"runtime\": 5913,\n      \"certification\": \"string\",\n      \"network\": \"string\",\n      \"country\": \"string\",\n      \"trailer\": \"https://w.ogavYJUi+mjyviX5EqFLYw,B-+YBoHoDXKhKv8fb2JdzSbiVTOEcjGSuL1l1WUwc-1Kg+-C\",\n      \"homepage\": \"http://CsgnaeAcOSw.nhgbi1rsOQchsdS-j.6W78RZPVz3Y1EoLH.vnJEYKzpntZp,-+lr\",\n      \"status\": \"upcoming\",\n      \"rating\": 1793.2501278961854,\n      \"votes\": 9935,\n      \"comment_count\": 6835,\n      \"updated_at\": \"1983-04-23T07:09:54.176Z\",\n      \"language\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"aired_episodes\": 9067\n    },\n    \"episode\": {\n      \"season\": 733,\n      \"number\": 5927,\n      \"title\": \"string\",\n      \"ids\": {\n        \"trakt\": 4016,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 7895,\n        \"tvdb\": 2532\n      },\n      \"number_abs\": 3991,\n      \"overview\": \"string\",\n      \"first_aired\": \"1993-05-29T23:41:16.342Z\",\n      \"runtime\": 7738,\n      \"episode_type\": \"series_finale\"\n    },\n    \"person\": {\n      \"name\": \"string\",\n      \"ids\": {\n        \"trakt\": 782,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 1843,\n        \"tvdb\": 3832\n      },\n      \"biography\": \"string\",\n      \"birthday\": \"1988-11-14\",\n      \"death\": \"2014-08-01\",\n      \"birthplace\": \"string\",\n      \"homepage\": \"https://TIdhsZPAoJUBYOg.llKSuyqFS9klOqbsm0oE5rTq\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da16b9e9-91e4-4083-afee-4bae2734d5dd",
+          "name": "Get ID Lookup Results",
+          "request": {
+            "name": "Get ID Lookup Results",
+            "description": {
+              "content": "Lookup items by their Trakt, IMDB, TMDB, or TVDB ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search",
+                ":id_type",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id_type",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77aac2e5-209c-4b8f-9f95-7ad834cd4735",
+              "name": "Lookup results.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search",
+                    ":id_type",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id_type",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"list\",\n    \"score\": 1866.1115454939315,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 4610,\n      \"ids\": {\n        \"trakt\": 4151,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 6521,\n        \"tvdb\": 9809\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"2002-10-11\",\n      \"runtime\": 792,\n      \"country\": \"string\",\n      \"trailer\": \"https://EbikMLxTpLObjzgRsrZKjNM.cwiDmfYF,iev,TUpjJt4nTDRcogGwYz0BAWrMW0euTDq6nfz0USLrnHMu2HbE\",\n      \"homepage\": \"https://jdDVxLdChQsYaeWrrAGA.gudr5BeUt9TJ1SZM0EqOKs7P1r5YgEUUwKm\",\n      \"rating\": 6714.426201951033,\n      \"votes\": 6758,\n      \"comment_count\": 1222,\n      \"updated_at\": \"1963-08-12T02:44:11.965Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"released\"\n    },\n    \"show\": {\n      \"title\": \"string\",\n      \"year\": 1926,\n      \"ids\": {\n        \"trakt\": 1512,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 4768,\n        \"tvdb\": 7943\n      },\n      \"overview\": \"string\",\n      \"first_aired\": \"2001-08-21T12:59:12.696Z\",\n      \"runtime\": 8077,\n      \"certification\": \"string\",\n      \"network\": \"string\",\n      \"country\": \"string\",\n      \"trailer\": \"https://QokGBGciadiQCaEHpJPKEcJuSvokZRFz.dmrvP\",\n      \"homepage\": \"http://owIXzZFPkSnquEqRdVpmkRhbJdX.yngERwkHA,Sd+c0tbKfrH5yyFXtKlRyQxpnEYHE\",\n      \"status\": \"returning series\",\n      \"rating\": 5192.352107740812,\n      \"votes\": 1538,\n      \"comment_count\": 8941,\n      \"updated_at\": \"2015-02-15T22:17:20.393Z\",\n      \"language\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"aired_episodes\": 8103\n    },\n    \"episode\": {\n      \"season\": 7508,\n      \"number\": 9535,\n      \"title\": \"string\",\n      \"ids\": {\n        \"trakt\": 9966,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 7965,\n        \"tvdb\": 7202\n      },\n      \"number_abs\": 2158,\n      \"overview\": \"string\",\n      \"first_aired\": \"2009-07-22T00:07:47.252Z\",\n      \"runtime\": 6758,\n      \"episode_type\": \"series_premiere\"\n    },\n    \"person\": {\n      \"name\": \"string\",\n      \"ids\": {\n        \"trakt\": 8766,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 9154,\n        \"tvdb\": 3274\n      },\n      \"biography\": \"string\",\n      \"birthday\": \"1955-10-16\",\n      \"death\": \"1991-08-08\",\n      \"birthplace\": \"string\",\n      \"homepage\": \"https://tKvrsTIsGc.wukGCtfPLsaqBFV-WkqT+dAl9jBOLkS\"\n    }\n  },\n  {\n    \"type\": \"episode\",\n    \"score\": 9423.225221807701,\n    \"movie\": {\n      \"title\": \"string\",\n      \"year\": 4839,\n      \"ids\": {\n        \"trakt\": 9694,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 5694,\n        \"tvdb\": 5830\n      },\n      \"tagline\": \"string\",\n      \"overview\": \"string\",\n      \"released\": \"1985-11-13\",\n      \"runtime\": 6585,\n      \"country\": \"string\",\n      \"trailer\": \"https://jrRvAnuYrmbjHyrkOYicRHZaztmLxJgQH.yerlCO++owOpnXLHgrGXrWUt3pPheVXm9j+BNFun18SIbuwkiRNQfNZBw\",\n      \"homepage\": \"https://KpBVafwZNwPEqWRmdQV.rgwO.DxNXnEwWSmzJrnNV1XPRifp4T8OL7wRfiLi.iEyXCFzl1YR5Xkfu7+SX,59RYkzP\",\n      \"rating\": 4510.278078281298,\n      \"votes\": 724,\n      \"comment_count\": 5834,\n      \"updated_at\": \"1997-08-11T11:21:11.465Z\",\n      \"language\": \"string\",\n      \"languages\": [\n        \"string\",\n        \"string\"\n      ],\n      \"available_translations\": [\n        \"string\",\n        \"string\"\n      ],\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"certification\": \"string\",\n      \"status\": \"in production\"\n    },\n    \"show\": {\n      \"title\": \"string\",\n      \"year\": 4467,\n      \"ids\": {\n        \"trakt\": 9137,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 6115,\n        \"tvdb\": 9197\n      },\n      \"overview\": \"string\",\n      \"first_aired\": \"1947-04-27T02:17:24.122Z\",\n      \"runtime\": 2828,\n      \"certification\": \"string\",\n      \"network\": \"string\",\n      \"country\": \"string\",\n      \"trailer\": \"http://gZWQMgMyhzg.rqlcqNmeWDH2kYTwy.\",\n      \"homepage\": \"http://HXAKXjOJySzIuoRumczQdHw.esp6B7+k5ck7xm\",\n      \"status\": \"pilot\",\n      \"rating\": 1610.7480312888367,\n      \"votes\": 4223,\n      \"comment_count\": 8570,\n      \"updated_at\": \"2005-03-17T03:08:07.360Z\",\n      \"language\": \"string\",\n      \"genres\": [\n        \"string\",\n        \"string\"\n      ],\n      \"aired_episodes\": 6375\n    },\n    \"episode\": {\n      \"season\": 8094,\n      \"number\": 6462,\n      \"title\": \"string\",\n      \"ids\": {\n        \"trakt\": 4658,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 6485,\n        \"tvdb\": 8657\n      },\n      \"number_abs\": 2135,\n      \"overview\": \"string\",\n      \"first_aired\": \"1983-09-22T04:59:30.909Z\",\n      \"runtime\": 8218,\n      \"episode_type\": \"season_premiere\"\n    },\n    \"person\": {\n      \"name\": \"string\",\n      \"ids\": {\n        \"trakt\": 4673,\n        \"slug\": \"string\",\n        \"imdb\": \"string\",\n        \"tmdb\": 9618,\n        \"tvdb\": 8393\n      },\n      \"biography\": \"string\",\n      \"birthday\": \"1964-01-18\",\n      \"death\": \"1996-01-19\",\n      \"birthplace\": \"string\",\n      \"homepage\": \"http://ZLuxJTqAlPxXhOXDwv.bep3t5VLyFFj8N9hdvPCSxx5ndH+q7a5Pho7E\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.trakt.tv",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "fbfc2709-b2a1-4145-8cf8-d1c53f173550",
+    "name": "Trakt Calendars Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trakt API is a RESTful API for integrating TV show and movie tracking\nfeatures into applications. It exposes Trakt's media database, user\nwatch history, lists, watchlists, ratings, comments, scrobbling, and\nrecommendations. Authentication is OAuth 2.0 (Authorization Code and\nDevice flows).\n\nThis OpenAPI is a representative sampling of the full Trakt API v2\nsurface, covering authentication, movies, shows, episodes, seasons,\npeople, search, users, sync, scrobble, checkin, lists, calendars,\nrecommendations, comments, notes, and reference data. The canonical\ncontract is the ts-rest router published at github.com/trakt/trakt-api.\n\n\nContact Support:\n Name: Trakt API Support",
+      "type": "text/plain"
+    }
+  }
+}

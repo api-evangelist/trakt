@@ -1,0 +1,231 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trakt Calendars Users API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/settings"
+          },
+          "docs": "Get the user's settings (account, profile, sharing, limits, permissions, browsing)."
+        },
+        {
+          "info": {
+            "name": "Get User Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              },
+              {
+                "name": "extended",
+                "value": "",
+                "type": "query",
+                "description": "Request extra fields in the response."
+              }
+            ]
+          },
+          "docs": "Get a user's profile information."
+        },
+        {
+          "info": {
+            "name": "Get Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/stats",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Returns stats about the movies, shows, and episodes a user has watched, collected, and rated."
+        },
+        {
+          "info": {
+            "name": "Get Watching",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/watching",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Returns a movie or episode if the user is currently watching something."
+        },
+        {
+          "info": {
+            "name": "Get Followers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/followers",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Followers"
+        },
+        {
+          "info": {
+            "name": "Get Following",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/following",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Following"
+        },
+        {
+          "info": {
+            "name": "Get Friends",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/friends",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get Friends"
+        },
+        {
+          "info": {
+            "name": "Follow This User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Follow This User"
+        },
+        {
+          "info": {
+            "name": "Unfollow This User",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.trakt.tv/users/:id/follow",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Unfollow This User"
+        },
+        {
+          "info": {
+            "name": "Get A User's Custom Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.trakt.tv/users/:id/lists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Get A User's Custom Lists"
+        },
+        {
+          "info": {
+            "name": "Create A Custom List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.trakt.tv/users/:id/lists",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "User slug or 'me' for the authenticated user."
+              }
+            ]
+          },
+          "docs": "Create A Custom List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
