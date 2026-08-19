@@ -23,7 +23,7 @@ description: >-
 url: https://trakt.tv
 humanURL: https://trakt.docs.apiary.io/
 baseURL: https://api.trakt.tv
-specificationVersion: '0.20'
+specificationVersion: '0.23'
 created: '2026-05-28'
 modified: '2026-05-30'
 x-source: public-apis/public-apis
