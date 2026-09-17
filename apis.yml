@@ -1033,16 +1033,16 @@ apis:
     url: https://trakt.docs.apiary.io/#reference/authentication-oauth
   - type: APIReference
     url: https://trakt.docs.apiary.io/
-- aid: trakt:trakt-check-in-api
-  name: Trakt Check In API
-  description: Lightweight social "now watching" check-ins.
+- aid: trakt:trakt-oauth-api
+  name: Trakt O Auth API
+  description: Authorization Code and Device OAuth flows.
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
-  - Check In
+  - OAuth
   properties:
   - type: OpenAPI
-    url: openapi/trakt-check-in-api-openapi.yml
+    url: openapi/trakt-oauth-api-openapi.yml
   - type: Documentation
     url: https://trakt.docs.apiary.io/
   - type: JSONSchema
@@ -1081,16 +1081,16 @@ apis:
     url: https://trakt.docs.apiary.io/#reference/authentication-oauth
   - type: APIReference
     url: https://trakt.docs.apiary.io/
-- aid: trakt:trakt-o-auth-api
-  name: Trakt O Auth API
-  description: Authorization Code and Device OAuth flows.
+- aid: trakt:trakt-check-in-api
+  name: Trakt Check In API
+  description: Lightweight social "now watching" check-ins.
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
-  - O Auth
+  - Check In
   properties:
   - type: OpenAPI
-    url: openapi/trakt-o-auth-api-openapi.yml
+    url: openapi/trakt-check-in-api-openapi.yml
   - type: Documentation
     url: https://trakt.docs.apiary.io/
   - type: JSONSchema
