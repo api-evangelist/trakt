@@ -73,6 +73,8 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
+  - Calendar
+  tags_raw:
   - Calendars
   properties:
   - type: OpenAPI
@@ -121,6 +123,8 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
+  - Certification
+  tags_raw:
   - Certifications
   properties:
   - type: OpenAPI
@@ -893,6 +897,8 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
+  - Studio
+  tags_raw:
   - Studios
   properties:
   - type: OpenAPI
@@ -1039,6 +1045,8 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
+  - Authentication
+  tags_raw:
   - OAuth
   properties:
   - type: OpenAPI
@@ -1087,6 +1095,8 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
+  - Check-in
+  tags_raw:
   - Check In
   properties:
   - type: OpenAPI
