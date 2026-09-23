@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars OAuth API
+  title: Trakt O Auth API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -143,21 +124,6 @@ components:
           type: string
         client_secret:
           type: string
-    TokenResponse:
-      type: object
-      properties:
-        access_token:
-          type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
-        refresh_token:
-          type: string
-        scope:
-          type: string
-        created_at:
-          type: integer
     TokenRequest:
       type: object
       required:
@@ -180,6 +146,21 @@ components:
           type: string
           enum:
           - authorization_code
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+        expires_in:
+          type: integer
+        refresh_token:
+          type: string
+        scope:
+          type: string
+        created_at:
+          type: integer
     TokenRefreshRequest:
       type: object
       required:

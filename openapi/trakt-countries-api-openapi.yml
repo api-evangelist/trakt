@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Countries API
+  title: Trakt Countries API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support

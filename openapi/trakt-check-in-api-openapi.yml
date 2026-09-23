@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Checkin API
+  title: Trakt Checkin API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -38,13 +19,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: Checkin
+- name: Check In
   description: Lightweight social "now watching" check-ins.
 paths:
   /checkin:
     post:
       tags:
-      - Checkin
+      - Check In
       operationId: createCheckin
       summary: Check Into An Item
       description: Check into a movie or episode. Sets the watching status; auto-expires after the runtime elapses.
@@ -61,7 +42,7 @@ paths:
           description: Already checked in (conflict).
     delete:
       tags:
-      - Checkin
+      - Check In
       operationId: deleteCheckin
       summary: Delete Any Active Checkins
       responses:
@@ -69,51 +50,33 @@ paths:
           description: Active checkin cancelled.
 components:
   schemas:
-    Episode:
+    CheckinRequest:
       type: object
       properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
+        movie:
+          $ref: '#/components/schemas/Movie'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        sharing:
+          type: object
+          properties:
+            twitter:
+              type: boolean
+            mastodon:
+              type: boolean
+            tumblr:
+              type: boolean
+        message:
           type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type: integer
-          nullable: true
-        overview:
+        venue_id:
           type: string
-        first_aired:
+        venue_name:
           type: string
-          format: date-time
-          nullable: true
-        runtime:
-          type: integer
-        episode_type:
+        app_version:
           type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
+        app_date:
           type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
+          format: date
     Movie:
       type: object
       properties:
@@ -135,13 +98,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         rating:
           type: number
         votes:
@@ -176,33 +141,53 @@ components:
           - planned
           - rumored
           - canceled
-    CheckinRequest:
+    Ids:
       type: object
       properties:
-        movie:
-          $ref: '#/components/schemas/Movie'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        sharing:
-          type: object
-          properties:
-            twitter:
-              type: boolean
-            mastodon:
-              type: boolean
-            tumblr:
-              type: boolean
-        message:
+        trakt:
+          type: integer
+        slug:
           type: string
-        venue_id:
+        imdb:
           type: string
-        venue_name:
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
           type: string
-        app_version:
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
           type: string
-        app_date:
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
           type: string
-          format: date
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
   securitySchemes:
     bearerAuth:
       type: http

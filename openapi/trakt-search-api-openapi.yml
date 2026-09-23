@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Search API
+  title: Trakt Search API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -109,114 +90,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/SearchResult'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
   schemas:
-    SearchResult:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - movie
-          - show
-          - episode
-          - person
-          - list
-        score:
-          type: number
-        movie:
-          $ref: '#/components/schemas/Movie'
-        show:
-          $ref: '#/components/schemas/Show'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        person:
-          $ref: '#/components/schemas/Person'
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type: integer
-          nullable: true
-        overview:
-          type: string
-        first_aired:
-          type: string
-          format: date-time
-          nullable: true
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
-    Person:
-      type: object
-      properties:
-        name:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        biography:
-          type: string
-        birthday:
-          type: string
-          format: date
-          nullable: true
-        death:
-          type: string
-          format: date
-          nullable: true
-        birthplace:
-          type: string
-          nullable: true
-        homepage:
-          type: string
-          format: uri
-          nullable: true
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     Show:
       type: object
       properties:
@@ -240,13 +114,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         status:
           type: string
           enum:
@@ -275,6 +151,34 @@ components:
             type: string
         aired_episodes:
           type: integer
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
     Movie:
       type: object
       properties:
@@ -296,13 +200,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         rating:
           type: number
         votes:
@@ -337,6 +243,91 @@ components:
           - planned
           - rumored
           - canceled
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
+    SearchResult:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - movie
+          - show
+          - episode
+          - person
+          - list
+        score:
+          type: number
+        movie:
+          $ref: '#/components/schemas/Movie'
+        show:
+          $ref: '#/components/schemas/Show'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        person:
+          $ref: '#/components/schemas/Person'
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
   securitySchemes:
     bearerAuth:
       type: http

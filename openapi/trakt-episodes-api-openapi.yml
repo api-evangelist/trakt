@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Episodes API
+  title: Trakt Episodes API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -60,6 +41,26 @@ paths:
               schema:
                 $ref: '#/components/schemas/Episode'
 components:
+  parameters:
+    Season:
+      name: season
+      in: path
+      required: true
+      schema:
+        type: integer
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+    EpisodeNumber:
+      name: episode
+      in: path
+      required: true
+      schema:
+        type: integer
   schemas:
     Episode:
       type: object
@@ -73,14 +74,16 @@ components:
         ids:
           $ref: '#/components/schemas/Ids'
         number_abs:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         overview:
           type: string
         first_aired:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         runtime:
           type: integer
         episode_type:
@@ -106,26 +109,6 @@ components:
           type: integer
         tvdb:
           type: integer
-  parameters:
-    Season:
-      name: season
-      in: path
-      required: true
-      schema:
-        type: integer
-    EpisodeNumber:
-      name: episode
-      in: path
-      required: true
-      schema:
-        type: integer
-    ShowId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
   securitySchemes:
     bearerAuth:
       type: http

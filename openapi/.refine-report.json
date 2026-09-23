@@ -1,28 +1,7 @@
 {
   "provider": "trakt",
   "sources": [
-    "trakt-calendars-api-openapi.yml",
-    "trakt-certifications-api-openapi.yml",
-    "trakt-checkin-api-openapi.yml",
-    "trakt-comments-api-openapi.yml",
-    "trakt-countries-api-openapi.yml",
-    "trakt-episodes-api-openapi.yml",
-    "trakt-genres-api-openapi.yml",
-    "trakt-languages-api-openapi.yml",
-    "trakt-lists-api-openapi.yml",
-    "trakt-movies-api-openapi.yml",
-    "trakt-networks-api-openapi.yml",
-    "trakt-notes-api-openapi.yml",
-    "trakt-oauth-api-openapi.yml",
-    "trakt-people-api-openapi.yml",
-    "trakt-recommendations-api-openapi.yml",
-    "trakt-scrobble-api-openapi.yml",
-    "trakt-search-api-openapi.yml",
-    "trakt-seasons-api-openapi.yml",
-    "trakt-shows-api-openapi.yml",
-    "trakt-studios-api-openapi.yml",
-    "trakt-sync-api-openapi.yml",
-    "trakt-users-api-openapi.yml"
+    "_original/trakt-openapi.yml"
   ],
   "outputs": [
     "trakt-calendars-api-openapi.yml",
@@ -48,9 +27,39 @@
     "trakt-sync-api-openapi.yml",
     "trakt-users-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 2 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trakt-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "superseded outputs removed: trakt-check-in-api-openapi.yml, trakt-o-auth-api-openapi.yml",
+    "apis.yml register: written (+2 apis, 22 total)"
+  ],
+  "skipped": [
+    "trakt-calendars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-certifications-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-check-in-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-comments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-countries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-episodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-genres-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-lists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-movies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-networks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-notes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-o-auth-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-people-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-recommendations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-scrobble-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-seasons-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-shows-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-studios-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-sync-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trakt-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

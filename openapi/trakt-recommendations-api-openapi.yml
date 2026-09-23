@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Recommendations API
+  title: Trakt Recommendations API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -82,18 +63,65 @@ paths:
                   $ref: '#/components/schemas/Show'
 components:
   schemas:
-    Ids:
+    Show:
       type: object
       properties:
-        trakt:
-          type: integer
-        slug:
+        title:
           type: string
-        imdb:
-          type: string
-        tmdb:
+        year:
           type: integer
-        tvdb:
+        ids:
+          $ref: '#/components/schemas/Ids'
+        overview:
+          type: string
+        first_aired:
+          type: string
+          format: date-time
+        runtime:
+          type: integer
+        certification:
+          type: string
+        network:
+          type: string
+        country:
+          type: string
+        trailer:
+          type:
+          - string
+          - 'null'
+          format: uri
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+        status:
+          type: string
+          enum:
+          - returning series
+          - continuing
+          - in production
+          - planned
+          - upcoming
+          - pilot
+          - canceled
+          - ended
+        rating:
+          type: number
+        votes:
+          type: integer
+        comment_count:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+        language:
+          type: string
+        genres:
+          type: array
+          items:
+            type: string
+        aired_episodes:
           type: integer
     Movie:
       type: object
@@ -116,13 +144,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         rating:
           type: number
         votes:
@@ -157,63 +187,18 @@ components:
           - planned
           - rumored
           - canceled
-    Show:
+    Ids:
       type: object
       properties:
-        title:
-          type: string
-        year:
+        trakt:
           type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        overview:
+        slug:
           type: string
-        first_aired:
+        imdb:
           type: string
-          format: date-time
-        runtime:
+        tmdb:
           type: integer
-        certification:
-          type: string
-        network:
-          type: string
-        country:
-          type: string
-        trailer:
-          type: string
-          format: uri
-          nullable: true
-        homepage:
-          type: string
-          format: uri
-          nullable: true
-        status:
-          type: string
-          enum:
-          - returning series
-          - continuing
-          - in production
-          - planned
-          - upcoming
-          - pilot
-          - canceled
-          - ended
-        rating:
-          type: number
-        votes:
-          type: integer
-        comment_count:
-          type: integer
-        updated_at:
-          type: string
-          format: date-time
-        language:
-          type: string
-        genres:
-          type: array
-          items:
-            type: string
-        aired_episodes:
+        tvdb:
           type: integer
   securitySchemes:
     bearerAuth:

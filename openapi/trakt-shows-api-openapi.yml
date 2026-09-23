@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Shows API
+  title: Trakt Shows API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -188,193 +169,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/People'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
-    Period:
-      name: period
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
-    ShowId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
-    Extended:
-      name: extended
-      in: query
-      schema:
-        type: string
-        enum:
-        - full
-        - metadata
-        - noseasons
-        - images
-        - episodes
-        - guest_stars
-        - vip
-      description: Request extra fields in the response.
   schemas:
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type: integer
-          nullable: true
-        overview:
-          type: string
-        first_aired:
-          type: string
-          format: date-time
-          nullable: true
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
-    ShowWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    ShowTrending:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
-    Person:
-      type: object
-      properties:
-        name:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        biography:
-          type: string
-        birthday:
-          type: string
-          format: date
-          nullable: true
-        death:
-          type: string
-          format: date
-          nullable: true
-        birthplace:
-          type: string
-          nullable: true
-        homepage:
-          type: string
-          format: uri
-          nullable: true
-    Season:
-      type: object
-      properties:
-        number:
-          type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        episode_count:
-          type: integer
-        aired_episodes:
-          type: integer
-        title:
-          type: string
-        overview:
-          type: string
-        first_aired:
-          type: string
-          format: date-time
-          nullable: true
-        network:
-          type: string
-          nullable: true
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     Show:
       type: object
       properties:
@@ -398,13 +193,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         status:
           type: string
           enum:
@@ -433,6 +230,57 @@ components:
             type: string
         aired_episodes:
           type: integer
+    Season:
+      type: object
+      properties:
+        number:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        episode_count:
+          type: integer
+        aired_episodes:
+          type: integer
+        title:
+          type: string
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        network:
+          type:
+          - string
+          - 'null'
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
     ShowProgress:
       type: object
       properties:
@@ -441,13 +289,15 @@ components:
         completed:
           type: integer
         last_watched_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         reset_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         seasons:
           type: array
           items:
@@ -469,9 +319,10 @@ components:
                     completed:
                       type: boolean
                     last_watched_at:
-                      type: string
+                      type:
+                      - string
+                      - 'null'
                       format: date-time
-                      nullable: true
         hidden_seasons:
           type: array
           items:
@@ -480,6 +331,149 @@ components:
           $ref: '#/components/schemas/Episode'
         last_episode:
           $ref: '#/components/schemas/Episode'
+    ShowTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
+    ShowWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+  parameters:
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
+    Period:
+      name: period
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
   securitySchemes:
     bearerAuth:
       type: http

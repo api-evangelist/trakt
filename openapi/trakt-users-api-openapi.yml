@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Users API
+  title: Trakt Users API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -179,13 +160,6 @@ paths:
           description: List created.
 components:
   parameters:
-    UserSlug:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User slug or 'me' for the authenticated user.
     Extended:
       name: extended
       in: query
@@ -200,7 +174,29 @@ components:
         - guest_stars
         - vip
       description: Request extra fields in the response.
+    UserSlug:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User slug or 'me' for the authenticated user.
   schemas:
+    UserStats:
+      type: object
+      properties:
+        movies:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        episodes:
+          type: object
+        network:
+          type: object
+        ratings:
+          type: object
     UserSettings:
       type: object
       properties:
@@ -216,9 +212,10 @@ components:
             time_24hr:
               type: boolean
             cover_image:
-              type: string
+              type:
+              - string
+              - 'null'
               format: uri
-              nullable: true
             token:
               type: string
         sharing_text:
@@ -249,21 +246,6 @@ components:
               type: string
             uuid:
               type: string
-    UserStats:
-      type: object
-      properties:
-        movies:
-          type: object
-        shows:
-          type: object
-        seasons:
-          type: object
-        episodes:
-          type: object
-        network:
-          type: object
-        ratings:
-          type: object
   securitySchemes:
     bearerAuth:
       type: http

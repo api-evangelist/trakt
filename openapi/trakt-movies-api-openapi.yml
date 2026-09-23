@@ -1,28 +1,9 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Trakt Calendars Movies API
+  title: Trakt Movies API
   description: 'The Trakt API is a RESTful API for integrating TV show and movie tracking
 
-    features into applications. It exposes Trakt''s media database, user
-
-    watch history, lists, watchlists, ratings, comments, scrobbling, and
-
-    recommendations. Authentication is OAuth 2.0 (Authorization Code and
-
-    Device flows).
-
-
-    This OpenAPI is a representative sampling of the full Trakt API v2
-
-    surface, covering authentication, movies, shows, episodes, seasons,
-
-    people, search, users, sync, scrobble, checkin, lists, calendars,
-
-    recommendations, comments, notes, and reference data. The canonical
-
-    contract is the ts-rest router published at github.com/trakt/trakt-api.
-
-    '
+    features into applications.'
   version: '2.0'
   contact:
     name: Trakt API Support
@@ -242,109 +223,46 @@ paths:
                 items:
                   $ref: '#/components/schemas/UserProfile'
 components:
-  parameters:
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
-    MovieId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trakt ID, Trakt slug, or IMDB ID.
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
-    Period:
-      name: period
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
-    Extended:
-      name: extended
-      in: query
-      schema:
-        type: string
-        enum:
-        - full
-        - metadata
-        - noseasons
-        - images
-        - episodes
-        - guest_stars
-        - vip
-      description: Request extra fields in the response.
   schemas:
-    MovieTrending:
+    Person:
       type: object
       properties:
-        watchers:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+    MovieWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
           type: integer
         movie:
           $ref: '#/components/schemas/Movie'
-    MovieAnticipated:
-      type: object
-      properties:
-        list_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    Ratings:
-      type: object
-      properties:
-        rating:
-          type: number
-        votes:
-          type: integer
-        distribution:
-          type: object
-          additionalProperties:
-            type: integer
     UserProfile:
       type: object
       properties:
@@ -367,54 +285,6 @@ components:
               type: string
             uuid:
               type: string
-    MovieWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    Person:
-      type: object
-      properties:
-        name:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        biography:
-          type: string
-        birthday:
-          type: string
-          format: date
-          nullable: true
-        death:
-          type: string
-          format: date
-          nullable: true
-        birthplace:
-          type: string
-          nullable: true
-        homepage:
-          type: string
-          format: uri
-          nullable: true
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     MovieBoxOffice:
       type: object
       properties:
@@ -422,26 +292,13 @@ components:
           type: integer
         movie:
           $ref: '#/components/schemas/Movie'
-    MovieStats:
+    MovieAnticipated:
       type: object
       properties:
-        watchers:
+        list_count:
           type: integer
-        plays:
-          type: integer
-        collectors:
-          type: integer
-        collected_episodes:
-          type: integer
-          nullable: true
-        comments:
-          type: integer
-        lists:
-          type: integer
-        votes:
-          type: integer
-        recommended:
-          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
     Movie:
       type: object
       properties:
@@ -463,13 +320,15 @@ components:
         country:
           type: string
         trailer:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         homepage:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         rating:
           type: number
         votes:
@@ -504,6 +363,135 @@ components:
           - planned
           - rumored
           - canceled
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
+    MovieStats:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        plays:
+          type: integer
+        collectors:
+          type: integer
+        collected_episodes:
+          type:
+          - integer
+          - 'null'
+        comments:
+          type: integer
+        lists:
+          type: integer
+        votes:
+          type: integer
+        recommended:
+          type: integer
+    Ratings:
+      type: object
+      properties:
+        rating:
+          type: number
+        votes:
+          type: integer
+        distribution:
+          type: object
+          additionalProperties:
+            type: integer
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+    MovieTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+  parameters:
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
+    MovieId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, or IMDB ID.
+    Period:
+      name: period
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
   securitySchemes:
     bearerAuth:
       type: http
