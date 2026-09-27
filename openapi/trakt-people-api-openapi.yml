@@ -77,19 +77,6 @@ paths:
           description: Person filmography for shows.
 components:
   schemas:
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     Person:
       type: object
       properties:
@@ -118,6 +105,19 @@ components:
           - string
           - 'null'
           format: uri
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
   parameters:
     Extended:
       name: extended

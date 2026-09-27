@@ -294,48 +294,20 @@ paths:
         '200':
           description: Removed.
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
   schemas:
-    LastActivities:
+    Ids:
       type: object
       properties:
-        all:
+        trakt:
+          type: integer
+        slug:
           type: string
-          format: date-time
-        movies:
-          type: object
-        episodes:
-          type: object
-        shows:
-          type: object
-        seasons:
-          type: object
-        comments:
-          type: object
-        lists:
-          type: object
-        watchlist:
-          type: object
-        favorites:
-          type: object
-        recommendations:
-          type: object
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     BulkMediaRequest:
       type: object
       properties:
@@ -378,19 +350,47 @@ components:
           type: array
           items:
             type: integer
-    Ids:
+    LastActivities:
       type: object
       properties:
-        trakt:
-          type: integer
-        slug:
+        all:
           type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
+          format: date-time
+        movies:
+          type: object
+        episodes:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        comments:
+          type: object
+        lists:
+          type: object
+        watchlist:
+          type: object
+        favorites:
+          type: object
+        recommendations:
+          type: object
+  parameters:
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
   securitySchemes:
     bearerAuth:
       type: http

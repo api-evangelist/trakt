@@ -42,34 +42,7 @@ paths:
                 items:
                   $ref: '#/components/schemas/Episode'
 components:
-  parameters:
-    ShowId:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
-    Season:
-      name: season
-      in: path
-      required: true
-      schema:
-        type: integer
   schemas:
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     Episode:
       type: object
       properties:
@@ -104,6 +77,33 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+  parameters:
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+    Season:
+      name: season
+      in: path
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

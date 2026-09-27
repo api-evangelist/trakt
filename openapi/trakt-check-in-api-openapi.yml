@@ -50,6 +50,40 @@ paths:
           description: Active checkin cancelled.
 components:
   schemas:
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
     CheckinRequest:
       type: object
       properties:
@@ -154,40 +188,6 @@ components:
           type: integer
         tvdb:
           type: integer
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type:
-          - integer
-          - 'null'
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
   securitySchemes:
     bearerAuth:
       type: http

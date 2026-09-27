@@ -83,6 +83,145 @@ paths:
                 $ref: '#/components/schemas/ScrobbleResponse'
 components:
   schemas:
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
+    ScrobbleResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        action:
+          type: string
+          enum:
+          - start
+          - pause
+          - scrobble
+        progress:
+          type: number
+        sharing:
+          type: object
+          properties:
+            twitter:
+              type: boolean
+            mastodon:
+              type: boolean
+            tumblr:
+              type: boolean
+        movie:
+          $ref: '#/components/schemas/Movie'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        show:
+          $ref: '#/components/schemas/Show'
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
+    Movie:
+      type: object
+      properties:
+        title:
+          type: string
+        year:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        tagline:
+          type: string
+        overview:
+          type: string
+        released:
+          type: string
+          format: date
+        runtime:
+          type: integer
+        country:
+          type: string
+        trailer:
+          type:
+          - string
+          - 'null'
+          format: uri
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+        rating:
+          type: number
+        votes:
+          type: integer
+        comment_count:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+        language:
+          type: string
+        languages:
+          type: array
+          items:
+            type: string
+        available_translations:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        certification:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - in production
+          - post production
+          - planned
+          - rumored
+          - canceled
     ScrobbleRequest:
       type: object
       required:
@@ -160,145 +299,6 @@ components:
           items:
             type: string
         aired_episodes:
-          type: integer
-    Movie:
-      type: object
-      properties:
-        title:
-          type: string
-        year:
-          type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        tagline:
-          type: string
-        overview:
-          type: string
-        released:
-          type: string
-          format: date
-        runtime:
-          type: integer
-        country:
-          type: string
-        trailer:
-          type:
-          - string
-          - 'null'
-          format: uri
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
-        rating:
-          type: number
-        votes:
-          type: integer
-        comment_count:
-          type: integer
-        updated_at:
-          type: string
-          format: date-time
-        language:
-          type: string
-        languages:
-          type: array
-          items:
-            type: string
-        available_translations:
-          type: array
-          items:
-            type: string
-        genres:
-          type: array
-          items:
-            type: string
-        certification:
-          type: string
-        status:
-          type: string
-          enum:
-          - released
-          - in production
-          - post production
-          - planned
-          - rumored
-          - canceled
-    ScrobbleResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        action:
-          type: string
-          enum:
-          - start
-          - pause
-          - scrobble
-        progress:
-          type: number
-        sharing:
-          type: object
-          properties:
-            twitter:
-              type: boolean
-            mastodon:
-              type: boolean
-            tumblr:
-              type: boolean
-        movie:
-          $ref: '#/components/schemas/Movie'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        show:
-          $ref: '#/components/schemas/Show'
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type:
-          - integer
-          - 'null'
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
           type: integer
   securitySchemes:
     bearerAuth:
