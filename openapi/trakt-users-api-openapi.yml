@@ -225,13 +225,6 @@ components:
             uuid:
               type: string
   parameters:
-    UserSlug:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User slug or 'me' for the authenticated user.
     Extended:
       name: extended
       in: query
@@ -246,6 +239,13 @@ components:
         - guest_stars
         - vip
       description: Request extra fields in the response.
+    UserSlug:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User slug or 'me' for the authenticated user.
   securitySchemes:
     bearerAuth:
       type: http

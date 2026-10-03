@@ -104,57 +104,21 @@ paths:
           description: Token revoked.
 components:
   schemas:
-    DeviceCodeRequest:
+    TokenResponse:
       type: object
-      required:
-      - client_id
       properties:
-        client_id:
+        access_token:
           type: string
-    TokenRequest:
-      type: object
-      required:
-      - code
-      - client_id
-      - client_secret
-      - redirect_uri
-      - grant_type
-      properties:
-        code:
+        token_type:
           type: string
-        client_id:
-          type: string
-        client_secret:
-          type: string
-        redirect_uri:
-          type: string
-          format: uri
-        grant_type:
-          type: string
-          enum:
-          - authorization_code
-    TokenRefreshRequest:
-      type: object
-      required:
-      - refresh_token
-      - client_id
-      - client_secret
-      - redirect_uri
-      - grant_type
-      properties:
+        expires_in:
+          type: integer
         refresh_token:
           type: string
-        client_id:
+        scope:
           type: string
-        client_secret:
-          type: string
-        redirect_uri:
-          type: string
-          format: uri
-        grant_type:
-          type: string
-          enum:
-          - refresh_token
+        created_at:
+          type: integer
     DeviceTokenRequest:
       type: object
       required:
@@ -182,21 +146,57 @@ components:
           type: integer
         interval:
           type: integer
-    TokenResponse:
+    DeviceCodeRequest:
       type: object
+      required:
+      - client_id
       properties:
-        access_token:
+        client_id:
           type: string
-        token_type:
-          type: string
-        expires_in:
-          type: integer
+    TokenRefreshRequest:
+      type: object
+      required:
+      - refresh_token
+      - client_id
+      - client_secret
+      - redirect_uri
+      - grant_type
+      properties:
         refresh_token:
           type: string
-        scope:
+        client_id:
           type: string
-        created_at:
-          type: integer
+        client_secret:
+          type: string
+        redirect_uri:
+          type: string
+          format: uri
+        grant_type:
+          type: string
+          enum:
+          - refresh_token
+    TokenRequest:
+      type: object
+      required:
+      - code
+      - client_id
+      - client_secret
+      - redirect_uri
+      - grant_type
+      properties:
+        code:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        redirect_uri:
+          type: string
+          format: uri
+        grant_type:
+          type: string
+          enum:
+          - authorization_code
   securitySchemes:
     bearerAuth:
       type: http

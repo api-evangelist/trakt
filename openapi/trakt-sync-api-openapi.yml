@@ -308,6 +308,30 @@ components:
           type: integer
         tvdb:
           type: integer
+    LastActivities:
+      type: object
+      properties:
+        all:
+          type: string
+          format: date-time
+        movies:
+          type: object
+        episodes:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        comments:
+          type: object
+        lists:
+          type: object
+        watchlist:
+          type: object
+        favorites:
+          type: object
+        recommendations:
+          type: object
     BulkMediaRequest:
       type: object
       properties:
@@ -350,39 +374,7 @@ components:
           type: array
           items:
             type: integer
-    LastActivities:
-      type: object
-      properties:
-        all:
-          type: string
-          format: date-time
-        movies:
-          type: object
-        episodes:
-          type: object
-        shows:
-          type: object
-        seasons:
-          type: object
-        comments:
-          type: object
-        lists:
-          type: object
-        watchlist:
-          type: object
-        favorites:
-          type: object
-        recommendations:
-          type: object
   parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
     Limit:
       name: limit
       in: query
@@ -391,6 +383,14 @@ components:
         minimum: 1
         default: 10
       description: Items per page.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
   securitySchemes:
     bearerAuth:
       type: http

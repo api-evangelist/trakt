@@ -224,24 +224,6 @@ paths:
                   $ref: '#/components/schemas/UserProfile'
 components:
   schemas:
-    Ratings:
-      type: object
-      properties:
-        rating:
-          type: number
-        votes:
-          type: integer
-        distribution:
-          type: object
-          additionalProperties:
-            type: integer
-    MovieBoxOffice:
-      type: object
-      properties:
-        revenue:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
     Ids:
       type: object
       properties:
@@ -276,6 +258,51 @@ components:
           type: integer
         recommended:
           type: integer
+    Ratings:
+      type: object
+      properties:
+        rating:
+          type: number
+        votes:
+          type: integer
+        distribution:
+          type: object
+          additionalProperties:
+            type: integer
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
+    MovieAnticipated:
+      type: object
+      properties:
+        list_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
     UserProfile:
       type: object
       properties:
@@ -298,6 +325,59 @@ components:
               type: string
             uuid:
               type: string
+    MovieWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    MovieTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+    MovieBoxOffice:
+      type: object
+      properties:
+        revenue:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
     Movie:
       type: object
       properties:
@@ -362,102 +442,19 @@ components:
           - planned
           - rumored
           - canceled
-    MovieAnticipated:
-      type: object
-      properties:
-        list_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    MovieTrending:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    MovieWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    Person:
-      type: object
-      properties:
-        name:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        biography:
-          type: string
-        birthday:
-          type:
-          - string
-          - 'null'
-          format: date
-        death:
-          type:
-          - string
-          - 'null'
-          format: date
-        birthplace:
-          type:
-          - string
-          - 'null'
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
   parameters:
-    MovieId:
-      name: id
+    Period:
+      name: period
       in: path
       required: true
       schema:
         type: string
-      description: Trakt ID, Trakt slug, or IMDB ID.
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
     Extended:
       name: extended
       in: query
@@ -480,18 +477,21 @@ components:
         minimum: 1
         default: 10
       description: Items per page.
-    Period:
-      name: period
+    MovieId:
+      name: id
       in: path
       required: true
       schema:
         type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
+      description: Trakt ID, Trakt slug, or IMDB ID.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
   securitySchemes:
     bearerAuth:
       type: http

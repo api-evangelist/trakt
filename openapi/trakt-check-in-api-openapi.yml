@@ -84,33 +84,6 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
-    CheckinRequest:
-      type: object
-      properties:
-        movie:
-          $ref: '#/components/schemas/Movie'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        sharing:
-          type: object
-          properties:
-            twitter:
-              type: boolean
-            mastodon:
-              type: boolean
-            tumblr:
-              type: boolean
-        message:
-          type: string
-        venue_id:
-          type: string
-        venue_name:
-          type: string
-        app_version:
-          type: string
-        app_date:
-          type: string
-          format: date
     Movie:
       type: object
       properties:
@@ -175,6 +148,33 @@ components:
           - planned
           - rumored
           - canceled
+    CheckinRequest:
+      type: object
+      properties:
+        movie:
+          $ref: '#/components/schemas/Movie'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        sharing:
+          type: object
+          properties:
+            twitter:
+              type: boolean
+            mastodon:
+              type: boolean
+            tumblr:
+              type: boolean
+        message:
+          type: string
+        venue_id:
+          type: string
+        venue_name:
+          type: string
+        app_version:
+          type: string
+        app_date:
+          type: string
+          format: date
     Ids:
       type: object
       properties:

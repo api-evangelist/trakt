@@ -91,6 +91,19 @@ paths:
                   $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     Episode:
       type: object
       properties:
@@ -125,104 +138,6 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
-    SearchResult:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - movie
-          - show
-          - episode
-          - person
-          - list
-        score:
-          type: number
-        movie:
-          $ref: '#/components/schemas/Movie'
-        show:
-          $ref: '#/components/schemas/Show'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        person:
-          $ref: '#/components/schemas/Person'
-    Movie:
-      type: object
-      properties:
-        title:
-          type: string
-        year:
-          type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        tagline:
-          type: string
-        overview:
-          type: string
-        released:
-          type: string
-          format: date
-        runtime:
-          type: integer
-        country:
-          type: string
-        trailer:
-          type:
-          - string
-          - 'null'
-          format: uri
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
-        rating:
-          type: number
-        votes:
-          type: integer
-        comment_count:
-          type: integer
-        updated_at:
-          type: string
-          format: date-time
-        language:
-          type: string
-        languages:
-          type: array
-          items:
-            type: string
-        available_translations:
-          type: array
-          items:
-            type: string
-        genres:
-          type: array
-          items:
-            type: string
-        certification:
-          type: string
-        status:
-          type: string
-          enum:
-          - released
-          - in production
-          - post production
-          - planned
-          - rumored
-          - canceled
     Show:
       type: object
       properties:
@@ -311,15 +226,92 @@ components:
           - string
           - 'null'
           format: uri
+    SearchResult:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - movie
+          - show
+          - episode
+          - person
+          - list
+        score:
+          type: number
+        movie:
+          $ref: '#/components/schemas/Movie'
+        show:
+          $ref: '#/components/schemas/Show'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        person:
+          $ref: '#/components/schemas/Person'
+    Movie:
+      type: object
+      properties:
+        title:
+          type: string
+        year:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        tagline:
+          type: string
+        overview:
+          type: string
+        released:
+          type: string
+          format: date
+        runtime:
+          type: integer
+        country:
+          type: string
+        trailer:
+          type:
+          - string
+          - 'null'
+          format: uri
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+        rating:
+          type: number
+        votes:
+          type: integer
+        comment_count:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+        language:
+          type: string
+        languages:
+          type: array
+          items:
+            type: string
+        available_translations:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        certification:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - in production
+          - post production
+          - planned
+          - rumored
+          - canceled
   parameters:
-    Page:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
     Limit:
       name: limit
       in: query
@@ -328,6 +320,14 @@ components:
         minimum: 1
         default: 10
       description: Items per page.
+    Page:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
   securitySchemes:
     bearerAuth:
       type: http
