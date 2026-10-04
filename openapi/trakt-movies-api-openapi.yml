@@ -224,125 +224,6 @@ paths:
                   $ref: '#/components/schemas/UserProfile'
 components:
   schemas:
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
-    MovieStats:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        plays:
-          type: integer
-        collectors:
-          type: integer
-        collected_episodes:
-          type:
-          - integer
-          - 'null'
-        comments:
-          type: integer
-        lists:
-          type: integer
-        votes:
-          type: integer
-        recommended:
-          type: integer
-    Ratings:
-      type: object
-      properties:
-        rating:
-          type: number
-        votes:
-          type: integer
-        distribution:
-          type: object
-          additionalProperties:
-            type: integer
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    MovieAnticipated:
-      type: object
-      properties:
-        list_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    UserProfile:
-      type: object
-      properties:
-        username:
-          type: string
-        private:
-          type: boolean
-        deleted:
-          type: boolean
-        name:
-          type: string
-        vip:
-          type: boolean
-        vip_ep:
-          type: boolean
-        ids:
-          type: object
-          properties:
-            slug:
-              type: string
-            uuid:
-              type: string
-    MovieWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
-    MovieTrending:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        movie:
-          $ref: '#/components/schemas/Movie'
     Person:
       type: object
       properties:
@@ -371,6 +252,13 @@ components:
           - string
           - 'null'
           format: uri
+    MovieTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
     MovieBoxOffice:
       type: object
       properties:
@@ -378,6 +266,30 @@ components:
           type: integer
         movie:
           $ref: '#/components/schemas/Movie'
+    Ratings:
+      type: object
+      properties:
+        rating:
+          type: number
+        votes:
+          type: integer
+        distribution:
+          type: object
+          additionalProperties:
+            type: integer
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     Movie:
       type: object
       properties:
@@ -442,19 +354,111 @@ components:
           - planned
           - rumored
           - canceled
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
+    MovieAnticipated:
+      type: object
+      properties:
+        list_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    MovieWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        movie:
+          $ref: '#/components/schemas/Movie'
+    UserProfile:
+      type: object
+      properties:
+        username:
+          type: string
+        private:
+          type: boolean
+        deleted:
+          type: boolean
+        name:
+          type: string
+        vip:
+          type: boolean
+        vip_ep:
+          type: boolean
+        ids:
+          type: object
+          properties:
+            slug:
+              type: string
+            uuid:
+              type: string
+    MovieStats:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        plays:
+          type: integer
+        collectors:
+          type: integer
+        collected_episodes:
+          type:
+          - integer
+          - 'null'
+        comments:
+          type: integer
+        lists:
+          type: integer
+        votes:
+          type: integer
+        recommended:
+          type: integer
   parameters:
-    Period:
-      name: period
-      in: path
-      required: true
+    Page:
+      name: page
+      in: query
       schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
     Extended:
       name: extended
       in: query
@@ -469,14 +473,6 @@ components:
         - guest_stars
         - vip
       description: Request extra fields in the response.
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
     MovieId:
       name: id
       in: path
@@ -484,14 +480,18 @@ components:
       schema:
         type: string
       description: Trakt ID, Trakt slug, or IMDB ID.
-    Page:
-      name: page
-      in: query
+    Period:
+      name: period
+      in: path
+      required: true
       schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for pagination.
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
   securitySchemes:
     bearerAuth:
       type: http

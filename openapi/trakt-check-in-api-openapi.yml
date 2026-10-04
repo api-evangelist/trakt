@@ -50,40 +50,6 @@ paths:
           description: Active checkin cancelled.
 components:
   schemas:
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type:
-          - integer
-          - 'null'
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
     Movie:
       type: object
       properties:
@@ -148,6 +114,19 @@ components:
           - planned
           - rumored
           - canceled
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     CheckinRequest:
       type: object
       properties:
@@ -175,19 +154,40 @@ components:
         app_date:
           type: string
           format: date
-    Ids:
+    Episode:
       type: object
       properties:
-        trakt:
+        season:
           type: integer
-        slug:
+        number:
+          type: integer
+        title:
           type: string
-        imdb:
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
           type: string
-        tmdb:
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
           type: integer
-        tvdb:
-          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
   securitySchemes:
     bearerAuth:
       type: http

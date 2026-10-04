@@ -83,6 +83,70 @@ paths:
                 $ref: '#/components/schemas/ScrobbleResponse'
 components:
   schemas:
+    Movie:
+      type: object
+      properties:
+        title:
+          type: string
+        year:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        tagline:
+          type: string
+        overview:
+          type: string
+        released:
+          type: string
+          format: date
+        runtime:
+          type: integer
+        country:
+          type: string
+        trailer:
+          type:
+          - string
+          - 'null'
+          format: uri
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+        rating:
+          type: number
+        votes:
+          type: integer
+        comment_count:
+          type: integer
+        updated_at:
+          type: string
+          format: date-time
+        language:
+          type: string
+        languages:
+          type: array
+          items:
+            type: string
+        available_translations:
+          type: array
+          items:
+            type: string
+        genres:
+          type: array
+          items:
+            type: string
+        certification:
+          type: string
+        status:
+          type: string
+          enum:
+          - released
+          - in production
+          - post production
+          - planned
+          - rumored
+          - canceled
     Ids:
       type: object
       properties:
@@ -96,6 +160,24 @@ components:
           type: integer
         tvdb:
           type: integer
+    ScrobbleRequest:
+      type: object
+      required:
+      - progress
+      properties:
+        progress:
+          type: number
+          minimum: 0
+          maximum: 100
+        movie:
+          $ref: '#/components/schemas/Movie'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        app_version:
+          type: string
+        app_date:
+          type: string
+          format: date
     Episode:
       type: object
       properties:
@@ -130,24 +212,6 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
-    ScrobbleRequest:
-      type: object
-      required:
-      - progress
-      properties:
-        progress:
-          type: number
-          minimum: 0
-          maximum: 100
-        movie:
-          $ref: '#/components/schemas/Movie'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        app_version:
-          type: string
-        app_date:
-          type: string
-          format: date
     Show:
       type: object
       properties:
@@ -236,70 +300,6 @@ components:
           $ref: '#/components/schemas/Episode'
         show:
           $ref: '#/components/schemas/Show'
-    Movie:
-      type: object
-      properties:
-        title:
-          type: string
-        year:
-          type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        tagline:
-          type: string
-        overview:
-          type: string
-        released:
-          type: string
-          format: date
-        runtime:
-          type: integer
-        country:
-          type: string
-        trailer:
-          type:
-          - string
-          - 'null'
-          format: uri
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
-        rating:
-          type: number
-        votes:
-          type: integer
-        comment_count:
-          type: integer
-        updated_at:
-          type: string
-          format: date-time
-        language:
-          type: string
-        languages:
-          type: array
-          items:
-            type: string
-        available_translations:
-          type: array
-          items:
-            type: string
-        genres:
-          type: array
-          items:
-            type: string
-        certification:
-          type: string
-        status:
-          type: string
-          enum:
-          - released
-          - in production
-          - post production
-          - planned
-          - rumored
-          - canceled
   securitySchemes:
     bearerAuth:
       type: http

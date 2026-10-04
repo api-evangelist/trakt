@@ -159,22 +159,29 @@ paths:
         '201':
           description: List created.
 components:
+  parameters:
+    UserSlug:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User slug or 'me' for the authenticated user.
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
   schemas:
-    UserStats:
-      type: object
-      properties:
-        movies:
-          type: object
-        shows:
-          type: object
-        seasons:
-          type: object
-        episodes:
-          type: object
-        network:
-          type: object
-        ratings:
-          type: object
     UserSettings:
       type: object
       properties:
@@ -224,28 +231,21 @@ components:
               type: string
             uuid:
               type: string
-  parameters:
-    Extended:
-      name: extended
-      in: query
-      schema:
-        type: string
-        enum:
-        - full
-        - metadata
-        - noseasons
-        - images
-        - episodes
-        - guest_stars
-        - vip
-      description: Request extra fields in the response.
-    UserSlug:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User slug or 'me' for the authenticated user.
+    UserStats:
+      type: object
+      properties:
+        movies:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        episodes:
+          type: object
+        network:
+          type: object
+        ratings:
+          type: object
   securitySchemes:
     bearerAuth:
       type: http

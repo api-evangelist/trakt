@@ -1095,8 +1095,6 @@ apis:
   humanURL: https://trakt.docs.apiary.io/
   baseURL: https://api.trakt.tv
   tags:
-  - Check-in
-  tags_raw:
   - Check In
   properties:
   - type: OpenAPI

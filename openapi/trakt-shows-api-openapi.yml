@@ -170,6 +170,41 @@ paths:
                 $ref: '#/components/schemas/People'
 components:
   schemas:
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
+    ShowTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
     Season:
       type: object
       properties:
@@ -207,6 +242,44 @@ components:
           type: integer
         tvdb:
           type: integer
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
+    ShowWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
     ShowProgress:
       type: object
       properties:
@@ -291,51 +364,6 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    ShowWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
-    ShowTrending:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
     Show:
       type: object
       properties:
@@ -396,69 +424,7 @@ components:
             type: string
         aired_episodes:
           type: integer
-    Person:
-      type: object
-      properties:
-        name:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        biography:
-          type: string
-        birthday:
-          type:
-          - string
-          - 'null'
-          format: date
-        death:
-          type:
-          - string
-          - 'null'
-          format: date
-        birthplace:
-          type:
-          - string
-          - 'null'
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
   parameters:
-    Period:
-      name: period
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
-    Extended:
-      name: extended
-      in: query
-      schema:
-        type: string
-        enum:
-        - full
-        - metadata
-        - noseasons
-        - images
-        - episodes
-        - guest_stars
-        - vip
-      description: Request extra fields in the response.
-    Limit:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 10
-      description: Items per page.
     ShowId:
       name: id
       in: path
@@ -474,6 +440,40 @@ components:
         minimum: 1
         default: 1
       description: Page number for pagination.
+    Limit:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 10
+      description: Items per page.
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
+    Period:
+      name: period
+      in: path
+      required: true
+      schema:
+        type: string
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
   securitySchemes:
     bearerAuth:
       type: http
