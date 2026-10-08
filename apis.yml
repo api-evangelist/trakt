@@ -1138,6 +1138,8 @@ apis:
   - type: APIReference
     url: https://trakt.docs.apiary.io/
 common:
+  - type: FinOps
+    url: finops/trakt-finops.yml
   - type: IssueTracker
     url: https://github.com/trakt/trakt-api/issues
   - type: CodeOfConduct
