@@ -91,47 +91,40 @@ paths:
                   $ref: '#/components/schemas/SearchResult'
 components:
   schemas:
-    Person:
+    Episode:
       type: object
       properties:
-        name:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
           type: string
         ids:
           $ref: '#/components/schemas/Ids'
-        biography:
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
           type: string
-        birthday:
+        first_aired:
           type:
           - string
           - 'null'
-          format: date
-        death:
-          type:
-          - string
-          - 'null'
-          format: date
-        birthplace:
-          type:
-          - string
-          - 'null'
-        homepage:
-          type:
-          - string
-          - 'null'
-          format: uri
-    Ids:
-      type: object
-      properties:
-        trakt:
+          format: date-time
+        runtime:
           type: integer
-        slug:
+        episode_type:
           type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
     Movie:
       type: object
       properties:
@@ -196,6 +189,19 @@ components:
           - planned
           - rumored
           - canceled
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     SearchResult:
       type: object
       properties:
@@ -217,40 +223,6 @@ components:
           $ref: '#/components/schemas/Episode'
         person:
           $ref: '#/components/schemas/Person'
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type:
-          - integer
-          - 'null'
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
     Show:
       type: object
       properties:
@@ -311,6 +283,34 @@ components:
             type: string
         aired_episodes:
           type: integer
+    Person:
+      type: object
+      properties:
+        name:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        biography:
+          type: string
+        birthday:
+          type:
+          - string
+          - 'null'
+          format: date
+        death:
+          type:
+          - string
+          - 'null'
+          format: date
+        birthplace:
+          type:
+          - string
+          - 'null'
+        homepage:
+          type:
+          - string
+          - 'null'
+          format: uri
   parameters:
     Page:
       name: page

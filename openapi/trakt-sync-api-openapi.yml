@@ -295,19 +295,6 @@ paths:
           description: Removed.
 components:
   schemas:
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
     LastActivities:
       type: object
       properties:
@@ -332,6 +319,19 @@ components:
           type: object
         recommendations:
           type: object
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     BulkMediaRequest:
       type: object
       properties:

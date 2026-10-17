@@ -198,88 +198,6 @@ components:
           - string
           - 'null'
           format: uri
-    ShowTrending:
-      type: object
-      properties:
-        watchers:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
-    Season:
-      type: object
-      properties:
-        number:
-          type: integer
-        ids:
-          $ref: '#/components/schemas/Ids'
-        episode_count:
-          type: integer
-        aired_episodes:
-          type: integer
-        title:
-          type: string
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        network:
-          type:
-          - string
-          - 'null'
-    Ids:
-      type: object
-      properties:
-        trakt:
-          type: integer
-        slug:
-          type: string
-        imdb:
-          type: string
-        tmdb:
-          type: integer
-        tvdb:
-          type: integer
-    People:
-      type: object
-      properties:
-        cast:
-          type: array
-          items:
-            type: object
-            properties:
-              characters:
-                type: array
-                items:
-                  type: string
-              person:
-                $ref: '#/components/schemas/Person'
-        crew:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: object
-              properties:
-                jobs:
-                  type: array
-                  items:
-                    type: string
-                person:
-                  $ref: '#/components/schemas/Person'
-    ShowWatched:
-      type: object
-      properties:
-        watcher_count:
-          type: integer
-        play_count:
-          type: integer
-        collected_count:
-          type: integer
-        show:
-          $ref: '#/components/schemas/Show'
     ShowProgress:
       type: object
       properties:
@@ -330,6 +248,33 @@ components:
           $ref: '#/components/schemas/Episode'
         last_episode:
           $ref: '#/components/schemas/Episode'
+    People:
+      type: object
+      properties:
+        cast:
+          type: array
+          items:
+            type: object
+            properties:
+              characters:
+                type: array
+                items:
+                  type: string
+              person:
+                $ref: '#/components/schemas/Person'
+        crew:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                jobs:
+                  type: array
+                  items:
+                    type: string
+                person:
+                  $ref: '#/components/schemas/Person'
     Episode:
       type: object
       properties:
@@ -364,6 +309,37 @@ components:
           - mid_season_premiere
           - season_finale
           - series_finale
+    ShowWatched:
+      type: object
+      properties:
+        watcher_count:
+          type: integer
+        play_count:
+          type: integer
+        collected_count:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
+    ShowTrending:
+      type: object
+      properties:
+        watchers:
+          type: integer
+        show:
+          $ref: '#/components/schemas/Show'
+    Ids:
+      type: object
+      properties:
+        trakt:
+          type: integer
+        slug:
+          type: string
+        imdb:
+          type: string
+        tmdb:
+          type: integer
+        tvdb:
+          type: integer
     Show:
       type: object
       properties:
@@ -424,14 +400,43 @@ components:
             type: string
         aired_episodes:
           type: integer
+    Season:
+      type: object
+      properties:
+        number:
+          type: integer
+        ids:
+          $ref: '#/components/schemas/Ids'
+        episode_count:
+          type: integer
+        aired_episodes:
+          type: integer
+        title:
+          type: string
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        network:
+          type:
+          - string
+          - 'null'
   parameters:
-    ShowId:
-      name: id
+    Period:
+      name: period
       in: path
       required: true
       schema:
         type: string
-      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
+        enum:
+        - daily
+        - weekly
+        - monthly
+        - yearly
+        - all
     Page:
       name: page
       in: query
@@ -448,6 +453,13 @@ components:
         minimum: 1
         default: 10
       description: Items per page.
+    ShowId:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Trakt ID, Trakt slug, IMDB ID, TMDB ID, or TVDB ID.
     Extended:
       name: extended
       in: query
@@ -462,18 +474,6 @@ components:
         - guest_stars
         - vip
       description: Request extra fields in the response.
-    Period:
-      name: period
-      in: path
-      required: true
-      schema:
-        type: string
-        enum:
-        - daily
-        - weekly
-        - monthly
-        - yearly
-        - all
   securitySchemes:
     bearerAuth:
       type: http

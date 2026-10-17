@@ -83,6 +83,58 @@ paths:
                 $ref: '#/components/schemas/ScrobbleResponse'
 components:
   schemas:
+    Episode:
+      type: object
+      properties:
+        season:
+          type: integer
+        number:
+          type: integer
+        title:
+          type: string
+        ids:
+          $ref: '#/components/schemas/Ids'
+        number_abs:
+          type:
+          - integer
+          - 'null'
+        overview:
+          type: string
+        first_aired:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        runtime:
+          type: integer
+        episode_type:
+          type: string
+          enum:
+          - standard
+          - series_premiere
+          - season_premiere
+          - mid_season_finale
+          - mid_season_premiere
+          - season_finale
+          - series_finale
+    ScrobbleRequest:
+      type: object
+      required:
+      - progress
+      properties:
+        progress:
+          type: number
+          minimum: 0
+          maximum: 100
+        movie:
+          $ref: '#/components/schemas/Movie'
+        episode:
+          $ref: '#/components/schemas/Episode'
+        app_version:
+          type: string
+        app_date:
+          type: string
+          format: date
     Movie:
       type: object
       properties:
@@ -160,58 +212,6 @@ components:
           type: integer
         tvdb:
           type: integer
-    ScrobbleRequest:
-      type: object
-      required:
-      - progress
-      properties:
-        progress:
-          type: number
-          minimum: 0
-          maximum: 100
-        movie:
-          $ref: '#/components/schemas/Movie'
-        episode:
-          $ref: '#/components/schemas/Episode'
-        app_version:
-          type: string
-        app_date:
-          type: string
-          format: date
-    Episode:
-      type: object
-      properties:
-        season:
-          type: integer
-        number:
-          type: integer
-        title:
-          type: string
-        ids:
-          $ref: '#/components/schemas/Ids'
-        number_abs:
-          type:
-          - integer
-          - 'null'
-        overview:
-          type: string
-        first_aired:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        runtime:
-          type: integer
-        episode_type:
-          type: string
-          enum:
-          - standard
-          - series_premiere
-          - season_premiere
-          - mid_season_finale
-          - mid_season_premiere
-          - season_finale
-          - series_finale
     Show:
       type: object
       properties:

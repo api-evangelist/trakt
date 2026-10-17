@@ -159,29 +159,44 @@ paths:
         '201':
           description: List created.
 components:
-  parameters:
-    UserSlug:
-      name: id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: User slug or 'me' for the authenticated user.
-    Extended:
-      name: extended
-      in: query
-      schema:
-        type: string
-        enum:
-        - full
-        - metadata
-        - noseasons
-        - images
-        - episodes
-        - guest_stars
-        - vip
-      description: Request extra fields in the response.
   schemas:
+    UserStats:
+      type: object
+      properties:
+        movies:
+          type: object
+        shows:
+          type: object
+        seasons:
+          type: object
+        episodes:
+          type: object
+        network:
+          type: object
+        ratings:
+          type: object
+    UserProfile:
+      type: object
+      properties:
+        username:
+          type: string
+        private:
+          type: boolean
+        deleted:
+          type: boolean
+        name:
+          type: string
+        vip:
+          type: boolean
+        vip_ep:
+          type: boolean
+        ids:
+          type: object
+          properties:
+            slug:
+              type: string
+            uuid:
+              type: string
     UserSettings:
       type: object
       properties:
@@ -209,43 +224,28 @@ components:
           type: object
         permissions:
           type: object
-    UserProfile:
-      type: object
-      properties:
-        username:
-          type: string
-        private:
-          type: boolean
-        deleted:
-          type: boolean
-        name:
-          type: string
-        vip:
-          type: boolean
-        vip_ep:
-          type: boolean
-        ids:
-          type: object
-          properties:
-            slug:
-              type: string
-            uuid:
-              type: string
-    UserStats:
-      type: object
-      properties:
-        movies:
-          type: object
-        shows:
-          type: object
-        seasons:
-          type: object
-        episodes:
-          type: object
-        network:
-          type: object
-        ratings:
-          type: object
+  parameters:
+    Extended:
+      name: extended
+      in: query
+      schema:
+        type: string
+        enum:
+        - full
+        - metadata
+        - noseasons
+        - images
+        - episodes
+        - guest_stars
+        - vip
+      description: Request extra fields in the response.
+    UserSlug:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: User slug or 'me' for the authenticated user.
   securitySchemes:
     bearerAuth:
       type: http
