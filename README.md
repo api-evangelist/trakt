@@ -1,4 +1,4 @@
-# Trakt (trakt)
+# Trakt
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,113 +66,219 @@
 
 Trakt is the personal media database for movies and TV. Its API v2 (api.trakt.tv) exposes ~150 endpoints across movies, shows, seasons, episodes, people, search, lists, calendars, recommendations, comments, notes, scrobble, checkin, and full per-user sync (history, watchlist, ratings, collection, favorites, playback progress). Authentication is OAuth 2.0 via Authorization Code or Device flows. The platform powers the Trakt website, official Android/iOS apps, and a large third-party ecosystem of media-center plugins and trackers.
 
-**APIs.json:** [https://trakt.tv](https://trakt.tv)
+**Areas:** Video · Movies · Television · Media Tracking · Scrobble · Recommendations · Social · Authentication · Public APIs
 
-## Tags
+## Trakt on APIs.io
 
-- Video
-- Movies
-- Television
-- Media Tracking
-- Scrobble
-- Recommendations
-- Social
-- OAuth2
-- Public APIs
+Everything profiled for Trakt is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/trakt/](https://apis.io/providers/trakt/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (22)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-30
+- [Trakt Calendars API](https://apis.io/apis/trakt/trakt-calendars-api/) — Upcoming and recently aired schedules for shows, episodes, and movies.
+- [Trakt Certifications API](https://apis.io/apis/trakt/trakt-certifications-api/) — Movie and show certification reference data.
+- [Trakt Comments API](https://apis.io/apis/trakt/trakt-comments-api/) — Comment threads, replies, likes, reactions.
+- [Trakt Countries API](https://apis.io/apis/trakt/trakt-countries-api/) — Country reference data.
+- [Trakt Episodes API](https://apis.io/apis/trakt/trakt-episodes-api/) — Episode metadata, ratings, comments, watching.
+- [Trakt Genres API](https://apis.io/apis/trakt/trakt-genres-api/) — Genre reference data.
+- [Trakt Languages API](https://apis.io/apis/trakt/trakt-languages-api/) — Language reference data.
+- [Trakt Lists API](https://apis.io/apis/trakt/trakt-lists-api/) — Trending, popular, and personal lists.
+- [Trakt Movies API](https://apis.io/apis/trakt/trakt-movies-api/) — Movie metadata, trending, watched, anticipated, popular, ratings, related, people.
+- [Trakt Networks API](https://apis.io/apis/trakt/trakt-networks-api/) — Television network reference data.
+- [Trakt Notes API](https://apis.io/apis/trakt/trakt-notes-api/) — Personal notes attached to media items.
+- [Trakt People API](https://apis.io/apis/trakt/trakt-people-api/) — Person metadata, filmography, lists.
+- [Trakt Recommendations API](https://apis.io/apis/trakt/trakt-recommendations-api/) — Personalized recommendations for movies and shows.
+- [Trakt Scrobble API](https://apis.io/apis/trakt/trakt-scrobble-api/) — Start, pause, and stop scrobbles for movies and episodes.
+- [Trakt Search API](https://apis.io/apis/trakt/trakt-search-api/) — Text and ID lookup across movies, shows, episodes, people, lists.
+- [Trakt Seasons API](https://apis.io/apis/trakt/trakt-seasons-api/) — Season-level metadata and episodes.
+- [Trakt Shows API](https://apis.io/apis/trakt/trakt-shows-api/) — Show metadata, trending, watched, anticipated, popular, progress, seasons, episodes.
+- [Trakt Studios API](https://apis.io/apis/trakt/trakt-studios-api/) — Studio reference data.
+- [Trakt Sync API](https://apis.io/apis/trakt/trakt-sync-api/) — History, watchlist, ratings, favorites, collection, playback progress.
+- [Trakt Users API](https://apis.io/apis/trakt/trakt-users-api/) — Profiles, settings, follows, friends, social activity, comments, watching.
+- [Trakt O Auth API](https://apis.io/apis/trakt/trakt-oauth-api/) — Authorization Code and Device OAuth flows.
+- [Trakt Check In API](https://apis.io/apis/trakt/trakt-check-in-api/) — Lightweight social "now watching" check-ins.
 
-## APIs
+### Published properties
 
-### Trakt API v2
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-RESTful JSON API for the full Trakt platform. Supports OAuth 2.0 Authorization Code and Device flows, Title-Case operation summaries, and standard pagination (page/limit). All requests require headers trakt-api-version=2 and trakt-api-key={client_id}.
+#### Agentic access (1)
 
-- **Human URL:** [https://trakt.docs.apiary.io/](https://trakt.docs.apiary.io/)
-- **Base URL:** `https://api.trakt.tv`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Trakt Agentic Access](https://apis.io/agentic-access/trakt/trakt-agentic-access/)
 
-- Video
-- Movies
-- Television
-- Sync
-- Scrobble
+#### JSON Schema (5)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://trakt.docs.apiary.io/)
-- [OpenAPI](openapi/trakt-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/trakt.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/trakt.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/trakt-movie-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/trakt-show-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/trakt-episode-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/trakt-user-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/trakt-scrobble-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/trakt-movie-structure.json)
-- [JSON Structure](json-structure/trakt-show-structure.json)
-- [JSON Structure](json-structure/trakt-history-structure.json)
-- [Example](examples/trakt-getTrendingMovies-example.json)
-- [Example](examples/trakt-getMovie-example.json)
-- [Example](examples/trakt-generateDeviceCode-example.json)
-- [Example](examples/trakt-pollDeviceToken-example.json)
-- [Example](examples/trakt-scrobbleStart-example.json)
-- [Example](examples/trakt-addToHistory-example.json)
-- [Example](examples/trakt-searchText-example.json)
-- [Example](examples/trakt-getShowWatchedProgress-example.json)
-- [Authentication](https://trakt.docs.apiary.io/#reference/authentication-oauth)
-- [API Reference](https://trakt.docs.apiary.io/)
+- [Trakt Episode](https://apis.io/schemas/trakt/trakt-episode/)
+- [Trakt Movie](https://apis.io/schemas/trakt/trakt-movie/)
+- [Trakt Scrobble Event](https://apis.io/schemas/trakt/trakt-scrobble/)
+- [Trakt Show](https://apis.io/schemas/trakt/trakt-show/)
+- [Trakt User Profile](https://apis.io/schemas/trakt/trakt-user/)
 
-## Common Properties
+#### JSON Structure (3)
+
+Data models expressed in JSON Structure.
+
+- [Trakt History Structure](https://apis.io/json-structure/trakt/trakt-history-structure/)
+- [Trakt Movie Structure](https://apis.io/json-structure/trakt/trakt-movie-structure/)
+- [Trakt Show Structure](https://apis.io/json-structure/trakt/trakt-show-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Trakt Context](https://apis.io/jsonld/trakt/trakt-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Trakt Vocabulary](https://apis.io/vocabularies/trakt/trakt-vocabulary/)
+
+#### Examples (8)
+
+Example requests and responses.
+
+- [Trakt Addtohistory Example](https://apis.io/examples/trakt/trakt-addToHistory-example/)
+- [Trakt Generatedevicecode Example](https://apis.io/examples/trakt/trakt-generateDeviceCode-example/)
+- [Trakt Getmovie Example](https://apis.io/examples/trakt/trakt-getMovie-example/)
+- [Trakt Getshowwatchedprogress Example](https://apis.io/examples/trakt/trakt-getShowWatchedProgress-example/)
+- [Trakt Gettrendingmovies Example](https://apis.io/examples/trakt/trakt-getTrendingMovies-example/)
+- [Trakt Polldevicetoken Example](https://apis.io/examples/trakt/trakt-pollDeviceToken-example/)
+- [Trakt Scrobblestart Example](https://apis.io/examples/trakt/trakt-scrobbleStart-example/)
+- [Trakt Searchtext Example](https://apis.io/examples/trakt/trakt-searchText-example/)
+
+#### Collections (45)
+
+Postman and Open Collection request collections.
+
+- [Trakt API](https://apis.io/collections/trakt/open-trakt/)
+- [Trakt Calendars API](https://apis.io/collections/trakt/open-trakt-calendars-api/)
+- [Trakt Calendars Certifications API](https://apis.io/collections/trakt/open-trakt-certifications-api/)
+- [Trakt Calendars Checkin API](https://apis.io/collections/trakt/open-trakt-checkin-api/)
+- [Trakt Calendars Comments API](https://apis.io/collections/trakt/open-trakt-comments-api/)
+- [Trakt Calendars Countries API](https://apis.io/collections/trakt/open-trakt-countries-api/)
+- [Trakt Calendars Episodes API](https://apis.io/collections/trakt/open-trakt-episodes-api/)
+- [Trakt Calendars Genres API](https://apis.io/collections/trakt/open-trakt-genres-api/)
+- [Trakt Calendars Languages API](https://apis.io/collections/trakt/open-trakt-languages-api/)
+- [Trakt Calendars Lists API](https://apis.io/collections/trakt/open-trakt-lists-api/)
+- [Trakt Calendars Movies API](https://apis.io/collections/trakt/open-trakt-movies-api/)
+- [Trakt Calendars Networks API](https://apis.io/collections/trakt/open-trakt-networks-api/)
+- [Trakt Calendars Notes API](https://apis.io/collections/trakt/open-trakt-notes-api/)
+- [Trakt Calendars OAuth API](https://apis.io/collections/trakt/open-trakt-oauth-api/)
+- [Trakt Calendars People API](https://apis.io/collections/trakt/open-trakt-people-api/)
+- [Trakt Calendars Recommendations API](https://apis.io/collections/trakt/open-trakt-recommendations-api/)
+- [Trakt Calendars Scrobble API](https://apis.io/collections/trakt/open-trakt-scrobble-api/)
+- [Trakt Calendars Search API](https://apis.io/collections/trakt/open-trakt-search-api/)
+- [Trakt Calendars Seasons API](https://apis.io/collections/trakt/open-trakt-seasons-api/)
+- [Trakt Calendars Shows API](https://apis.io/collections/trakt/open-trakt-shows-api/)
+- [Trakt Calendars Studios API](https://apis.io/collections/trakt/open-trakt-studios-api/)
+- [Trakt Calendars Sync API](https://apis.io/collections/trakt/open-trakt-sync-api/)
+- [Trakt Calendars Users API](https://apis.io/collections/trakt/open-trakt-users-api/)
+- [Trakt Calendars API](https://apis.io/collections/trakt/postman-trakt-calendars-api/)
+- [Trakt Calendars Certifications API](https://apis.io/collections/trakt/postman-trakt-certifications-api/)
+- …and 20 more published on APIs.io
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Trakt — jsonschema rules](https://apis.io/rules/trakt/trakt-jsonschema-spectral-rules/)
+- [Trakt API Rules](https://apis.io/rules/trakt/trakt-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Trakt Authentication](https://apis.io/security/trakt/trakt-authentication/)
+- [Trakt Domain Security](https://apis.io/security/trakt/trakt-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Trakt Plans Pricing](https://apis.io/plans/trakt/trakt-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Trakt Rate Limits](https://apis.io/rate-limits/trakt/trakt-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Trakt Finops](https://apis.io/finops/trakt/trakt-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://trakt.tv)
-- [Developer Portal](https://trakt.tv/oauth/applications)
 - [Documentation](https://trakt.docs.apiary.io/)
-- [Sign Up](https://trakt.tv/auth/join)
 - [Pricing](https://trakt.tv/vip)
-- [Plans](plans/trakt-plans-pricing.yml)
-- [Rate Limits](rate-limits/trakt-rate-limits.yml)
-- [Terms of Service](https://trakt.tv/terms)
-- [Privacy Policy](https://trakt.tv/privacy)
 - [Support](https://forums.trakt.tv)
-- [F A Q](https://forums.trakt.tv/c/questions-help/8)
-- [Blog](https://blog.trakt.tv)
-- [Status Page](https://status.trakt.tv)
 - [Changelog](https://forums.trakt.tv/c/announcements/3)
-- [GitHub Organization](https://github.com/trakt)
-- [GitHub Repository](https://github.com/trakt/trakt-api)
-- [Spectral Rules](rules/trakt-rules.yml)
-- [J S O N- L D](json-ld/trakt-context.jsonld)
-- [Vocabulary](vocabulary/trakt-vocabulary.yml)
-- [Resources](finops/trakt-finops.yml)
-- [SDK](https://github.com/trakt/trakt-api)
-- [SDK](https://github.com/moogar0880/PyTrakt)
-- [SDK](https://github.com/trakt/nodeless-trakt)
-- [SDK](https://github.com/Bogstag/oauth2-trakt)
-- [SDK](https://authjs.dev/reference/core/providers/trakt)
-- [Tools](https://github.com/trakt/trakt-android)
-- [Tools](https://github.com/trakt/trakt-apple)
-- [Tools](https://github.com/trakt/trakt-rippple)
-- [Tools](https://github.com/trakt/Plex-Trakt-Scrobbler)
-- [Tools](https://github.com/trakt/showly)
-- [Tools](https://github.com/trakt/trakt-web)
-- [Tools](https://github.com/trakt/discord-presence)
-- [Tools](https://github.com/kud/mcp-trakt)
-- [Tools](https://github.com/kofort9/trakt-mcp-go)
-- [Tools](https://github.com/fab-codes/trakt-mcp-server)
-- [Tools](https://github.com/phhusson/trakt-mcp-server)
-- [Tools](https://github.com/popcornemil/trakt-mcp)
-- [Tools](https://github.com/pipeworx-io/mcp-trakt)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Solutions](undefined)
+- [Blog](https://blog.trakt.tv)
+- [Terms of service](https://trakt.tv/terms)
+- [Privacy policy](https://trakt.tv/privacy)
+- [GitHub](https://github.com/trakt)
+- [Status](https://status.trakt.tv)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 49.0** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 62.0 |
+| Contract governance | 27.3 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 52.6 |
+
+**Agent readiness 21.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/trakt/](https://apis.io/providers/trakt/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Trakt: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/trakt/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
